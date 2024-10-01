@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Defac Access Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="assets/css/aos.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/admin-nav') %>
+
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div class="slider-item" style="background-image: url(assets/images/defac-kitchen.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Defac Management</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="sort-list">
+        <div class="container">
+          <div class="d-flex flex-sm-row flex-column" style="justify-content: space-between">
+            <ul class="function-btn">
+              <li>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-food-item">
+                  <i class="icon-add mr-2 text-white"></i> Add New Defac
+                </button>
+                <!-- <button><i class="icon-add mr-2"></i> Add Food Items</button> -->
+              </li>
+              <!-- <li>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-monthly-menu">
+                  <i class="icon-add mr-2 text-white"></i> Add Monthly Menu
+                </button>
+              </li>
+              <li><button><i class="icon-print mr-2"></i> Prints </button></li> -->
+            </ul>
+            <ul class="function-btn">
+              <li>
+                <input type="text" placeholder="Search..." class="search-bar" />
+              </li>
+
+              <li style="align-items: center; display: flex" id="category-post"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div class="cart-list">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>S.N.</th>
+                    <th class="text-left">Profile Picture</th>
+                    <th class="text-left">Defac Name</th>
+                    <th class="text-left">Cover Picture</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Post</th>
+                    <th>Opening Hours</th>
+                    <th>Closing Hours</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="defac-list"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination justify-content-end">
+          <a href="#" class="prev"><i class="icon-caret-left"></i></a>
+          <!-- Page numbers will be dynamically inserted here -->
+          <a href="#" class="next"><i class="icon-caret-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Modal for editing Defac details -->
+      <div class="modal fade" id="myModal-edit-box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Defac</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="#" class="contact-form" id="defac-edit-form" method="POST" enctype="multipart/form-data">
+                <!-- Defac Name -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="name">Defac Name:</label>
+                      <input type="text" class="form-control" value="Main Defac" placeholder="Defac Name" id="name"
+                        name="name" required />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Defac Phone Number -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="contact">Defac Phone Number:</label>
+                      <input type="text" class="form-control" value="123 456 789" placeholder="Defac Phone Number"
+                        id="contact" name="contact" required />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="email" class="form-control" value="main@example.com" placeholder="Email" id="email"
+                        name="email" required />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Post -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group" id="edit-post-list">
+                      <label for="post">Post:</label>
+                      <input type="text" class="form-control" value="Head Office" placeholder="Post" id="post"
+                        name="post" required />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Opening and Closing Hours -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="openingHour">Opening Hours:</label>
+                      <input type="text" class="form-control appointment_time ui-timepicker-input" value="08:00 AM"
+                        placeholder="Opening Time" id="openingHour" name="openingHour" autocomplete="off" required />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="closingHour">Closing Hours:</label>
+                      <input type="text" class="form-control appointment_time ui-timepicker-input" value="10:00 PM"
+                        placeholder="Closing Time" id="closingHour" name="closingHour" autocomplete="off" required />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Status -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="status">Status:</label>
+                      <select class="form-control" id="status" name="status" required>
+                        <option value="true" selected>Active</option>
+                        <option value="false">Inactive</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cover Image -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="cover-image">Upload Cover Image:</label>
+                      <input type="file" class="form-control" id="cover-image" name="coverPicUrl" accept="image/*" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="uploaded-image">
+                      <img id="cover-image-preview" src="assets/images/user.jpg" ref="assets/images/user.jpg" alt="" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Profile Image -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="profile-image">Upload Profile Image:</label>
+                      <input type="file" class="form-control" id="profile-image" name="profilePicUrl"
+                        accept="image/*" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="uploaded-image">
+                      <img id="profile-image-preview" src="assets/images/user.jpg" ref="assets/images/user.jpg"
+                        alt="" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Save Changes Button -->
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="myModal-view-box" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="viewModalLabel">Defac Details</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p><strong>Name:</strong> <span id="defac-view-name"></span></p>
+              <p>
+                <strong>Contact:</strong> <span id="defac-view-contact"></span>
+              </p>
+              <p><strong>Email:</strong> <span id="defac-view-email"></span></p>
+              <p><strong>Post:</strong> <span id="defac-view-post"></span></p>
+              <p>
+                <strong>Opening Hour:</strong>
+                <span id="defac-view-openingHour"></span>
+              </p>
+              <p>
+                <strong>Closing Hour:</strong>
+                <span id="defac-view-closingHour"></span>
+              </p>
+              <p>
+                <strong>Status:</strong> <span id="defac-view-status"></span>
+              </p>
+              <p><strong>Cover Image:</strong></p>
+              <img id="defac-view-cover-image" src="" alt="Cover Image" style="width: 150px" />
+              <p><strong>Profile Image:</strong></p>
+              <img id="defac-view-profile-image" src="" alt="Profile Image" style="width: 150px" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End of modal for editing Defac details -->
+
+      <!-- Modal for Add Event  -->
+      <div class="modal fade" id="myModal-food-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Add Defac Details</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="#" class="contact-form" id="defac-form" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                  <!-- Defac Name -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="name">Defac Name:</label>
+                      <input type="text" class="form-control" placeholder="Enter Defac Name" id="add-name" name="name"
+                        required />
+                    </div>
+                  </div>
+
+                  <!-- Defac Phone Number -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="contact">Defac Phone Number:</label>
+                      <input type="text" class="form-control" placeholder="Enter Defac Phone Number" id="add-contact"
+                        name="contact" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- Email -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="email" class="form-control" placeholder="Enter Email" id="add-email" name="email"
+                        required />
+                    </div>
+                  </div>
+
+                  <!-- Password -->
+                  <div class="col-md-6">
+                    <div class="form-group" style="position: relative;">
+                      <label for="password">Password:</label>
+                      <input type="password" class="form-control" placeholder="Enter Password" id="add-password"
+                        name="password" required />
+                      <div id="toggle-password"
+                        style="color: white; position: absolute; right: 10px; bottom: 20px; cursor: pointer;"><i
+                          class="fa-solid fa-eye-slash"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- Confirm Password -->
+                  <div class="col-md-6" style="position: relative;">
+                    <div class="form-group">
+                      <label for="confirm-password">Confirm Password:</label>
+                      <input type="password" class="form-control" placeholder="Confirm Password"
+                        id="add-confirm-password" name="confirmPassword" required />
+                      <div id="toggle-confirm-password"
+                        style="color: white; position: absolute; right: 10px; bottom: 20px; cursor: pointer;"><i
+                          class="fa-solid fa-eye-slash"></i></div>
+                    </div>
+                  </div>
+
+                  <!-- Post -->
+                  <div class="col-md-6">
+                    <div class="form-group" id="post-list"></div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- Opening Hours -->
+                  <div class="col-sm-6 col-6">
+                    <div class="form-group">
+                      <label for="openingHour"> Opening Hours:</label>
+                      <div class="input-wrap">
+                        <input type="text" class="form-control appointment_time ui-timepicker-input"
+                          placeholder="Opening Time" autocomplete="off" id="add-openingHour" name="openingHour"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Closing Hours -->
+                  <div class="col-sm-6 col-6">
+                    <div class="form-group">
+                      <label for="closingHour"> Closing Hours:</label>
+                      <div class="input-wrap">
+                        <input type="text" class="form-control appointment_time ui-timepicker-input"
+                          placeholder="Closing Time" autocomplete="off" id="add-closingHour" name="closingHour"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row photo-btn-cross">
+                  <div class="col-sm-5 col-6">
+                    <label for="defac-cover">Cover Image:</label>
+                    <div class="uploaded-image d-inline-block pb-2">
+                      <img id="defac-cover-photo" src="assets/images/defac-banner.jpg"
+                        ref="assets/images/defac-banner.jpg" alt="" width="100px" height="100px" />
+                    </div>
+                    <span class="wpcf7-form-control-wrap" data-name="defac-cover">
+                      <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="add-coverPicUrl"
+                        accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="defac-cover" />
+                    </span>
+                  </div>
+
+                  <div class="col-sm-5 col-6 offset-sm-2">
+                    <label for="deface-profile">Profile Image:</label>
+                    <div class="uploaded-image d-inline-block pb-2">
+                      <img id="defac-photo" src="assets/images/user.jpg" ref="assets/images/user.jpg" alt=""
+                        width="100px" height="100px" />
+                    </div>
+                    <span class="wpcf7-form-control-wrap" data-name="deface-profile">
+                      <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="add-profilePicUrl"
+                        accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="deface-profile" />
+                    </span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- Status -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="status">Status:</label>
+                      <select class="form-control" id="add-status" name="status" required>
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group mt-2">
+                  <button type="button" onclick="addDefac()" class="btn btn-primary">
+                    Add Defac
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal for Add events -->
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <%- include('utils/loader') %>
+        <!-- ======================================
+	   loader
+	   ========================================== -->
+
+        <!-- javascripts cdn here -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.easing.1.3.js"></script>
+        <script src="assets/js/jquery.waypoints.min.js"></script>
+        <script src="assets/js/jquery.stellar.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/aos.js"></script>
+        <script src="assets/js/jquery.animateNumber.min.js"></script>
+        <script src="assets/js/bootstrap-datepicker.js"></script>
+        <script src="assets/js/jquery.timepicker.min.js"></script>
+        <script src="assets/js/scrollax.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="assets/js/google-map.js"></script>
+        <script src="assets/js/star-rating.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="https://kit.fontawesome.com/27bd3bf8d7.js" crossorigin="anonymous"></script>
+        <script>
+          let selectedProfilePicture = '';
+          let selectedCoverPicture = '';
+          let defacs = [];
+          let postList = [];
+          let currentPage = 1;
+          const itemsPerPage = 10; // Adjust this number based on how many items you want per page
+          let filteredDefacs = []; // This will hold the filtered list
+
+          window.onload = function () {
+            fetchDefacData();
+            fetchPost();
+
+            // Add event listeners for search and filter
+            const searchBar = document.querySelector('.search-bar');
+            const categoryFilter = document.querySelector('.category-filter');
+
+            searchBar.addEventListener('input', applySearchAndFilter);
+            categoryFilter.addEventListener('change', applySearchAndFilter);
+          };
+
+          const fetchPost = async () => {
+            try {
+              const apiKey = '<%= apiKey %>';
+              const serverUrl = '<%= serverUrl %>';
+              const myHeaders = new Headers();
+              myHeaders.append('x-api-key', apiKey);
+
+              const requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow',
+              };
+
+              const response = await fetch(`${serverUrl}/api/post`, requestOptions);
+              const result = await response.json();
+              if (result?.statusCode === '10000') {
+                postList = result.data;
+                renderPostList();
+              } else {
+                alert('Failed to fetch data: ' + result.message);
+              }
+            } catch (err) {
+              console.log(err);
+            }
+          };
+
+          const renderPostList = () => {
+            // for adding defac
+            const postDropdown = document.getElementById('post-list');
+            postDropdown.innerHTML = `
+          <label for="add-post">Post:</label>
+         <select class="form-control" id="add-post" required style="background-color: #41592d !important;">
+                  <option value="" disabled selected>Select Post</option>
+                  ${postList?.map((post) => {
+              return `<option value="${post.name}">${post.name}</option>`;
+            })}
+                </select>`;
+
+            // for filter dropdown
+            const categoryDropdown = document.getElementById('category-post');
+            categoryDropdown.innerHTML = `
+        <select class="category-filter">
+                  <option value="" disabled selected>Filter Post</option>
+                  <option value="">All Category</option>
+                    ${postList?.map((post) => {
+              return `<option value="${post.name}">${post.name}</option>`;
+            })}
+                </select>`;
+
+            const categoryFilter = document.querySelector('.category-filter');
+            categoryFilter.addEventListener('change', applySearchAndFilter);
+
+            // for editing defac
+            const editPostDropdown = document.getElementById('edit-post-list');
+            editPostDropdown.innerHTML = `
+                      <label for="post">Post:</label>
+                      <select class="form-control" id="post" required style="background-color: #41592d !important;">
+                  <option value="" disabled selected>Select Post</option>
+                  ${postList?.map((post) => {
+              return `<option value="${post.name}">${post.name}</option>`;
+            })}
+                </select>
+                    `;
+          };
+
+          async function fetchDefacData() {
+            try {
+              const apiKey = '<%= apiKey %>';
+              const serverUrl = '<%= serverUrl %>';
+              const myHeaders = new Headers();
+              myHeaders.append('x-api-key', apiKey);
+
+              const requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow',
+              };
+
+              const response = await fetch(
+                `${serverUrl}/api/defac`,
+                requestOptions,
+              );
+              const result = await response.json();
+              if (result?.statusCode === '10000') {
+                defacs = result.data.updatedDefacList;
+                applySearchAndFilter(); // Apply search and filter initially
+              } else {
+                alert('Fail to fetch data: ' + result.message);
+              }
+            } catch (err) {
+              console.error('Error:', err);
+            }
+          }
+
+          function applySearchAndFilter() {
+            const searchTerm = document
+              .querySelector('.search-bar')
+              .value.toLowerCase();
+            const selectedCategory =
+              document.querySelector('.category-filter')?.value;
+
+            // Filter the defacs based on the search term and selected category
+            filteredDefacs = defacs?.filter((defac) => {
+              const matchesSearch =
+                defac.name.toLowerCase().includes(searchTerm) ||
+                defac.email.toLowerCase().includes(searchTerm);
+
+              const matchesCategory =
+                !selectedCategory || defac.post === selectedCategory;
+
+              // Ensure both conditions are met: matches search term and/or category
+              return matchesSearch && matchesCategory;
+            });
+
+            // Reset to the first page after filtering
+            currentPage = 1;
+            renderDefacList();
+            renderPagination();
+          }
+
+          function renderDefacList() {
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedDefacs = filteredDefacs.slice(start, end);
+
+            const defacUI = document.getElementById('defac-list');
+            defacUI.innerHTML = paginatedDefacs
+              .map((defac, id) => {
+                return `<tr class="text-center">
+                    <td class="sno"><p>${start + id + 1}</p></td>
+                    <td class="profile-picture">
+              <img src="${defac.profilePicUrl
+                  }" alt="Profile Picture" style="width:50px; height:50px;">
+            </td>
+            <td class="name"><p>${defac.name}</p></td>
+            <td class="cover-picture">
+              <img src="${defac.coverPicUrl
+                  }" alt="Cover Picture" style="width:50px; height:50px;">
+            </td>
+                    <td class="contact"><p>${defac.contact}</p></td>
+                    <td class="defac-email"><p>${defac.email}</p></td>
+                    <td class="defac-post"><p>${defac.post}</p></td>
+                    <td class="opening-hours"><p>${defac.openingHour}</p></td>
+                    <td class="closing-hours"><p>${defac.closingHour}</p></td>
+                    <td class="defac-status"><p>${defac.status ? 'Active' : 'Inactive'
+                  }</p></td>
+                    
+                    <td class="product-remove">
+  <!-- View Details (Eye) Button -->
+  <button
+    type="button"
+    class="btn btn-primary btn-sm text-white border-gg"
+    data-toggle="modal"
+    data-target="#myModal-view-box"
+    data-id="${defac._id}"
+    title="View Details"
+  >
+    <span class="icon-eye"></span>
+  </button>
+
+  <!-- Edit Button -->
+  <button
+    type="button"
+    class="btn btn-primary btn-sm text-white border-gg"
+    data-toggle="modal"
+    data-target="#myModal-edit-box"
+    data-id="${defac._id}"
+    title="Edit"
+  >
+    <span class="icon-edit"></span>
+  </button>
+
+  <!-- Delete Button -->
+  <button
+    onclick="deleteDefac('${defac._id}')"
+    type="button"
+    class="btn btn-primary btn-sm text-white border-gg"
+    title="Delete"
+  >
+    <span class="icon-delete"></span>
+  </button>
+</td>
+
+                  </tr>`;
+              })
+              .join('');
+          }
+
+          function renderPagination() {
+            const totalPages = Math.ceil(filteredDefacs.length / itemsPerPage);
+            const paginationUI = document.querySelector('.pagination');
+
+            // Clear existing pagination
+            paginationUI.innerHTML = '';
+
+            // Previous button
+            paginationUI.innerHTML += `<a href="#" class="prev" onclick="goToPage(${currentPage - 1
+              })"><i class="icon-caret-left"></i></a>`;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+              paginationUI.innerHTML += `<a href="#" class="${i === currentPage ? 'active' : ''
+                }" onclick="goToPage(${i})">${i}</a>`;
+            }
+
+            // Next button
+            paginationUI.innerHTML += `<a href="#" class="next" onclick="goToPage(${currentPage + 1
+              })"><i class="icon-caret-right"></i></a>`;
+          }
+
+          function goToPage(page) {
+            const totalPages = Math.ceil(filteredDefacs.length / itemsPerPage);
+            if (page < 1 || page > totalPages) {
+              return;
+            }
+            currentPage = page;
+            renderDefacList();
+            renderPagination();
+          }
+
+          // api call to delete defac
+          const deleteDefac = async (defacId) => {
+            try {
+              const apiKey = '<%= apiKey %>';
+              const serverUrl = '<%= serverUrl %>';
+              const myHeaders = new Headers();
+              myHeaders.append('x-api-key', apiKey);
+
+              const requestOptions = {
+                method: 'DELETE',
+                headers: myHeaders,
+                redirect: 'follow',
+              };
+
+              const response = await fetch(
+                `${serverUrl}/api/defac/${defacId}`,
+                requestOptions,
+              );
+              const result = await response.json();
+              if (result?.statusCode === '10000') {
+                alert(result.message);
+                fetchDefacData(); // Reload data after deletion
+              } else {
+                alert('Failed to delete defac: ' + result.message);
+              }
+            } catch (err) {
+              console.error('Error:', err);
+            }
+          };
+
+          // display defac detail on edit defac form
+          document.addEventListener('click', function (event) {
+            if (event.target.closest('.btn[data-target="#myModal-edit-box"]')) {
+              // Get the defac ID from the button's data-id attribute
+              const defacId = event.target
+                .closest('button')
+                .getAttribute('data-id');
+
+              // Find the corresponding defac object from the defacs array
+              const defacToEdit = defacs.find((defac) => defac._id === defacId);
+              if (defacToEdit) {
+                // Populate the modal form with the defac details
+                document.getElementById('name').value = defacToEdit.name;
+                document.getElementById('contact').value = defacToEdit.contact;
+                document.getElementById('email').value = defacToEdit.email;
+                document.getElementById('post').value = defacToEdit.post;
+                document.getElementById('openingHour').value =
+                  defacToEdit.openingHour;
+                document.getElementById('closingHour').value =
+                  defacToEdit.closingHour;
+                document.getElementById('status').value = defacToEdit.status
+                  ? true
+                  : false;
+
+                // Set the images in the preview section
+                document.querySelector('#profile-image-preview').src =
+                  `${defacToEdit.profilePicUrl}`;
+                document.querySelector('#cover-image-preview').src =
+                  `${defacToEdit.coverPicUrl}`;
+
+                selectedProfilePicture = `${defacToEdit.profilePicUrl}`;
+                selectedCoverPicture = `${defacToEdit.coverPicUrl}`;
+
+                // Store the defac ID in a hidden field for use when saving changes
+                document
+                  .getElementById('defac-edit-form')
+                  .setAttribute('data-id', defacId);
+              }
+            }
+          });
+
+          // update defac
+          document
+            .getElementById('defac-edit-form')
+            .addEventListener('submit', async function (event) {
+              event.preventDefault();
+
+              const defacId = this.getAttribute('data-id');
+              const formData = new FormData(this);
+              const post = document.getElementById('post').value;
+
+              // Append the ID to the form data
+              formData.append('post', post);
+              formData.append('id', defacId);
+
+              try {
+                const apiKey = '<%= apiKey %>';
+                const serverUrl = '<%= serverUrl %>';
+                const myHeaders = new Headers();
+                myHeaders.append('x-api-key', apiKey);
+
+                const requestOptions = {
+                  method: 'PATCH',
+                  headers: myHeaders,
+                  body: formData,
+                  redirect: 'follow',
+                };
+
+                const response = await fetch(
+                  `${serverUrl}/api/defac`,
+                  requestOptions,
+                );
+                const result = await response.json();
+
+                if (result?.statusCode === '10000') {
+                  alert('Defac details updated successfully.');
+                  fetchDefacData(); // Reload data after update
+                  $('#myModal-edit-box').modal('hide'); // Close the modal
+                } else {
+                  alert('Failed to update defac: ' + result.message);
+                }
+              } catch (err) {
+                console.error('Error:', err);
+              }
+            });
+
+          // display the data of the selected defac
+          document.addEventListener('click', function (event) {
+            if (event.target.closest('.btn[data-target="#myModal-view-box"]')) {
+              const defacId = event.target
+                .closest('button')
+                .getAttribute('data-id');
+
+              // Find the defac details from the defacs array or fetch from server
+              const defacToView = defacs.find((defac) => defac._id === defacId);
+              if (defacToView) {
+                document.getElementById('defac-view-name').textContent =
+                  defacToView.name;
+                document.getElementById('defac-view-contact').textContent =
+                  defacToView.contact;
+                document.getElementById('defac-view-email').textContent =
+                  defacToView.email;
+                document.getElementById('defac-view-post').textContent =
+                  defacToView.post;
+                document.getElementById('defac-view-openingHour').textContent =
+                  defacToView.openingHour;
+                document.getElementById('defac-view-closingHour').textContent =
+                  defacToView.closingHour;
+                document.getElementById('defac-view-status').textContent =
+                  defacToView.status ? 'Active' : 'Inactive';
+                document.getElementById('defac-view-cover-image').src =
+                  `${defacToView.coverPicUrl}`;
+                document.getElementById('defac-view-profile-image').src =
+                  `${defacToView.profilePicUrl}`;
+              }
+            }
+          });
+
+          const showLoader = () => {
+            document.getElementById('loader').style.display = 'flex';
+          };
+
+          const hideLoader = () => {
+            document.getElementById('loader').style.display = 'none';
+          };
+
+          const addDefac = async () => {
+            try {
+              // Show the loader
+              showLoader();
+
+              // Create a new FormData object from the form
+              const formData = new FormData();
+
+              // Get form values
+              const password = document.getElementById('add-password').value.trim();
+              const confirmPassword = document
+                .getElementById('add-confirm-password')
+                .value.trim();
+              const name = document.getElementById('add-name').value.trim();
+              const contact = document.getElementById('add-contact').value.trim();
+              const email = document.getElementById('add-email').value.trim();
+              const post = document.getElementById('add-post').value.trim();
+              const openingHour = document
+                .getElementById('openingHour')
+                .value.trim();
+              const closingHour = document
+                .getElementById('closingHour')
+                .value.trim();
+              const status = document.getElementById('add-status').value;
+              const coverPicUrl =
+                document.getElementById('add-coverPicUrl').files[0];
+              const profilePicUrl =
+                document.getElementById('add-profilePicUrl').files[0];
+
+              // Check if the passwords match
+              if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return;
+              }
+
+              // Append form values to FormData
+              formData.append('name', name);
+              formData.append('contact', contact);
+              formData.append('email', email);
+              formData.append('password', password);
+              formData.append('post', post);
+              formData.append('openingHour', openingHour);
+              formData.append('closingHour', closingHour);
+              formData.append('profilePicUrl', profilePicUrl);
+              formData.append('coverPicUrl', coverPicUrl);
+              formData.append('status', status);
+
+              const apiKey = '<%= apiKey %>';
+              const serverUrl = '<%= serverUrl %>';
+              const myHeaders = new Headers();
+              myHeaders.append('x-api-key', apiKey);
+
+              const requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: formData,
+                redirect: 'follow',
+              };
+
+              const response = await fetch(
+                `${serverUrl}/api/defac`,
+                requestOptions,
+              );
+              const result = await response.json();
+
+              if (result?.statusCode === '10000') {
+                alert(result.message);
+                fetchDefacData();
+                $('#myModal-food-item').modal('hide');
+              } else {
+                alert('Fail to add defac: ' + result.message);
+              }
+            } catch (err) {
+              console.log(err);
+            } finally {
+              // Hide the loader
+              hideLoader();
+            }
+          };
+
+          // display selected profile image in edit form
+          jQuery('input#cover-image').on('change', function () {
+            if (this.files && this.files[0]) {
+              let image = this;
+
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                jQuery('#cover-image-preview').attr('src', e.target.result); //img tag id
+                createCloseButton('#cover-image-preview', 'input#cover-image');
+              };
+              reader.readAsDataURL(this.files[0]);
+            }
+          });
+
+          // display selected cover image in edit form
+          jQuery('input#profile-image').on('change', function () {
+            let image = this;
+            if (this.files && this.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                jQuery('#profile-image-preview').attr('src', e.target.result);
+                createCloseButton('#profile-image-preview', 'input#profile-image');
+              };
+              reader.readAsDataURL(this.files[0]);
+            }
+          });
+
+          // to remove the selected image from the edit form
+          function createCloseButton(imageSelector, inputSelector) {
+            // Remove existing close button if any
+
+            jQuery(imageSelector).closest('.uploaded-image');
+            var defaulImage = jQuery(imageSelector).attr('ref');
+            // Create close button
+            var closeButton = jQuery('<button class="close-btn">X</button>');
+
+            // Append close button to container
+            jQuery(imageSelector).closest('.uploaded-image').append(closeButton);
+
+            // Attach click event to close button
+            closeButton.on('click', function () {
+              if (defaulImage) {
+                jQuery(imageSelector).attr('src', defaulImage);
+              }
+              jQuery(inputSelector).val('');
+              jQuery(this).remove();
+              if (imageSelector === '#profile-image-preview') {
+                document.getElementById('profile-image-preview').src =
+                  selectedProfilePicture;
+              } else {
+                document.getElementById('cover-image-preview').src =
+                  selectedCoverPicture;
+              }
+            });
+          }
+
+          // toggle password visiblity
+          const togglePassword = document.getElementById('toggle-password')
+          togglePassword.addEventListener('click', () => {
+            const password = document.getElementById('add-password')
+            if (password.type === 'password') {
+              password.type = 'text'
+              togglePassword.innerHTML = `<i class="fa-solid fa-eye"></i>`
+            } else {
+              password.type = 'password'
+              togglePassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`
+            }
+          })
+
+          // toggle confirm password visiblity
+          const toggleConfirmPassword = document.getElementById('toggle-confirm-password')
+          toggleConfirmPassword.addEventListener('click', () => {
+            const password = document.getElementById('add-confirm-password')
+            if (password.type === 'password') {
+              password.type = 'text'
+              toggleConfirmPassword.innerHTML = `<i class="fa-solid fa-eye"></i>`
+            } else {
+              password.type = 'password'
+              toggleConfirmPassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`
+            }
+          })
+        </script>
+</body>
+
+</html>

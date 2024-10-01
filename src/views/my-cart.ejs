@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Defac Access Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="assets/css/aos.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/soldier-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div class="slider-item" style="background-image: url(assets/images/army1.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">My Cart</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+            <div class="cart-list">
+              <table class="table cart-list-table">
+                <thead class="thead-primary">
+                  <tr class="text-center relative">
+                    <th>S.N.</th>
+                    <th class="text-left">Food Name</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                    <!-- <th>Select Pickup Time:</th> -->
+                  </tr>
+                </thead>
+                <tbody id="cart-table">
+                  <!-- END TR-->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="text-center btn-yllw cart-button">
+          <button data-toggle="modal" data-target="#myModal-order" class="btn btn-primary mt-3 py-3 px-5"
+            id="place-order-button" style="cursor: pointer !important">
+            Place an Order
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- modal to place order -->
+    <div class="modal fade" id="myModal-order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel2">Place Order</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="contact-form" id="monthly-menu-form" style="overflow: auto hidden;">
+              <table class="table cart-list-table">
+                <thead class="thead-primary">
+                  <tr class="text-center relative">
+                    <th>S.N.</th>
+                    <th class="text-left">Food Name</th>
+                    <th>Quantity</th>
+                  </tr>
+                </thead>
+                <tbody id="popup-table">
+                  <!-- END TR-->
+                </tbody>
+              </table>
+              <div class="form-group" style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                ">
+                <div class="pickup-time">
+                  <select id="pickup-time" class="form-control" style="
+                      background-color: black !important;
+                      height: 40px !important;
+                    ">
+                    <option value="" selected disabled>
+                      Select pickup time
+                    </option>
+                    <option value="15 min">15 min</option>
+                    <option value="30 min">30 min</option>
+                    <option value="1 hr">1 hour</option>
+                    <option value="1 hr 30 min">1 hour 30 min</option>
+                    <option value="1 hrs">2 hours</option>
+                  </select>
+                </div>
+                <button type="button" onclick="placeOrder()" class="btn btn-primary" style="cursor: pointer">
+                  Place Order
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <!-- ======================================
+     loader
+     ========================================== -->
+
+      <%- include('utils/loader') %>
+        <!-- ======================================
+     loader
+     ========================================== -->
+
+        <!-- ======================================
+   loader
+   ========================================== -->
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.easing.1.3.js"></script>
+        <script src="assets/js/jquery.waypoints.min.js"></script>
+        <script src="assets/js/jquery.stellar.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/aos.js"></script>
+        <script src="assets/js/jquery.animateNumber.min.js"></script>
+        <script src="assets/js/bootstrap-datepicker.js"></script>
+        <script src="assets/js/jquery.timepicker.min.js"></script>
+        <script src="assets/js/scrollax.min.js"></script>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="assets/js/google-map.js"></script>
+        <script src="assets/js/main.js"></script>
+
+        <script>
+          let allMenu = [];
+          let cart = [];
+          let updatedCart = [];
+          if (window.localStorage.getItem('cart')) {
+            cart = JSON.parse(window.localStorage.getItem('cart'));
+          }
+
+          window.onload = () => {
+            fetchMenu();
+          };
+
+          const fetchMenu = async () => {
+            try {
+              const apiKey = '<%= apiKey %>';
+              const serverUrl = '<%= serverUrl %>';
+              const myHeaders = new Headers();
+              myHeaders.append('x-api-key', apiKey);
+
+              const requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow',
+              };
+
+              const response = await fetch(`${serverUrl}/api/menu`, requestOptions);
+              const result = await response.json();
+              if (result?.statusCode === '10000') {
+                allMenu = result.data.menuList;
+                displayCart();
+              } else {
+                alert('Failed to fetch data: ' + result.message);
+              }
+            } catch (err) {
+              console.log(err);
+            }
+          };
+
+          const displayCart = () => {
+            if (cart.length === 0) {
+              document.getElementById('place-order-button').setAttribute('disabled', 'true');
+            } else {
+              document.getElementById('place-order-button').removeAttribute('disabled');
+            }
+
+            updatedCart = cart?.map((cartItem) => {
+              const matchedMenu = allMenu?.find((menu) => menu._id === cartItem.id);
+              return {
+                id: matchedMenu._id,
+                name: matchedMenu.name,
+                quantity: cartItem.quantity,
+              };
+            });
+
+            // display cart on table
+            const cartTable = document.getElementById('cart-table');
+            cartTable.innerHTML = updatedCart?.length > 0 ? updatedCart?.map((cartItem, id) => {
+              return `
+      <tr class="text-center relative">
+        <td class="sno">${id + 1}</td>
+        <td class="product-name">
+          <h3>${cartItem.name}</h3>
+        </td>
+
+        <td class="food-quantity">
+          <div class="input-group">
+            <span class="input-group-btn mr-2">
+              <button type="button" class="quantity-left-minus btn" data-type="minus" data-id="${id}" data-field="">
+                <i class="icon-minus"></i>
+              </button>
+            </span>
+            <input type="text" id="quantity-${id}" name="quantity" class="form-control input-number" value="${cartItem.quantity || 1
+                }"
+              min="1" max="100" />
+            <span class="input-group-btn ml-2">
+              <button type="button" class="quantity-right-plus btn" data-type="plus" data-id="${id}" data-field="">
+                <i class="icon-plus"></i>
+              </button>
+            </span>
+          </div>
+        </td>
+
+        <td class="product-remove">
+          <a onclick="deleteFromCart('${cartItem.id
+                }')" style="cursor: pointer;"><span class="icon-delete"></span></a>
+        </td>
+      </tr>
+    `}).join('') : `<tr style="color: white; font-size: 22px; font-weight: 500; margin-top: 10px;">
+      <td colspan="4">No cart added</td>
+      </tr>`;
+
+            // display cart on popup
+            const popupTable = document.getElementById('popup-table');
+            popupTable.innerHTML = updatedCart
+              ?.map((cartItem, id) => {
+                return `
+      <tr class="text-center relative">
+        <td class="sno">${id + 1}</td>
+        <td class="product-name">
+          <h3>${cartItem.name}</h3>
+        </td>
+        <td class="food-quantity">
+          <p>${cartItem?.quantity}</p>
+        </td>
+      </tr>
+    `}).join('');
+
+            // Attach event listeners dynamically for each item
+            updatedCart.forEach((cartItem, id) => {
+              let menuQuantity = cartItem.quantity || 1;
+
+              // handle increment
+              $(`.quantity-right-plus[data-id="${id}"]`).click(function (e) {
+                e.preventDefault();
+                menuQuantity = parseInt($(`#quantity-${id}`).val()) + 1;
+                $(`#quantity-${id}`).val(menuQuantity);
+              });
+
+              // handle decrement
+              $(`.quantity-left-minus[data-id="${id}"]`).click(function (e) {
+                e.preventDefault();
+                menuQuantity = parseInt($(`#quantity-${id}`).val());
+                if (menuQuantity > 1) {
+                  menuQuantity -= 1;
+                  $(`#quantity-${id}`).val(menuQuantity);
+                }
+              });
+            });
+          };
+
+          const deleteFromCart = (cartId) => {
+            cart = cart.filter((cartItem) => cartItem.id !== cartId);
+
+            if (confirm('Do you want to remove from cart!')) {
+              window.localStorage.setItem('cart', JSON.stringify(cart));
+              window.location.reload();
+            }
+          };
+
+          // store order in database
+          const showLoader = () => {
+            document.getElementById('loader').style.display = 'flex';
+          };
+
+          const hideLoader = () => {
+            document.getElementById('loader').style.display = 'none';
+          };
+
+          const placeOrder = async () => {
+            try {
+              showLoader();
+
+              const pickupTime = document.getElementById('pickup-time').value;
+
+              if (!pickupTime.length > 0) {
+                alert('Select pick up time!');
+                hideLoader(); // Hide loader if validation fails
+                return;
+              }
+
+              const accessToken = window.localStorage.getItem('accessToken');
+              const apiKey = '<%= apiKey %>';
+              const serverUrl = '<%= serverUrl %>';
+
+              const myHeaders = new Headers();
+              myHeaders.append('x-api-key', apiKey);
+              myHeaders.append('Authorization', `Bearer ${accessToken}`);
+              myHeaders.append('Content-Type', 'application/json');
+
+              const data = cart?.map((cartItem) => ({
+                orderedMenu: cartItem.id,
+                pickupTime: pickupTime,
+                defac: cartItem.defac,
+                quantity: cartItem.quantity,
+              }));
+
+              const requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify({ orders: data }),
+                redirect: 'follow',
+              };
+
+              const response = await fetch(
+                `${serverUrl}/api/order`,
+                requestOptions,
+              );
+              const result = await response.json();
+
+              if (result?.statusCode === '10000') {
+                alert(result.message);
+                window.location.reload();
+                localStorage.removeItem('cart');
+              } else {
+                alert('Failed to order food: ' + result.message);
+              }
+            } catch (err) {
+              console.error(err);
+            } finally {
+              hideLoader(); // Hide loader after the request is completed
+            }
+          };
+        </script>
+</body>
+
+</html>

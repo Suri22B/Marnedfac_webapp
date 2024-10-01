@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Defac Feedback Page</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <!-- owl carasoul css -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+    <!-- aos js css -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+
+    <!-- swiper css  -->
+    <link
+      rel="stylesheet"
+      href="https://md-aqil.github.io/images/swiper.min.css"
+    />
+
+    <!-- ionicon css -->
+    <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+    <!-- bootstrapdate picker and time picker -->
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <!-- icomoon icon css -->
+    <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+    <!-- star rating -->
+    <link rel="stylesheet" href="assets/css/star-rating.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <%- include('partials/auth-check') %>
+  </head>
+
+  <body>
+    <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+    <%- include('partials/soldier-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+    menu bar or navbar here
+    ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div
+        class="slider-item"
+        style="background-image: url(assets/images/army-pattern.jpg)"
+        data-stellar-background-ratio="0.5"
+      >
+        <div class="overlay"></div>
+        <div class="container">
+          <div
+            class="row slider-text justify-content-center align-items-center"
+          >
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Feedback</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section contact-section">
+      <div class="container mt-5">
+        <div class="row block-9">
+          <div class="col-md-4 contact-info ftco-animate">
+            <img src="assets/images/army2.jpg" alt="" />
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-6 ftco-animate">
+            <form action="#" class="contact-form" id="feedback-form">
+              <h2>Feedback Form</h2>
+              <div class="form-group" id="defac-list"></div>
+
+              <div class="form-group pt-3 pb-3">
+                <select class="star-rating" id="rating" required>
+                  <option value="">Select a rating</option>
+                  <option value="5">Excellent</option>
+                  <option value="4">Very Good</option>
+                  <option value="3">Average</option>
+                  <option value="2">Poor</option>
+                  <option value="1">Terrible</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <textarea
+                  id="feedback"
+                  cols="30"
+                  rows="7"
+                  class="form-control"
+                  placeholder="Type Feedback"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <button
+                  type="button"
+                  onclick="submitFeedback()"
+                  class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3"
+                  style="background-color: rgb(159, 180, 0)"
+                >
+                  Send Feedback
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 
+    <section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row d-flex contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h4 font-weight-bold">Contact Information</h2>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-3 d-flex">
+            <div class="dbox">
+              <p><span>Address:</span> Fort Stewart, GA, USA</p>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex">
+            <div class="dbox">
+              <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex">
+            <div class="dbox">
+              <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex">
+            <div class="dbox">
+              <p><span>Opening Hours:</span> <a href="#">6:00am - 6:00pm</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- =============================================
+   Photo Gallery here
+   ================================================= -->
+    <section class="ftco-gallery">
+      <div class="container-wrap">
+        <div class="row no-gutters" id="gallery-images"></div>
+      </div>
+    </section>
+    <!-- =============================================
+       Photo Gallery here
+       ================================================= -->
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+    <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle
+          class="path-bg"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke="#eeeeee"
+        />
+        <circle
+          class="path"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke-miterlimit="10"
+          stroke="#587440"
+        />
+      </svg>
+    </div>
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+
+    <!-- javascripts cdn here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/jquery.animateNumber.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.timepicker.min.js"></script>
+    <script src="assets/js/scrollax.min.js"></script>
+    <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="assets/js/google-map.js"></script>
+    <script src="assets/js/star-rating.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      let defacList = [];
+      let galleryImages = [];
+      window.onload = () => {
+        fetchDefac();
+        fetchGalleryImage();
+      };
+
+      const fetchDefac = async () => {
+        try {
+          const accessToken = window.localStorage.getItem('accessToken');
+
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/defac/soldier`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            defacList = result.data.updatedDefacList;
+            renderDefacList();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const renderDefacList = () => {
+        const defacDropdown = document.getElementById('defac-list');
+        defacDropdown.innerHTML = `
+         <select class="form-control" id="defac" required>
+                  <option value="" disabled selected>Choose Defac</option>
+                  ${defacList?.map((defac) => {
+                    return `<option value="${defac._id}">${defac.name}</option>`;
+                  })}
+                </select>`;
+      };
+
+      const submitFeedback = async () => {
+        try {
+          const defac = document.getElementById('defac').value;
+          const rating = document.getElementById('rating').value;
+          const feedback = document.getElementById('feedback').value.trim();
+
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+          myHeaders.append('Content-Type', 'application/json');
+
+          const rawData = JSON.stringify({
+            postedBy: window.localStorage.getItem('defac'),
+            defac: defac,
+            feedback: feedback,
+            rating: rating,
+          });
+
+          const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: rawData,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/feedback`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            alert('Feedback posted successfully');
+
+            document.getElementById('defac').value = '';
+            document.getElementById('rating').value = '';
+            document.getElementById('feedback').value = '';
+          } else {
+            alert('Fail to post feedback: ' + result.message);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      const fetchGalleryImage = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/gallery`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            galleryImages = result.data;
+            renderGallery();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const renderGallery = () => {
+        const gallery = document.getElementById('gallery-images');
+        gallery.innerHTML = galleryImages
+          ?.slice(1, 5)
+          ?.map((image) => {
+            return `
+            <div class="col-md-3 ftco-animate">
+          <a href="#" class="gallery img d-flex align-items-center"
+            style="background-image: url('${image.galleryUrl}')">
+            <div class="icon mb-4 d-flex align-items-center justify-content-center">
+              <span class="icon-search"></span>
+            </div>
+          </a>
+        </div>
+            `;
+          })
+          .join('');
+
+        // for text visibility and animation
+        contentWayPoint();
+      };
+
+      // for text visibility and animation
+      var contentWayPoint = function () {
+        var i = 0;
+        $('.ftco-animate').waypoint(
+          function (direction) {
+            if (
+              direction === 'down' &&
+              !$(this.element).hasClass('ftco-animated')
+            ) {
+              i++;
+
+              $(this.element).addClass('item-animate');
+              setTimeout(function () {
+                $('body .ftco-animate.item-animate').each(function (k) {
+                  var el = $(this);
+                  setTimeout(
+                    function () {
+                      var effect = el.data('animate-effect');
+                      if (effect === 'fadeIn') {
+                        el.addClass('fadeIn ftco-animated');
+                      } else if (effect === 'fadeInLeft') {
+                        el.addClass('fadeInLeft ftco-animated');
+                      } else if (effect === 'fadeInRight') {
+                        el.addClass('fadeInRight ftco-animated');
+                      } else {
+                        el.addClass('fadeInUp ftco-animated');
+                      }
+                      el.removeClass('item-animate');
+                    },
+                    k * 50,
+                    'easeInOutExpo',
+                  );
+                });
+              }, 100);
+            }
+          },
+          { offset: '95%' },
+        );
+      };
+    </script>
+  </body>
+</html>

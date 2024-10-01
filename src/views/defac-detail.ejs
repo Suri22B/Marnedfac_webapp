@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Defac Lists Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="assets/css/aos.css" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/soldier-nav') %>
+
+    <!-- END nav -->
+    <!-- ==============================================
+    menu bar or navbar here
+    ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner" id="defac-banner">
+
+    </section>
+
+    <!-- sub banner of the page here  -->
+
+    <!-- Button to trigger the modal -->
+    <!-- Modal for editing the menu before adding to the cart -->
+    <div class="modal fade" id="myModal-add-cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="d-block">
+              <h4 class="modal-title" id="myModalLabel">Sea Trout</h4>
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="food-body">
+              <div class="d-flex menu-fd-img">
+                <img src="assets/images/dish-6.jpg" alt="" id="menu-image" style="height: 150px; object-fit: cover;">
+                <p id="menu-desc">A small river named Duden flows by their place and supplies A small river named Duden
+                  flows by their
+                  place and supplies</p>
+              </div>
+              <!-- <div class="modal-instructions">
+                <label for="modalInstructions" class="modal-label">Special Instructions</label>
+                <textarea name="orderInstructions" id="modalInstructions" placeholder="Add Notes"></textarea>
+              </div> -->
+            </div>
+            <div class="action-btn">
+              <div class="food-quantity">
+                <div class="input-group">
+                  <span class="input-group-btn mr-2">
+                    <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+                      <i class="icon-minus"></i>
+                    </button>
+                  </span>
+                  <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1"
+                    max="100">
+                  <span class="input-group-btn ml-2">
+                    <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                      <i class="icon-plus"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+              <div class="btn-like">
+                <button type="button" onclick="deleteFromCart()"
+                  class="btn btn-primary btn-lg text-white border-gg">Remove</button>
+                <button type="button" onclick="addToCart()" class="btn btn-primary btn-lg text-white border-gg">Add To
+                  Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal for editing the menu before adding to the cart -->
+
+
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="divider text-center">
+              <h4 class="modal-title" id="myModalLabel">Monthly Menu</h4>
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="monthly-menu" id="monthly-menu">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-menu all-menu-list" style="padding-top: 7em;">
+      <div class="menu-box-status">
+        <span class="status" id="status"></span>
+        <button type="button" class="btn-primary btn-lg text-white border-gg btn btn-primary btn-outline-primary"
+          data-toggle="modal" data-target="#myModal">Monthly Menu</button>
+      </div>
+      <div class="container">
+        <div class="row"
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 50px !important;">
+          <!-- <div class="col-md-5">
+            <div class="description-box">
+              <h2>Description</h2>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ratione repudiandae quod eius
+                vitae
+                aut tempora, qui optio. Perferendis nobis dolor beatae quos voluptates dolorem repellendus laborum
+                eligendi pariatur vitae!</p>
+              <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Review Us</a>
+            </div>
+          </div> -->
+          <h2 id="defac-name" style="text-transform:uppercase; font-weight: 700;"></h2>
+          <div class="col-md-7" id="menu-carousel">
+          </div>
+        </div>
+        <div class="row d-md-flex">
+          <div class="col-lg-12 ftco-animate p-md-5">
+            <div class="row">
+              <div class="col-md-12 nav-link-wrap mb-5">
+                <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist"
+                  aria-orientation="vertical">
+                  <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab"
+                    aria-controls="v-pills-all" aria-selected="true">All</a>
+                  <a class="nav-link" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab"
+                    aria-controls="v-pills-1" aria-selected="false">Breakfast</a>
+                  <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
+                    aria-controls="v-pills-2" aria-selected="false">Lunch</a>
+                  <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
+                    aria-controls="v-pills-3" aria-selected="false">Dinner</a>
+                </div>
+              </div>
+              <div class="col-md-12 d-flex align-items-center">
+                <div class="tab-content ftco-animate" id="v-pills-tabContent" style="width: 100%;">
+                  <div class="tab-pane fade show active" id="v-pills-all" role="tabpanel"
+                    aria-labelledby="v-pills-all-tab">
+                    <div class="row" id="all-menus">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                    <div class="text text-center">
+                      <h4>Our Breakfast Timing</h4>
+                      <p id="breakfast-time"></p>
+                    </div>
+                    <div class="row" id="breakfast">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+                    <div class="text text-center">
+                      <h4>Our Lunch Timing</h4>
+                      <p id="lunch-time"></p>
+                    </div>
+                    <div class="row" id="lunch">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                    <div class="text text-center">
+                      <h4>Our Dinner Timing</h4>
+                      <p id="dinner-time"></p>
+                    </div>
+                    <div class="row" id="dinner">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#587440" />
+        </svg>
+      </div>
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+
+      <!-- javascripts cdn here -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.easing.1.3.js"></script>
+      <script src="assets/js/jquery.waypoints.min.js"></script>
+      <script src="assets/js/jquery.stellar.min.js"></script>
+      <script src="assets/js/owl.carousel.min.js"></script>
+      <script src="assets/js/jquery.magnific-popup.min.js"></script>
+      <script src="assets/js/aos.js"></script>
+      <script src="assets/js/jquery.animateNumber.min.js"></script>
+      <script src="assets/js/bootstrap-datepicker.js"></script>
+      <script src="assets/js/jquery.timepicker.min.js"></script>
+      <script src="assets/js/scrollax.min.js"></script>
+      <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="assets/js/google-map.js"></script>
+      <script src="assets/js/star-rating.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const defacId = urlParams.get('id');
+
+        let defacDetail = {}
+        let dailyMenus = []
+        let monthlyMenu = {}
+        let selectedMenu = ''
+        let selectedMenuQuantity = 1
+        let existingCart = {}
+        let cart = [];
+        let timings = []
+        let menuToAddCart = {}
+
+        if (window.localStorage.getItem('cart')) {
+          cart = JSON.parse(window.localStorage.getItem('cart'));
+        }
+        window.onload = function () {
+          fetchDefacDetail();
+          fetchMenu();
+          fetchMonthlyMenu();
+          fetchTiming();
+        };
+
+        // fetch defac detail
+        const fetchDefacDetail = async () => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/defac/${defacId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              defacDetail = result.data
+              renderDefacDetail();
+              fetchMenu();
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        };
+
+
+
+        // render defac detail in ui
+        const renderDefacDetail = () => {
+          const defacBannerUI = document.getElementById('defac-banner')
+          defacBannerUI.innerHTML = `
+      <div class="slider-item" data-stellar-background-ratio="0.5" style="background-image: url(${defacDetail?.coverPicUrl});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center">
+          <div class="defac-detail-view">
+            <img src="${defacDetail?.profilePicUrl}" alt="${defacDetail?.name}" style="height: 120px; object-fit: cover; object-position: top;" />
+            <div class="defac-own">
+              <strong>${defacDetail?.name}</strong>
+              <div class="rating-time">
+                ${(defacDetail?.rating !== undefined && defacDetail?.rating !== null) ? `<p><i class="icon-star"></i>${defacDetail?.rating} ${defacDetail?.totalRating !== undefined && defacDetail?.totalRating !== null ? `<a class="rating-num">${defacDetail?.totalRating}+ ratings</a>` : ``}</p>` : ``}
+                 <p><span class="icon-clock-o"></span> ${defacDetail?.openingHour} - ${defacDetail?.closingHour}</p>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>`
+
+          const status = document.getElementById('status')
+          status.innerText = defacDetail?.status ? 'Online' : 'Offline'
+          status.style.backgroundColor = defacDetail?.status ? '#587440bd' : '#ff00009c'
+          document.getElementById('defac-name').innerText = defacDetail?.name
+        }
+
+        // fetch daily menu
+        const fetchMenu = async () => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/menu/defac/${defacId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              dailyMenus = result.data.menuList
+              renderMenuList();
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }
+
+        // render all menu category
+        const renderMenuList = () => {
+          const allMenus = document.getElementById('all-menus')
+          const breakfast = document.getElementById('breakfast')
+          const lunch = document.getElementById('lunch')
+          const dinner = document.getElementById('dinner')
+
+          const breakFastMenu = dailyMenus?.filter((food) => food.category.toLowerCase() === 'breakfast')
+          const lunchMenu = dailyMenus?.filter((food) => food.category.toLowerCase() === 'lunch')
+          const dinnerMenu = dailyMenus?.filter((food) => food.category.toLowerCase() === 'dinner')
+
+          allMenus.innerHTML = dailyMenus?.length > 0 ? dailyMenus.map(renderFood).join('') : `<div style="text-align: center; font-size: 20px; font-weight: 500; color: white; width: 100%;">No menu found</div>`
+          breakfast.innerHTML = breakFastMenu?.length > 0 ? breakFastMenu?.map(renderFood).join('') : `<div style="text-align: center; font-size: 20px; font-weight: 500; color: white; width: 100%;">No menu found</div>`
+          lunch.innerHTML = lunchMenu?.length > 0 ? lunchMenu?.map(renderFood).join('') : `<div style="text-align: center; font-size: 20px; font-weight: 500; color: white; width: 100%;">No menu found</div>`
+          dinner.innerHTML = dinnerMenu?.length > 0 ? dinnerMenu?.map(renderFood).join('') : `<div style="text-align: center; font-size: 20px; font-weight: 500; color: white; width: 100%;">No menu found</div>`
+
+
+          const images = dailyMenus?.map((menu) => menu.menuUrl)
+          const carouselUI = document.getElementById('menu-carousel')
+          carouselUI.innerHTML = `<div class="owl-carousel owl-theme defac-list-owl">
+        ${images?.map((image, id) => {
+            return `
+          <div class="item events">
+            <img src="${image}" alt="${`image-${id + 1}`}" style="height: 250px; object-fit: cover; object-position: top;">
+          </div>
+          `})}
+          </div>`
+
+          $(".owl-carousel").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            dots: false, // Add this line to disable dots
+            responsive: {
+              0: {
+                items: 1
+              },
+              600: {
+                items: 2
+              },
+              1000: {
+                items: 2
+              }
+            }
+          });
+        }
+
+        const renderFood = (menu, id) => {
+          return `
+                <div key="${id}" class="col-md-4 text-left">
+                      <div class="menu-wrap">
+                        <a class="menu-img img mb-4"
+                          style="background-image: url(${menu.menuUrl}); background-position: top center;"></a>
+                        <div class="add-dc">
+                          ${defacDetail?.status === true ? `<button type="button" class="btn btn-primary btn-lg text-white border-gg" data-toggle="modal"
+              data-target="#myModal-add-cart" data-id="${menu._id}">
+              <span class="icon-add"></span>
+            </button>` : ``}
+                        </div>
+                        <div class="text text-left">
+                          <div class="rating-time">
+                            <h3><a>${menu.name}</a></h3>
+                          </div>
+                          <p>${menu.description}</p>
+
+                        </div>
+                      </div>
+                    </div>`
+        }
+
+
+        // fetch monthly menu
+        const fetchMonthlyMenu = async () => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/monthly-menu/latest/${defacId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              monthlyMenu = result.data
+              renderMonthlyMenu();
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }
+
+        // render monthly menu
+        const renderMonthlyMenu = () => {
+          const monthlyMenuUI = document.getElementById('monthly-menu')
+          monthlyMenuUI.innerHTML = `<img src="${monthlyMenu?.menuUrl}" alt="monthly menu" style="height: 500px; object-fit: cover;">`
+        }
+
+        // fetch monthly menu
+        const fetchTiming = async () => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/timing/defac/${defacId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              timings = result.data
+              renderTiming();
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }
+
+        const renderTiming = () => {
+          const breakfast = timings.find((item) => item.foodType.toLowerCase() === 'breakfast')
+          const lunch = timings.find((item) => item.foodType.toLowerCase() === 'lunch')
+          const dinner = timings.find((item) => item.foodType.toLowerCase() === 'dinner')
+
+
+          const breakfastTime = document.getElementById('breakfast-time')
+          const lunchTime = document.getElementById('lunch-time')
+          const dinnerTime = document.getElementById('dinner-time')
+
+          breakfastTime.innerText = `${breakfast.openingHour} - ${breakfast.closingHour}`
+          lunchTime.innerText = `${lunch.openingHour} - ${lunch.closingHour}`
+          dinnerTime.innerText = `${dinner.openingHour} - ${dinner.closingHour}`
+
+        }
+
+
+        // display menu in the cart
+        document.addEventListener('click', function (event) {
+          if (event.target.closest('.btn[data-target="#myModal-add-cart"]')) {
+            selectedMenu = event.target
+              .closest('button')
+              .getAttribute('data-id');
+
+            // Find the menu details from the menus array or fetch from server
+            menuToAddCart = dailyMenus.find((menu) => menu._id === selectedMenu);
+            if (menuToAddCart) {
+              document.getElementById('myModalLabel').textContent =
+                menuToAddCart.name;
+              document.getElementById('menu-desc').textContent =
+                menuToAddCart.description;
+              document.getElementById('menu-image').src =
+                `${menuToAddCart.menuUrl}`;
+            }
+
+            existingCart = cart.find((cartItem) => cartItem.id === selectedMenu);
+            if (existingCart) {
+              document.getElementById('quantity').value = existingCart.quantity;
+              selectedMenuQuantity = existingCart.quantity;
+            } else {
+              document.getElementById('quantity').value = 1;
+              selectedMenuQuantity = 1;
+            }
+
+          }
+        });
+
+
+        const addToCart = () => {
+
+          const cartItemCategory = timings?.find((data) => data.foodType.toLowerCase() === menuToAddCart.category.toLowerCase())
+          if (cartItemCategory !== undefined) {
+            const isOpen = isCurrentTimeBetween(cartItemCategory?.openingHour, cartItemCategory?.closingHour);
+            if (isOpen) {
+              // Check if the item already exists in the cart
+              if (existingCart) {
+                // Update the quantity of the existing item
+                cart = cart.map((cartItem) => {
+                  if (cartItem.id === selectedMenu) {
+                    return { ...cartItem, quantity: selectedMenuQuantity };
+                  }
+                  return cartItem;
+                });
+              } else {
+                // Add the new item to the cart
+                const selectedMenuDefac = dailyMenus.find((menu) => menu._id === selectedMenu);
+                const defac = selectedMenuDefac.defac._id
+                cart.push({ id: selectedMenu, quantity: selectedMenuQuantity, defac: defac });
+              }
+
+              // Save the updated cart to localStorage
+              window.localStorage.setItem('cart', JSON.stringify(cart));
+              alert('Menu added to cart!')
+              window.location.reload()
+            } else { alert(`You can't order this food at that time. This time is not for ${cartItemCategory.foodType}`) }
+          } else {
+            alert(`Defac has not added timing for ${menuToAddCart?.category}. Please ask your defac to add timing for ${menuToAddCart?.category}.`)
+          }
+        };
+        // remove cart item from local storage
+        const deleteFromCart = () => {
+          cart = cart.filter((cartItem) => cartItem.id !== selectedMenu)
+
+          if (confirm('Do you want to remove from cart!')) {
+            window.localStorage.setItem('cart', JSON.stringify(cart))
+            window.location.reload()
+          };
+        }
+
+
+        // increase and decrease number of food
+        $(document).ready(function () {
+          $('.quantity-right-plus').click(function (e) {
+            e.preventDefault();
+            selectedMenuQuantity = parseInt($('#quantity').val()) + 1;
+            $('#quantity').val(selectedMenuQuantity);
+          });
+
+          $('.quantity-left-minus').click(function (e) {
+            e.preventDefault();
+            selectedMenuQuantity = parseInt($('#quantity').val());
+            if (selectedMenuQuantity > 1) {
+              selectedMenuQuantity -= 1;
+              $('#quantity').val(selectedMenuQuantity);
+            }
+          });
+        });
+
+
+        // function to find if the current time lies between opening & closing hour or not
+        function isCurrentTimeBetween(openingHour, closingHour) {
+          const now = moment(); // Current time
+          const openingTime = moment(openingHour, 'h:mma'); // Parse opening time
+          const closingTime = moment(closingHour, 'h:mma'); // Parse closing time
+
+          // Handle case where closing time is after midnight
+          if (closingTime.isBefore(openingTime)) {
+            // Check if current time is between opening and midnight, or midnight and closing
+            return now.isBetween(openingTime, moment('11:59pm', 'h:mma'), null, '[)') ||
+              now.isBetween(moment('12:00am', 'h:mma'), closingTime, null, '[)');
+          }
+
+          // Normal case where closing time is after opening time on the same day
+          return now.isBetween(openingTime, closingTime, null, '[)');
+        }
+
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Defac Event Details</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <!-- owl carasoul css -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+    <!-- aos js css -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- swiper css  -->
+    <link
+      rel="stylesheet"
+      href="https://md-aqil.github.io/images/swiper.min.css"
+    />
+
+    <!-- ionicon css -->
+    <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+    <!-- bootstrapdate picker and time picker -->
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <!-- icomoon icon css -->
+    <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+    <!-- star rating -->
+    <link rel="stylesheet" href="assets/css/star-rating.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+    <%- include('partials/auth-check') %>
+  </head>
+  <body>
+    <%- include('partials/soldier-nav') %>
+    <!-- END nav -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div
+        class="slider-item"
+        style="background-image: url(assets/images/image_5.jpg)"
+        data-stellar-background-ratio="0.5"
+      >
+        <div class="overlay"></div>
+        <div class="container">
+          <div
+            class="row slider-text justify-content-center align-items-center"
+          >
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Our Events Details</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="event-dt">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-12">
+            <div class="details-evt-img">
+              <strong id="event-name">Loading...</strong>
+              <img id="event-image" src="" alt="events" />
+            </div>
+          </div>
+          <div class="col-md-4 col-12">
+            <div class="events-time mt-md-0 mt-4">
+              <div class="events-time-box">
+                <strong id="event-name-details">-</strong>
+                <p>
+                  <span>Start Date:</span>
+                  <span id="event-start-datetime">-</span>
+                </p>
+                <p>
+                  <span>End Date:</span>
+                  <span id="event-end-datetime">-</span>
+                </p>
+                <p>
+                  <span>Contact Us:</span>
+                  <span id="event-contactus">-</span>
+                </p>
+              </div>
+              <div class="events-time-box">
+                <p id="event-description">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+    <!-- =====================================
+		 footer part here
+		 ========================================= -->
+
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle
+          class="path-bg"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke="#eeeeee"
+        />
+        <circle
+          class="path"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke-miterlimit="10"
+          stroke="#587440"
+        />
+      </svg>
+    </div>
+    <!-- ======================================
+		 loader
+		 ========================================== -->
+
+    <!-- javascripts cdn here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/jquery.animateNumber.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.timepicker.min.js"></script>
+    <script src="assets/js/scrollax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="assets/js/google-map.js"></script>
+    <script src="assets/js/star-rating.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('id');
+
+        if (eventId) {
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', '<%= apiKey %>');
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          fetch(`<%= serverUrl %>/api/event/single/${eventId}`, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+              if (result.statusCode === '10000') {
+                const event = result.data;
+
+                document.getElementById('event-name').textContent = event.name;
+                document.getElementById('event-name-details').textContent =
+                  event.name;
+                document.getElementById('event-image').src = event.eventUrl;
+                document.getElementById('event-start-datetime').textContent =
+                  moment(event.startDate).format('MMM D, YYYY h:mm A');
+                document.getElementById('event-contactus').textContent =
+                  event.defac.contact;
+
+                document.getElementById('event-end-datetime').textContent =
+                  moment(event.endDate).format('MMM D, YYYY h:mm A');
+
+                document.getElementById('event-description').textContent =
+                  event.description;
+              } else {
+                console.error('Event not found');
+              }
+            })
+            .catch((error) => {
+              console.error('Error fetching event details:', error);
+            });
+        } else {
+          console.error('No event ID provided');
+        }
+      });
+    </script>
+  </body>
+</html>

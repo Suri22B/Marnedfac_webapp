@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/home">Defac<small>- - -</small></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <!-- Button trigger modal -->
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a href="/home" class="nav-link">Home</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a href="/soldier-order-list" class="nav-link">Order</a>
+        </li> -->
+        <li class="nav-item">
+          <a href="/soldier-menu-list" class="nav-link">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a href="/soldier-events-list" class="nav-link">Events</a>
+        </li>
+        <li class="nav-item">
+          <a href="/defac-list" class="nav-link">Defacs</a>
+        </li>
+        <li class="nav-item">
+          <a href="/soldier-feedback" class="nav-link">Feedback</a>
+        </li>
+        <li class="nav-item">
+          <a href="/soldier-profile" class="nav-link">Profile</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link" id="logout">LogOut</a>
+        </li>
+
+        <li class="nav-item cart">
+          <a href="/cart" class="nav-link"><span class="icon icon-shopping_cart"></span><span
+              class="bag d-flex justify-content-center align-items-center"><small id="total-cart">1</small></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+
+  let cartList = [];
+
+  // Check if there's a cart in localStorage and parse it
+  if (window.localStorage.getItem('cart')) {
+    cartList = JSON.parse(window.localStorage.getItem('cart'));
+  }
+
+
+  // Update the total quantity in the UI
+  document.getElementById('total-cart').innerText = cartList.length;
+
+
+  const apiKey = '<%= apiKey %>';
+  const serverUrl = '<%= serverUrl %>';
+
+  // Highlight active nav-item
+  const currentPath = window.location.pathname;
+  const navItems = document.querySelectorAll('.nav-item');
+
+  navItems.forEach((item) => {
+    const link = item.querySelector('.nav-link').getAttribute('href');
+
+    if (currentPath === link) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+  document.getElementById('logout').addEventListener('click', function (e) {
+    e.preventDefault();
+    const myHeaders = new Headers();
+    myHeaders.append('x-api-key', apiKey); // Use the apiKey here
+    const accessToken = window.localStorage.getItem('accessToken');
+    myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+    const requestOptions = {
+      method: 'DELETE',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+
+    fetch(`${serverUrl}/api/logout`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.statusCode === '10000') {
+          localStorage.clear();
+          window.location.href = '/';
+        } else {
+          console.error('Logout failed:', result.message);
+        }
+      })
+      .catch((error) => console.error('Error:', error));
+  });
+</script>

@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Defac Lists Home Page</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <!-- owl carasoul css -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+    <!-- aos js css -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+
+    <!-- swiper css  -->
+    <link
+      rel="stylesheet"
+      href="https://md-aqil.github.io/images/swiper.min.css"
+    />
+
+    <!-- ionicon css -->
+    <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+    <!-- bootstrapdate picker and time picker -->
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <!-- icomoon icon css -->
+    <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+    <!-- star rating -->
+    <link rel="stylesheet" href="assets/css/star-rating.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      .defac-name {
+        white-space: nowrap; /* Prevent wrapping */
+        overflow: hidden; /* Hide overflowed text */
+        text-overflow: ellipsis; /* Show ellipsis (...) for overflowed content */
+        display: block; /* Ensure it's treated as a block-level element */
+        max-width: 100%; /* Ensure it fits within the container */
+        cursor: pointer; /* Change cursor to indicate interaction */
+      }
+    </style>
+    <%- include('partials/auth-check') %>
+  </head>
+
+  <body>
+    <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+    <%- include('partials/soldier-nav') %>
+
+    <!-- END nav -->
+    <!-- ==============================================
+    menu bar or navbar here
+    ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div
+        class="slider-item"
+        style="background-image: url(assets/images/gallery-1.jpg)"
+        data-stellar-background-ratio="0.5"
+      >
+        <div class="overlay"></div>
+        <div class="container">
+          <div
+            class="row slider-text justify-content-center align-items-center"
+          >
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Defac</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="today-menu">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+            <span class="subheading">Discover</span>
+            <h2 class="mb-4">Our Defac</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="defac-box-wrap">
+          <div class="row d-flex justify-content-center" id="defac-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+    <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle
+          class="path-bg"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke="#eeeeee"
+        />
+        <circle
+          class="path"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke-miterlimit="10"
+          stroke="#587440"
+        />
+      </svg>
+    </div>
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+
+    <!-- javascripts cdn here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/jquery.animateNumber.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.timepicker.min.js"></script>
+    <script src="assets/js/scrollax.min.js"></script>
+    <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="assets/js/google-map.js"></script>
+    <script src="assets/js/star-rating.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      let defacList = [];
+      window.onload = function () {
+        fetchDefac();
+      };
+
+      const fetchDefac = async () => {
+        try {
+          const accessToken = window.localStorage.getItem('accessToken');
+
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/defac/soldier`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            defacList = result.data.updatedDefacList;
+            renderDefacList();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const renderDefacList = () => {
+        const defacUI = document.getElementById('defac-list');
+        defacUI.innerHTML = defacList
+          ?.map((defac) => {
+            return `
+          <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="menu-wrap">
+                <a href="#" class="shine menu-img img mb-4"
+                  style="background-image: url(${defac?.profilePicUrl})"></a>
+                <div class="text">
+                  <div class="rating-time">
+                    <h3 class="defac-name" title="${defac?.name}">${
+                      defac?.name
+                    }</h3>
+                     ${
+                       defac.rating !== undefined && defac.rating !== null
+                         ? `<p><i class="icon-star"></i>${defac.rating}</p>`
+                         : ``
+                     }
+
+                  </div>
+                  <p><span class="icon-clock-o"></span> ${
+                    defac?.openingHour
+                  } - ${defac?.closingHour}</p>
+                  <div class="rating-time">
+                    <a class="color-text" href="/defac-detail?id=${
+                      defac?._id
+                    }">View More</a>
+                  </div>
+
+                  <div class="d-flex like-list">
+                    <span class="status" style="background-color: ${
+                      defac?.status ? '#587440bd' : '#ff00009c'
+                    };">${defac?.status ? 'Online' : 'Offline'}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          })
+          .join('');
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Defac Access Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="assets/css/aos.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/admin-nav') %>
+
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div class="slider-item" style="background-image: url(assets/images/defac-kitchen.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Banners Management</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="sort-list">
+        <div class="container">
+          <div class="d-flex" style="justify-content: space-between">
+            <ul class="function-btn">
+              <li>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-food-item">
+                  <i class="icon-add mr-2 text-white"></i> Add New Banner
+                </button>
+              </li>
+            </ul>
+            <ul class="function-btn">
+              <li>
+                <input type="text" placeholder="Search..." class="search-bar" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div class="cart-list">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>S.N.</th>
+                    <th>Banner Image</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="banner-list"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination justify-content-end">
+          <a href="#" class="prev"><i class="icon-caret-left"></i></a>
+          <!-- Page numbers will be dynamically inserted here -->
+          <a href="#" class="next"><i class="icon-caret-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Modal for editing Defac details -->
+      <div class="modal fade" id="myModal-edit-box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Banner</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="#" class="contact-form" id="banner-edit-form" method="POST" enctype="multipart/form-data">
+                <!-- Defac Name -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="edit-title">Post Name:</label>
+                      <input type="text" class="form-control" placeholder="Title" id="edit-title" name="title"
+                        required />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="edit-banner-image">Upload Banner Photo:</label>
+                    <span class="wpcf7-form-control-wrap" data-name="bannerUrl">
+                      <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="edit-banner-image"
+                        accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="bannerUrl" />
+                    </span>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="uploaded-image d-inline-block pb-2">
+                      <img id="edit-banner-photo" src="assets/images/user.jpg" ref="assets/images/user.jpg" alt=""
+                        height="200px" style="object-fit: cover;" />
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Save Changes Button -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">
+                Save Changes
+              </button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Add Event  -->
+    <div class="modal fade" id="myModal-food-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Add Banner</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#" class="contact-form" id="post-form" method="POST" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" placeholder="Enter Title" id="title" name="title"
+                      required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="banner-image">Upload Banner Photo:</label>
+                  <span class="wpcf7-form-control-wrap" data-name="bannerImage">
+                    <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="banner-image"
+                      accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="bannerImage" />
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <div class="uploaded-image d-inline-block pb-2">
+                    <img id="banner-photo" src="assets/images/user.jpg" ref="assets/images/user.jpg" alt=""
+                      height="200px" style="object-fit: cover;" />
+                  </div>
+                </div>
+                <div class="form-group mt-2 ml-3">
+                  <button type="button" onclick="addBanner()" class="btn btn-primary">
+                    Add Banner
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal for Add events -->
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#587440" />
+        </svg>
+      </div>
+      <!-- ======================================
+	   loader
+	   ========================================== -->
+
+      <!-- javascripts cdn here -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.easing.1.3.js"></script>
+      <script src="assets/js/jquery.waypoints.min.js"></script>
+      <script src="assets/js/jquery.stellar.min.js"></script>
+      <script src="assets/js/owl.carousel.min.js"></script>
+      <script src="assets/js/jquery.magnific-popup.min.js"></script>
+      <script src="assets/js/aos.js"></script>
+      <script src="assets/js/jquery.animateNumber.min.js"></script>
+      <script src="assets/js/bootstrap-datepicker.js"></script>
+      <script src="assets/js/jquery.timepicker.min.js"></script>
+      <script src="assets/js/scrollax.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+      <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="assets/js/google-map.js"></script>
+      <script src="assets/js/star-rating.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script>
+        let bannerData = [];
+        let currentPage = 1;
+        const itemsPerPage = 10; // Adjust this number based on how many items you want per page
+        let filteredBanner = []; // This will hold the filtered list
+        let selectedBannerUrl = ''
+
+        window.onload = function () {
+          fetchBannerData();
+
+          // Add event listeners for search and filter
+          const searchBar = document.querySelector('.search-bar');
+
+          searchBar.addEventListener('input', applySearchAndFilter);
+        };
+
+        async function fetchBannerData() {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(`${serverUrl}/api/banner`, requestOptions);
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              bannerData = result.data;
+              applySearchAndFilter(); // Apply search and filter initially
+            } else {
+              alert('Fail to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        }
+
+        function applySearchAndFilter() {
+          const searchTerm = document
+            .querySelector('.search-bar')
+            .value.toLowerCase();
+
+          // Filter the banner based on the search term
+          filteredBanner = bannerData.filter((banner) => {
+            const matchesSearch = banner.title.toLowerCase().includes(searchTerm);
+
+            return matchesSearch;
+          });
+
+          // Reset to the first page after filtering
+          currentPage = 1;
+          renderBannerList();
+          renderPagination();
+        }
+
+        function renderBannerList() {
+          const start = (currentPage - 1) * itemsPerPage;
+          const end = start + itemsPerPage;
+          const paginatedBanner = filteredBanner.slice(start, end);
+
+          const bannerUI = document.getElementById('banner-list');
+          bannerUI.innerHTML = paginatedBanner
+            .map((banner, id) => {
+              return `<tr class="text-center">
+                    <td class="sno"><p>${start + id + 1}</p></td>
+                     <td class="profile-picture">
+              <img src="${banner.bannerUrl
+                }" alt="Banner image" style="width:50px; height:50px;">
+            </td>
+                    <td class="name"><p>${banner.title}</p></td>
+                    <td class="product-remove">
+                      <!-- Edit Button -->
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-sm text-white border-gg"
+                        data-toggle="modal"
+                        data-target="#myModal-edit-box"
+                        data-id="${banner._id}"
+                        title="Edit"
+                      >
+                        <span class="icon-edit"></span>
+                      </button>
+                    
+                      <!-- Delete Button -->
+                      <button
+                        onclick="deleteBanner('${banner._id}')"
+                        type="button"
+                        class="btn btn-primary btn-sm text-white border-gg"
+                        title="Delete"
+                      >
+                        <span class="icon-delete"></span>
+                      </button>
+                    </td>
+                  </tr>`;
+            })
+            .join('');
+        }
+
+        function renderPagination() {
+          const totalPages = Math.ceil(filteredBanner.length / itemsPerPage);
+          const paginationUI = document.querySelector('.pagination');
+
+          // Clear existing pagination
+          paginationUI.innerHTML = '';
+
+          // Previous button
+          paginationUI.innerHTML += `<a href="#" class="prev" onclick="goToPage(${currentPage - 1
+            })"><i class="icon-caret-left"></i></a>`;
+
+          // Page numbers
+          for (let i = 1; i <= totalPages; i++) {
+            paginationUI.innerHTML += `<a href="#" class="${i === currentPage ? 'active' : ''
+              }" onclick="goToPage(${i})">${i}</a>`;
+          }
+
+          // Next button
+          paginationUI.innerHTML += `<a href="#" class="next" onclick="goToPage(${currentPage + 1
+            })"><i class="icon-caret-right"></i></a>`;
+        }
+
+        function goToPage(page) {
+          const totalPages = Math.ceil(filteredBanner.length / itemsPerPage);
+          if (page < 1 || page > totalPages) {
+            return;
+          }
+          currentPage = page;
+          renderBannerList();
+          renderPagination();
+        }
+
+        const deleteBanner = async (bannerId) => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/banner/${bannerId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message);
+              fetchBannerData(); // Reload data after deletion
+            } else {
+              alert('Fail to delete data: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        };
+
+        document.addEventListener('click', function (event) {
+          if (event.target.closest('.btn[data-target="#myModal-edit-box"]')) {
+            // Get the post ID from the button's data-id attribute
+            const bannerId = event.target.closest('button').getAttribute('data-id');
+
+            // Find the corresponding post object from the posts array
+            const bannerToEdit = bannerData.find((banner) => banner._id === bannerId);
+            if (bannerToEdit) {
+              // Populate the modal form with the defac details
+              document.getElementById('edit-title').value = bannerToEdit.title;
+              document.getElementById('edit-banner-photo').src = bannerToEdit.bannerUrl;
+              selectedBannerUrl = bannerToEdit.bannerUrl;
+
+              // Store the defac ID in a hidden field for use when saving changes
+              document
+                .getElementById('banner-edit-form')
+                .setAttribute('data-id', bannerId);
+            }
+          }
+        });
+
+        document
+          .getElementById('banner-edit-form')
+          .addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const bannerId = this.getAttribute('data-id');
+            const formData = new FormData(this);
+            formData.append('id', bannerId)
+
+            try {
+              const apiKey = '<%= apiKey %>';
+              const serverUrl = '<%= serverUrl %>';
+              const myHeaders = new Headers();
+              myHeaders.append('x-api-key', apiKey);
+
+              const requestOptions = {
+                method: 'PATCH',
+                headers: myHeaders,
+                body: formData,
+                redirect: 'follow',
+              };
+
+              const response = await fetch(
+                `${serverUrl}/api/banner`,
+                requestOptions,
+              );
+              const result = await response.json();
+
+              if (result?.statusCode === '10000') {
+                alert(result.message);
+                fetchBannerData(); // Reload data after update
+                $('#myModal-edit-box').modal('hide'); // Close the modal
+              } else {
+                alert('Failed to update banner: ' + result.message);
+              }
+            } catch (err) {
+              console.error('Error:', err);
+            }
+          });
+
+        const addBanner = async () => {
+          try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const title = document.getElementById('title').value.trim();
+            const bannerUrl = document.getElementById('banner-image').files[0];
+
+            const formData = new FormData()
+            formData.append('title', title)
+            formData.append('bannerUrl', bannerUrl)
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+            const requestOptions = {
+              method: 'POST',
+              headers: myHeaders,
+              body: formData,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(`${serverUrl}/api/banner`, requestOptions);
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result?.message);
+              fetchBannerData();
+              $('#myModal-food-item').modal('hide');
+              document.getElementById('title').value = '';
+              // document.getElementById('banner-image').value = ''
+            } else {
+              alert('Fail to add banner: ' + result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+
+        // display selected banner image
+        jQuery('input#banner-image').on('change', function () {
+          if (this.files && this.files[0]) {
+            let image = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              jQuery('#banner-photo').attr('src', e.target.result); //img tag id
+              createCloseButton('#banner-photo', 'input#banner-image');
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+        // display selected banner image
+        jQuery('input#edit-banner-image').on('change', function () {
+          if (this.files && this.files[0]) {
+            let image = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              jQuery('#edit-banner-photo').attr('src', e.target.result); //img tag id
+              createCloseButton('#edit-banner-photo', 'input#edit-banner-image');
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+
+        // function to remove selected image
+        function createCloseButton(imageSelector, inputSelector) {
+          // Remove existing close button if any
+
+          jQuery(imageSelector).closest('.uploaded-image');
+          var defaulImage = jQuery(imageSelector).attr('ref');
+          // Create close button
+          var closeButton = jQuery('<button class="close-btn">X</button>');
+
+          // Append close button to container
+          jQuery(imageSelector).closest('.uploaded-image').append(closeButton);
+
+          // Attach click event to close button
+          closeButton.on('click', function () {
+            if (defaulImage) {
+              jQuery(imageSelector).attr('src', defaulImage);
+            }
+            jQuery(inputSelector).val('');
+            jQuery(this).remove();
+            if (imageSelector === '#edit-banner-photo') {
+              document.getElementById('edit-banner-photo').src =
+                selectedBannerUrl;
+            }
+          });
+        }
+
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,1559 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Defac WebApp Home Page</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="./assets/css/open-iconic-bootstrap.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="./assets/css/animate.css" />
+
+    <!-- owl carasoul css -->
+    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./assets/css/owl.theme.default.min.css" />
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="./assets/css/magnific-popup.css" />
+
+    <!-- aos js css -->
+    <link rel="stylesheet" href="./assets/css/aos.css" />
+
+    <!-- swiper css  -->
+    <link
+      rel="stylesheet"
+      href="https://md-aqil.github.io/images/swiper.min.css"
+    />
+
+    <!-- ionicon css -->
+    <link rel="stylesheet" href="./assets/css/ionicons.min.css" />
+
+    <!-- bootstrapdate picker and time picker -->
+    <link rel="stylesheet" href="./assets/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="./assets/css/jquery.timepicker.css" />
+
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="./assets/css/flaticon.css" />
+    <!-- icomoon icon css -->
+    <link rel="stylesheet" href="./assets/css/icomoon.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  </head>
+
+  <body>
+    <!-- =================================
+	 website navbar
+	 ====================================== -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+      id="ftco-navbar"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="/">Defac<small>- - -</small></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn-primary btn-lg text-white border-gg btn btn-primary btn-outline-primary"
+            data-toggle="modal"
+            data-target="#myModal"
+          >
+            Login
+          </button>
+
+          <!-- Modal -->
+
+          <!-- Main Login Modal -->
+          <div
+            class="modal fade show index-modal"
+            id="myModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="divider">
+                    <h4 class="modal-title" id="myModalLabel">
+                      Welcome, User!
+                    </h4>
+                  </div>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <img
+                        class="soldier-img"
+                        src="./assets/images/army1.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <form class="login appointment-form" id="loginForm">
+                        <div class="form-group">
+                          <input
+                            class="form-control"
+                            type="email"
+                            placeholder="Email"
+                            id="email"
+                            required
+                          />
+                        </div>
+                        <div class="form-group" style="position: relative">
+                          <input
+                            class="form-control"
+                            type="password"
+                            placeholder="Password"
+                            id="password"
+                            required
+                          />
+                          <div
+                            id="toggle-password"
+                            style="
+                              color: white;
+                              position: absolute;
+                              right: 4px;
+                              bottom: 20px;
+                              cursor: pointer;
+                            "
+                          >
+                            <i class="fa-solid fa-eye-slash"></i>
+                          </div>
+                        </div>
+                        <div class="login-hero-remember">
+                          <input
+                            id="loginRemember"
+                            name="login-remember"
+                            type="checkbox"
+                            value="Remember Me"
+                          />
+                          <label for="loginRemember">Remember Me</label>
+                        </div>
+                        <div class="form-group text-center">
+                          <button
+                            type="button"
+                            class="btn-login btn btn-white py-3 px-4"
+                            onclick="login()"
+                          >
+                            Login
+                          </button>
+                        </div>
+                        <div class="links">
+                          <a
+                            href="#"
+                            data-toggle="modal"
+                            data-target="#forgotPasswordModal"
+                            data-dismiss="modal"
+                            >Forgot user ID/password?</a
+                          >
+                          <a
+                            href="#"
+                            data-toggle="modal"
+                            data-target="#registerModal"
+                            data-dismiss="modal"
+                            >Register</a
+                          >
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Forgot Password Modal -->
+          <div
+            class="modal fade show index-modal"
+            id="forgotPasswordModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="forgotPasswordModalLabel"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="forgotPasswordModalLabel">
+                    Forgot Password
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="forgotPasswordForm">
+                    <div class="form-group">
+                      <label for="email">Email address</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="forgot-password-email"
+                        placeholder="Email"
+                        required
+                      />
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Register Modal -->
+          <div
+            class="modal fade show index-modal"
+            id="registerModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="registerModalLabel"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="registerModalLabel">
+                    Soldier Register Form
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="register-form">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="full-name">Full Name:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="full-name"
+                          placeholder="Full name"
+                          name="fullName"
+                          required
+                        />
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="user-email">Email address:</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="user-email"
+                          placeholder="Email"
+                          name="userEmail"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="contact">Phone Number:</label>
+                        <input
+                          type="tel"
+                          class="form-control"
+                          id="contact"
+                          placeholder="Phone Number"
+                          name="phoneNumber"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6" id="unit-list"></div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6" id="post-list"></div>
+                      <div class="form-group col-md-6">
+                        <label for="rank">Rank:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="rank"
+                          placeholder="Rank"
+                          name="rank"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-12" id="defac-list"></div>
+                    </div>
+                    <div class="form-row">
+                      <div
+                        class="form-group col-md-6"
+                        style="position: relative"
+                      >
+                        <label for="user-password">Password</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="user-password"
+                          placeholder="Password"
+                          name="userPassword"
+                          required
+                        />
+                        <div
+                          id="toggle-new-password"
+                          style="
+                            color: white;
+                            position: absolute;
+                            right: 12px;
+                            bottom: 20px;
+                            cursor: pointer;
+                          "
+                        >
+                          <i class="fa-solid fa-eye-slash"></i>
+                        </div>
+                      </div>
+                      <div
+                        class="form-group col-md-6"
+                        style="position: relative"
+                      >
+                        <label for="confirm-password">Confirm Password</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="confirm-password"
+                          placeholder="Confirm Your Password"
+                          name="confirmPassword"
+                          required
+                        />
+                        <div
+                          id="toggle-confirm-password"
+                          style="
+                            color: white;
+                            position: absolute;
+                            right: 12px;
+                            bottom: 20px;
+                            cursor: pointer;
+                          "
+                        >
+                          <i class="fa-solid fa-eye-slash"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-6">
+                        <label for="user-profile">Profile picture:</label>
+                        <span
+                          class="wpcf7-form-control-wrap"
+                          data-name="user-profile"
+                        >
+                          <input
+                            size="40"
+                            class="wpcf7-form-control wpcf7-file form-control-file"
+                            id="user-profile"
+                            accept=".jpeg,.jpg,.png"
+                            aria-invalid="false"
+                            type="file"
+                            name="user-profile"
+                          />
+                        </span>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="uploaded-image d-inline-block pb-2">
+                          <img
+                            id="profile-photo"
+                            src="assets/images/user.jpg"
+                            ref="assets/images/user.jpg"
+                            alt=""
+                            height="200px"
+                            style="object-fit: cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="text-left mt-4">
+                      <button
+                        type="button"
+                        onclick="handleRegister()"
+                        class="btn btn-primary"
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Register Modal -->
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+    <!-- =================================
+	 website navbar
+	 ====================================== -->
+
+    <!-- =================================
+	  website banner slider html starts here
+	  ==================================== -->
+    <section id="banner"></section>
+    <!-- =================================
+	  website banner slider html ends here
+	  ==================================== -->
+
+    <!-- =================================
+       contacts highlight points
+	  ==================================== -->
+    <section class="ftco-intro">
+      <div class="container-wrap">
+        <div class="wrap d-md-flex align-items-xl-end">
+          <div class="info">
+            <div class="row no-gutters">
+              <div class="col-md-4 d-flex ftco-animate">
+                <div class="icon">
+                  <span class="icon-phone"> </span>
+                </div>
+                <div class="text">
+                  <h3>Contact Us</h3>
+                  <p>000 (123) 456 7890</p>
+                </div>
+              </div>
+              <div class="col-md-4 d-flex ftco-animate">
+                <div class="icon"><span class="icon-my_location"></span></div>
+                <div class="text">
+                  <h3>Our Address</h3>
+                  <p>Fort Stewart, GA, USA</p>
+                </div>
+              </div>
+              <div class="col-md-4 d-flex ftco-animate">
+                <div class="icon"><span class="icon-clock-o"></span></div>
+                <div class="text">
+                  <h3>Opening Hours</h3>
+                  <p>06:00am - 06:00pm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="book p-4"></div>
+        </div>
+      </div>
+    </section>
+    <!-- =================================
+       contacts highlight points
+	  ==================================== -->
+
+    <!-- ================================
+	   About Us 
+	   ===================================-->
+    <section class="ftco-about d-md-flex">
+      <div class="one-half img" id="about-image"></div>
+      <div class="one-half ftco-animate">
+        <div class="overlap">
+          <div class="heading-section ftco-animate">
+            <span class="subheading">Discover</span>
+            <h2 class="mb-4">About Us</h2>
+          </div>
+          <div>
+            <p class="text-white">
+              Food is more than just sustenance; it is a delightful experience
+              that brings people together and nourishes both the body and the
+              soul. The sheer variety of flavors, textures, and aromas that food
+              offers is truly remarkable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================================
+	   About Us 
+	   ===================================-->
+
+    <!-- ========================================
+	 Photo Gallery html starts here
+	 ============================================ -->
+    <section class="ftco-gallery">
+      <div class="container-wrap">
+        <div class="row no-gutters" id="gallery-images"></div>
+      </div>
+    </section>
+    <!-- ========================================
+	 Photo Gallery html ends here
+	 ============================================ -->
+
+    <!-- =======================================
+	  Discover Our Menu htl starts here
+	  =========================================== -->
+    <section class="ftco-menu">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <span class="subheading">Discover</span>
+            <h2 class="mb-4">Our Menu</h2>
+          </div>
+        </div>
+        <div class="row d-md-flex">
+          <div class="col-lg-12 ftco-animate p-md-3">
+            <div class="row">
+              <div class="col-md-12 nav-link-wrap mb-5">
+                <div
+                  class="nav ftco-animate nav-pills justify-content-center"
+                  id="v-pills-tab"
+                  role="tablist"
+                  aria-orientation="vertical"
+                >
+                  <a
+                    class="nav-link active"
+                    id="v-pills-1-tab"
+                    data-toggle="pill"
+                    href="#v-pills-1"
+                    role="tab"
+                    aria-controls="v-pills-1"
+                    aria-selected="true"
+                    >Breakfast</a
+                  >
+
+                  <a
+                    class="nav-link"
+                    id="v-pills-2-tab"
+                    data-toggle="pill"
+                    href="#v-pills-2"
+                    role="tab"
+                    aria-controls="v-pills-2"
+                    aria-selected="false"
+                    >Lunch</a
+                  >
+
+                  <a
+                    class="nav-link"
+                    id="v-pills-3-tab"
+                    data-toggle="pill"
+                    href="#v-pills-3"
+                    role="tab"
+                    aria-controls="v-pills-3"
+                    aria-selected="false"
+                    >Dinner</a
+                  >
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="tab-content ftco-animate" id="v-pills-tabContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="v-pills-1"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-1-tab"
+                  >
+                    <!-- <div class="text text-center">
+                    <h4>Our Breakfast Timing</h4>
+                    <p>7:00am - 9:00am</p>
+                  </div> -->
+                    <div class="row" id="breakfast"></div>
+                  </div>
+
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-2"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-2-tab"
+                  >
+                    <!-- <div class="text text-center">
+                    <h4>Our Lunch Timing</h4>
+                    <p>02:00pm - 04:00pm</p>
+                  </div> -->
+                    <div class="row" id="lunch"></div>
+                  </div>
+
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-3"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-3-tab"
+                  >
+                    <!-- <div class="text text-center">
+                    <h4>Our Dinner Timimg</h4>
+                    <p>05:00pm - 07:00pm</p>
+                  </div> -->
+                    <div class="row" id="dinner"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- =======================================
+	  Discover Our Menu htl ends here
+	  =========================================== -->
+
+    <!-- =============================================
+	 Upcoming Events html starts here 
+	 ================================================= -->
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+            <span class="subheading">Discover</span>
+            <h2 class="mb-4">Upcoming Events</h2>
+          </div>
+        </div>
+        <div class="row d-flex" id="event-list"></div>
+      </div>
+    </section>
+    <!-- =============================================
+	 Upcoming Events html ends here 
+	 ================================================= -->
+
+    <!-- ================================================
+   Feedback or testimonials here
+   ==================================================== -->
+    <section class="spacer">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div
+            class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated"
+          >
+            <span class="subheading">Testimony</span>
+            <h2 class="mb-4">Soldier Says</h2>
+            <p>
+              Here are several reviews from our soldiers regarding their
+              experiences with the canteen:
+            </p>
+          </div>
+        </div>
+        <div class="testimonial-section">
+          <div class="testi-user-img" id="image-slider"></div>
+          <div class="user-saying" id="testimonial-slider"></div>
+        </div>
+      </div>
+    </section>
+    <!-- ================================================
+   Feedback or testimonials here
+   ==================================================== -->
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+    <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+    <%- include('utils/loader') %>
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+
+    <!-- javascripts cdn here -->
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/jquery.easing.1.3.js"></script>
+    <script src="./assets/js/jquery.waypoints.min.js"></script>
+    <script src="./assets/js/jquery.stellar.min.js"></script>
+    <script src="./assets/js/owl.carousel.min.js"></script>
+    <script src="./assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="./assets/js/aos.js"></script>
+    <script src="./assets/js/jquery.animateNumber.min.js"></script>
+    <script src="./assets/js/bootstrap-datepicker.js"></script>
+    <script src="./assets/js/jquery.timepicker.min.js"></script>
+    <script src="./assets/js/scrollax.min.js"></script>
+    <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="./assets/js/google-map.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/27bd3bf8d7.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function login() {
+        const apiKey = '<%= apiKey %>';
+        const serverUrl = '<%= serverUrl %>';
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const myHeaders = new Headers();
+        myHeaders.append('x-api-key', apiKey);
+        myHeaders.append('Content-Type', 'application/json');
+
+        const raw = JSON.stringify({
+          email: email,
+          password: password,
+        });
+
+        const requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow',
+        };
+
+        fetch(`${serverUrl}/api/login/user`, requestOptions)
+          .then((response) => response.json())
+          .then((result) => {
+            if (result?.statusCode === '10000') {
+              window.localStorage.setItem(
+                'accessToken',
+                result?.data?.tokens?.accessToken,
+              );
+              window.localStorage.setItem(
+                'refreshToken',
+                result?.data?.tokens?.refreshToken,
+              );
+              window.localStorage.setItem('defac', result?.data?.user?._id);
+              if (result?.data?.user?.role === 'SOLDIER') {
+                window.location.href = '/home';
+              } else if (result?.data?.user?.role === 'DEFAC') {
+                window.location.href = '/menus';
+              } else if (result?.data?.user?.role === 'ADMIN') {
+                window.location.href = '/defacs';
+              }
+            } else {
+              alert('Login failed: ' + result.message);
+            }
+          })
+          .catch((error) => console.error('Error:', error));
+      }
+
+      const showLoader = () => {
+        document.getElementById('loader').style.display = 'flex';
+      };
+
+      const hideLoader = () => {
+        document.getElementById('loader').style.display = 'none';
+      };
+
+      const handleRegister = async () => {
+        try {
+          // Show the loader
+          showLoader();
+
+          // Create a new FormData object from the form
+          const formData = new FormData();
+
+          // Get form values
+          const name = document.getElementById('full-name').value.trim();
+          const email = document.getElementById('user-email').value.trim();
+          const contact = document.getElementById('contact').value.trim();
+          const rank = document.getElementById('rank').value.trim();
+          const unit = document.getElementById('unit').value;
+          const post = document.getElementById('post').value;
+          const defac = document.getElementById('defac').value;
+          const password = document
+            .getElementById('user-password')
+            .value.trim();
+          const confirmPassword = document
+            .getElementById('confirm-password')
+            .value.trim();
+          const profilePicUrl =
+            document.getElementById('user-profile').files[0];
+
+          // Check if the passwords match
+          if (password !== confirmPassword) {
+            alert('Passwords do not match. Please try again.');
+            hideLoader(); // Hide the loader if passwords don't match
+            return;
+          }
+
+          // Optionally, manually append or modify FormData if needed
+          formData.append('name', name);
+          formData.append('contact', contact);
+          formData.append('email', email);
+          formData.append('password', password);
+          formData.append('post', post);
+          formData.append('unit', unit);
+          formData.append('rank', rank);
+          formData.append('defaultDefac', defac);
+          formData.append('profilePicUrl', profilePicUrl);
+
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formData,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/signup/create`,
+            requestOptions,
+          );
+          const result = await response.json();
+
+          if (result?.statusCode === '10000') {
+            alert(result?.message);
+            $('#registerModal').modal('hide');
+            $('#myModal').modal('show');
+
+            // Clear the form fields
+            document.getElementById('full-name').value = '';
+            document.getElementById('user-email').value = '';
+            document.getElementById('contact').value = '';
+            document.getElementById('rank').value = '';
+            document.getElementById('unit').value = '';
+            document.getElementById('post').value = '';
+            document.getElementById('defac').value = '';
+            document.getElementById('user-password').value = '';
+            document.getElementById('confirm-password').value = '';
+            document.getElementById('user-profile').value = ''; // For file input
+          } else {
+            alert('Fail to register soldier: ' + result.message);
+          }
+        } catch (err) {
+          console.log(err);
+        } finally {
+          // Hide the loader after the request is completed
+          hideLoader();
+        }
+      };
+
+      let menuList = [];
+      let eventList = [];
+      let feedbackList = [];
+      let defacList = [];
+      let postList = [];
+      let unitList = [];
+      let bannerList = [];
+      let galleryImages = [];
+      window.onload = function () {
+        fetchMenu();
+        fetchEvent();
+        fetchFeedback();
+        fetchDefac();
+        fetchPost();
+        fetchUnit();
+        fetchBannerData();
+        fetchGalleryImage();
+
+        checkEmailVerified(); // Call this function when the page loads
+      };
+
+      function checkEmailVerified() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const isVerified = urlParams.get('email-verified');
+
+        if (isVerified) {
+          alert('Email verified successfully. You can proceed to login.');
+
+          // Remove the query parameter from the URL
+          urlParams.delete('email-verified');
+          window.history.replaceState(
+            {},
+            document.title,
+            `${window.location.pathname}`,
+          );
+        }
+      }
+
+      const fetchBannerData = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/banner`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            bannerList = result.data;
+            renderBannerData();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const renderBannerData = () => {
+        const bannerUI = document.getElementById('banner');
+        bannerUI.innerHTML = `
+  <div class="home-slider owl-carousel">
+    ${bannerList
+      ?.map((banner) => {
+        return `
+        <div class="slider-item" style="background-image: url(${banner.bannerUrl})">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row slider-text justify-content-center align-items-center">
+              <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                <span class="subheading">Welcome To Defac App</span>
+                <h1 class="mb-4">
+                  ${banner.title}
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      })
+      .join('')} <!-- Added join('') here -->
+  </div>
+`;
+
+        // for slider
+        $('.home-slider').owlCarousel({
+          loop: true,
+          autoplay: true,
+          margin: 0,
+          animateOut: 'fadeOut',
+          animateIn: 'fadeIn',
+          nav: false,
+          autoplayHoverPause: false,
+          items: 1,
+          navText: [
+            "<span class='ion-md-arrow-back'></span>",
+            "<span class='ion-chevron-right'></span>",
+          ],
+          responsive: {
+            0: {
+              items: 1,
+              nav: false,
+            },
+            600: {
+              items: 1,
+              nav: false,
+            },
+            1000: {
+              items: 1,
+              nav: false,
+            },
+          },
+        });
+
+        // for animation
+        contentWayPoint();
+      };
+
+      const fetchGalleryImage = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/gallery`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            galleryImages = result.data;
+            renderGallery();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const renderGallery = () => {
+        const aboutImage = document.getElementById('about-image');
+        aboutImage.style.backgroundImage = `url('${galleryImages[0].galleryUrl}')`;
+
+        const gallery = document.getElementById('gallery-images');
+        gallery.innerHTML = galleryImages
+          ?.slice(1, 5)
+          ?.map((image) => {
+            return `
+            <div class="col-md-3 ftco-animate">
+          <a href="#" class="gallery img d-flex align-items-center"
+            style="background-image: url('${image.galleryUrl}')">
+            <div class="icon mb-4 d-flex align-items-center justify-content-center">
+              <span class="icon-search"></span>
+            </div>
+          </a>
+        </div>
+            `;
+          })
+          .join('');
+
+        // for text visibility and animation
+        contentWayPoint();
+      };
+
+      const fetchMenu = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(`${serverUrl}/api/menu`, requestOptions);
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            menuList = result.data.menuList;
+            renderMenuList();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const renderMenuList = () => {
+        const breakfast = document.getElementById('breakfast');
+        const lunch = document.getElementById('lunch');
+        const dinner = document.getElementById('dinner');
+
+        const breakFastMenu = menuList?.filter(
+          (food) => food.category.toLowerCase() === 'breakfast',
+        );
+        const lunchMenu = menuList?.filter(
+          (food) => food.category.toLowerCase() === 'lunch',
+        );
+        const dinnerMenu = menuList?.filter(
+          (food) => food.category.toLowerCase() === 'dinner',
+        );
+
+        breakfast.innerHTML =
+          breakFastMenu.length > 0
+            ? breakFastMenu?.map(renderFood).join('')
+            : `<div style="text-align: center; font-size: 20px; font-weight: 500; color: white; width: 100%;">No menu found</div>`;
+        lunch.innerHTML =
+          lunchMenu.length > 0
+            ? lunchMenu?.map(renderFood).join('')
+            : `<div style="text-align: center; font-size: 20px; font-weight: 500; color: white; width: 100%;">No menu found</div>`;
+        dinner.innerHTML =
+          dinnerMenu.length > 0
+            ? dinnerMenu?.map(renderFood).join('')
+            : `<div style="text-align: center; font-size: 20px; font-weight: 500; color: white; width: 100%;">No menu found</div>`;
+      };
+
+      const renderFood = (menu, id) => {
+        return `<div class="col-md-4 text-center">
+                            <div class="menu-wrap">
+                              <a href="#" class="menu-img img mb-4" style="
+                                  background-image: url(${menu.menuUrl}); background-position: top center;
+                                "></a>
+                              <div class="text">
+                                <h3><a href="#">${menu.name}</a></h3>
+                                <p>
+                                ${menu.description}
+                                </p>
+                              </div>
+                            </div>
+                          </div>`;
+      };
+
+      const fetchEvent = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/event`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            eventList = result.data.eventList;
+            renderEventList();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const renderEventList = () => {
+        const eventUI = document.getElementById('event-list');
+        eventUI.innerHTML =
+          eventList?.length > 0
+            ? eventList
+                ?.map((event, id) => {
+                  return `
+              <div class="col-md-4 d-flex">
+                <div class="blog-entry align-self-stretch">
+                  <a href="" class="block-20" style="background-image: url('${
+                    event.eventUrl
+                  }');background-size: contain; background-position: center; background-repeat: no-repeat;">
+                  </a>
+                  <div class="text py-4 d-block">
+                    <div class="meta">
+                      <div><a href="#">${moment(event.startDate).format(
+                        'MMM D, YYYY h:mm A',
+                      )}</a></div>
+                      <div><a href="#">/ ${event.defac.name}</a></div>
+                    </div>
+                    <h3 class="heading mt-2">
+                      <a href="#">${event.name}</a>
+                    </h3>
+                    <p>
+                      ${event.description}
+                    </p>
+                  </div>
+                </div>
+              </div>`;
+                })
+                .join('')
+            : `<div style="text-align: center; font-size: 20px; font-weight: 500; color: white; width: 100%;">No event found</div>`;
+      };
+
+      const fetchFeedback = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/feedback`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            feedbackList = result.data.feedbackList;
+            renderFeedback();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const renderFeedback = () => {
+        const imageSlider = document.getElementById('image-slider');
+        const images = feedbackList?.map(
+          (feedback) => feedback.postedBy.profilePicUrl,
+        );
+        imageSlider.innerHTML = `
+    <div class="swiper-container gallery-thumbs">
+      <div class="swiper-wrapper">
+        ${images
+          ?.map((image, id) => {
+            return `<div class="swiper-slide">
+            <img src="${image}" alt="image-${id + 1}" />
+          </div>`;
+          })
+          .join('')} <!-- Join the mapped array here -->
+      </div>
+    </div>`;
+
+        const testimonialSlider = document.getElementById('testimonial-slider');
+        testimonialSlider.innerHTML = `
+    <div class="swiper-container testimonial">
+      <div class="swiper-wrapper">
+        ${feedbackList
+          ?.map((feedback) => {
+            return `
+          <div class="swiper-slide">
+            <div class="quote">
+              <img class="quote-icon" src="./assets/images/quotes.png" alt="" />
+              <p>
+                ${feedback.feedback}
+              </p>
+              <div class="name">${feedback.postedBy.name}</div>
+              <div class="designation">${feedback.postedBy.post}</div>
+            </div>
+          </div>`;
+          })
+          .join('')} <!-- Join the mapped array here -->
+      </div>
+      <div class="swiper-pagination swiper-pagination-white"></div>
+    </div>`;
+
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+          effect: 'coverflow',
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: '2',
+
+          coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 50,
+            modifier: 6,
+            slideShadows: false,
+          },
+        });
+
+        var galleryTop = new Swiper('.swiper-container.testimonial', {
+          speed: 400,
+          spaceBetween: 50,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          direction: 'vertical',
+          pagination: {
+            clickable: true,
+            el: '.swiper-pagination',
+            type: 'bullets',
+          },
+          thumbs: {
+            swiper: galleryThumbs,
+          },
+        });
+      };
+
+      const fetchDefac = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/defac`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            defacList = result.data.updatedDefacList;
+            renderDefacList();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      const renderDefacList = () => {
+        const defacDropdown = document.getElementById('defac-list');
+        defacDropdown.innerHTML = `
+              <label for="defac">Default Defac:</label>
+             <select class="form-control" id="defac" required style="background-color: #41592d !important;">
+                      <option value="" disabled selected>Select Default Defac</option>
+                      ${defacList.map((defac) => {
+                        return `<option value="${defac._id}">${defac.name}</option>`;
+                      })}
+                    </select>`;
+      };
+      const fetchPost = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(`${serverUrl}/api/post`, requestOptions);
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            postList = result.data;
+            renderPostList();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      const renderPostList = () => {
+        const postDropdown = document.getElementById('post-list');
+        postDropdown.innerHTML = `
+              <label for="post">Post:</label>
+             <select class="form-control" id="post" required style="background-color: #41592d !important;">
+                      <option value="" disabled selected>Select Post</option>
+                      ${postList.map((post) => {
+                        return `<option value="${post.name}">${post.name}</option>`;
+                      })}
+                    </select>`;
+      };
+
+      const fetchUnit = async () => {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(`${serverUrl}/api/unit`, requestOptions);
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            unitList = result.data;
+            renderUnitList();
+          } else {
+            alert('Failed to fetch data: ' + result.message);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      const renderUnitList = () => {
+        const unitDropdown = document.getElementById('unit-list');
+        unitDropdown.innerHTML = `
+              <label for="unit">Unit:</label>
+             <select class="form-control" id="unit" required style="background-color: #41592d !important;">
+                      <option value="" disabled selected>Select Unit</option>
+                      ${unitList.map((unit) => {
+                        return `<option value="${unit.name}">${unit.name}</option>`;
+                      })}
+                    </select>`;
+      };
+
+      document
+        .getElementById('forgotPasswordForm')
+        .addEventListener('submit', async function (event) {
+          event.preventDefault();
+
+          // Show the loader
+          showLoader();
+
+          const email = document.getElementById('forgot-password-email').value;
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+          myHeaders.append('Content-Type', 'application/json');
+
+          const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify({ email: email }),
+            redirect: 'follow',
+          };
+
+          try {
+            const response = await fetch(
+              `${serverUrl}/api/self-service/password/forgot`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert('Password reset email sent. Please check your inbox.');
+              $('#forgotPasswordModal').modal('hide');
+            } else {
+              alert('Failed to send reset email: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          } finally {
+            // Hide the loader after the request is completed
+            hideLoader();
+          }
+        });
+      // display selected profile image
+      jQuery('input#user-profile').on('change', function () {
+        if (this.files && this.files[0]) {
+          let image = this;
+
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            jQuery('#profile-photo').attr('src', e.target.result); //img tag id
+            createCloseButton('#profile-photo', 'input#user-profile');
+          };
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+
+      // function to remove selected image
+      function createCloseButton(imageSelector, inputSelector) {
+        // Remove existing close button if any
+
+        jQuery(imageSelector).closest('.uploaded-image');
+        var defaulImage = jQuery(imageSelector).attr('ref');
+        // Create close button
+        var closeButton = jQuery('<button class="close-btn">X</button>');
+
+        // Append close button to container
+        jQuery(imageSelector).closest('.uploaded-image').append(closeButton);
+
+        // Attach click event to close button
+        closeButton.on('click', function () {
+          if (defaulImage) {
+            jQuery(imageSelector).attr('src', defaulImage);
+          }
+          jQuery(inputSelector).val('');
+          jQuery(this).remove();
+        });
+      }
+
+      // toggle password visible for login
+      const togglePassword = document.getElementById('toggle-password');
+      togglePassword.addEventListener('click', () => {
+        const password = document.getElementById('password');
+        if (password.type === 'password') {
+          password.type = 'text';
+          togglePassword.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+        } else {
+          password.type = 'password';
+          togglePassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
+        }
+      });
+
+      // toggle password visible for register (new password)
+      const toggleNewPassword = document.getElementById('toggle-new-password');
+      toggleNewPassword.addEventListener('click', () => {
+        const password = document.getElementById('user-password');
+        if (password.type === 'password') {
+          password.type = 'text';
+          toggleNewPassword.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+        } else {
+          password.type = 'password';
+          toggleNewPassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
+        }
+      });
+
+      // toggle password visible for register (confirm password)
+      const toggleConfirmPassword = document.getElementById(
+        'toggle-confirm-password',
+      );
+      toggleConfirmPassword.addEventListener('click', () => {
+        const password = document.getElementById('confirm-password');
+        if (password.type === 'password') {
+          password.type = 'text';
+          toggleConfirmPassword.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+        } else {
+          password.type = 'password';
+          toggleConfirmPassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
+        }
+      });
+
+      // for text visibility and animation
+      var contentWayPoint = function () {
+        var i = 0;
+        $('.ftco-animate').waypoint(
+          function (direction) {
+            if (
+              direction === 'down' &&
+              !$(this.element).hasClass('ftco-animated')
+            ) {
+              i++;
+
+              $(this.element).addClass('item-animate');
+              setTimeout(function () {
+                $('body .ftco-animate.item-animate').each(function (k) {
+                  var el = $(this);
+                  setTimeout(
+                    function () {
+                      var effect = el.data('animate-effect');
+                      if (effect === 'fadeIn') {
+                        el.addClass('fadeIn ftco-animated');
+                      } else if (effect === 'fadeInLeft') {
+                        el.addClass('fadeInLeft ftco-animated');
+                      } else if (effect === 'fadeInRight') {
+                        el.addClass('fadeInRight ftco-animated');
+                      } else {
+                        el.addClass('fadeInUp ftco-animated');
+                      }
+                      el.removeClass('item-animate');
+                    },
+                    k * 50,
+                    'easeInOutExpo',
+                  );
+                });
+              }, 100);
+            }
+          },
+          { offset: '95%' },
+        );
+      };
+    </script>
+  </body>
+</html>

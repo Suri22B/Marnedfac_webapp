@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Defac Access Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="assets/css/aos.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/defac-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div class="slider-item" style="background-image: url(assets/images/defac-kitchen.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Defac Event Management</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="sort-list">
+        <div class="container">
+          <div class="d-flex flex-sm-row flex-column" style="justify-content: space-between">
+            <ul class="function-btn">
+              <li>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-food-item">
+                  <i class="icon-add mr-2 text-white"></i> Add Events
+                </button>
+                <!-- <button><i class="icon-add mr-2"></i> Add Food Items</button> -->
+              </li>
+              <!-- <li>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-monthly-menu">
+                  <i class="icon-add mr-2 text-white"></i> Add Monthly Menu
+                </button>
+              </li>
+              <li><button><i class="icon-print mr-2"></i> Prints </button></li> -->
+            </ul>
+            <ul class="function-btn">
+              <li>
+                <input type="text" placeholder="Search..." class="search-bar" />
+              </li>
+              <li style="align-items: center; display: flex">
+                <select class="category-filter">
+                  <option value="Latest">Latest</option>
+                  <option value="Oldest">Oldest</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div class="cart-list">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>S.N.</th>
+                    <th class="text-left">Event Name</th>
+                    <th>Event Image</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="event-list">
+                  <!-- END TR-->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination justify-content-end"></div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- modal for edit food items -->
+      <div class="modal fade" id="myModal-edit-box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Event</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="contact-form" id="edit-product-form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="edit-product-name">Event Name :</label>
+                      <input type="text" class="form-control" placeholder="Event Name" id="edit-product-name"
+                        name="productName" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="edit-product-description">Event Description :</label>
+                  <textarea id="edit-product-description" class="form-control" name="productDescription" rows="5"
+                    required></textarea>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="edit-start-date">Start Date:</label>
+                      <input type="datetime-local" class="form-control" id="edit-start-date" name="startDate" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="edit-end-date">End Date:</label>
+                      <input type="datetime-local" class="form-control" id="edit-end-date" name="endDate" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="edit-product-image">Upload Event Photo:</label>
+                    <span class="wpcf7-form-control-wrap" data-name="editProductImage">
+                      <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="edit-product-image"
+                        accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="editProductImage" />
+                    </span>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="uploaded-image d-inline-block pb-2">
+                      <img id="edit-product-photo" src="assets/images/user.jpg" ref="assets/images/user.jpg" alt=""
+                        height="200px" style="object-fit: cover;" />
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">
+                Save Change
+              </button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal for edit food items -->
+
+    <!-- Modal for Add Event  -->
+    <div class="modal fade" id="myModal-food-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Add Event</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="contact-form" id="product-form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="product-name">Event Name :</label>
+                    <input type="text" class="form-control" placeholder="Event Name" id="product-name"
+                      name="productName" required />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="product-description">Event Description :</label>
+                <textarea id="product-description" class="form-control" placeholder="Event Description"
+                  name="productDescription" rows="5" required></textarea>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="product-image">Upload Event Photo:</label>
+                  <span class="wpcf7-form-control-wrap" data-name="productImage">
+                    <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="product-image"
+                      accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="productImage" />
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <div class="uploaded-image d-inline-block pb-2">
+                    <img id="product-photo" src="assets/images/user.jpg" ref="assets/images/user.jpg" alt=""
+                      height="200px" style="object-fit: cover;" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="start-date">Start Date:</label>
+                    <input type="datetime-local" class="form-control" id="start-date" name="startDate" required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="end-date">End Date:</label>
+                    <input type="datetime-local" class="form-control" id="end-date" name="endDate" required />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <button onclick="addEvent()" type="button" class="btn btn-primary">
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal for Add events -->
+
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#587440" />
+        </svg>
+      </div>
+      <!-- ======================================
+	   loader
+	   ========================================== -->
+
+      <!-- javascripts cdn here -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.easing.1.3.js"></script>
+      <script src="assets/js/jquery.waypoints.min.js"></script>
+      <script src="assets/js/jquery.stellar.min.js"></script>
+      <script src="assets/js/owl.carousel.min.js"></script>
+      <script src="assets/js/jquery.magnific-popup.min.js"></script>
+      <script src="assets/js/aos.js"></script>
+      <script src="assets/js/jquery.animateNumber.min.js"></script>
+      <script src="assets/js/bootstrap-datepicker.js"></script>
+      <script src="assets/js/jquery.timepicker.min.js"></script>
+      <script src="assets/js/scrollax.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+      <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="assets/js/google-map.js"></script>
+      <script src="assets/js/star-rating.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script>
+        let events = [];
+        let filteredEvents = []; // To store filtered events based on search or sorting
+        let currentPage = 1;
+        let selectedEventUrl = ''
+        const eventsPerPage = 5; // Number of events per page
+
+        window.onload = function () {
+          fetchEventData();
+        };
+
+        const fetchEventData = async () => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/event/defac/${window.localStorage.getItem(
+                'defac',
+              )}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              events = result.data.eventList;
+              filteredEvents = [...events]; // Initialize filtered events
+              renderEventList();
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        };
+
+        const renderEventList = () => {
+          const eventUI = document.getElementById('event-list');
+          const start = (currentPage - 1) * eventsPerPage;
+          const end = start + eventsPerPage;
+          const eventsToShow = filteredEvents.slice(start, end);
+
+          if (eventsToShow.length === 0) {
+            eventUI.innerHTML = `
+      <tr>
+        <td colspan="6" class="text-center">No events found. Click Add Events to add.</td>
+      </tr>`;
+          } else {
+            eventUI.innerHTML = eventsToShow
+              .map((event, id) => {
+                return `<tr class="text-center">
+                          <td class="sno">${start + id + 1}</td>
+                          <td class="product-name">
+                              <h3>${event.name}</h3>
+                              <p>${event.description}</p>
+                          </td>
+                          <td class="image-prod">
+                              <div class="img" style="background-image: url(${event.eventUrl
+                  })"></div>
+                          </td>
+                          <td class="order-time">
+                              <p>${formatDate(event.startDate)}</p>
+                          </td>
+                          <td class="order-time">
+                              <p>${formatDate(event.endDate)}</p>
+                          </td>
+                          <td class="product-remove">
+                              <button type="button" class="btn btn-primary btn-lg text-white border-gg" data-toggle="modal"
+                                  data-target="#myModal-edit-box" data-id="${event._id
+                  }">
+                                  <span class="icon-edit"></span>
+                              </button>
+                              <button onclick="deleteEvent('${event._id
+                  }')" type="button" class="btn btn-primary btn-lg text-white border-gg">
+                                  <span class="icon-delete"></span>
+                              </button>
+                          </td>
+                      </tr>`;
+              })
+              .join('');
+          }
+
+          renderPagination();
+        };
+
+        const renderPagination = () => {
+          const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
+          const paginationUI = document.querySelector('.pagination');
+          let paginationHTML = '';
+
+          if (currentPage > 1) {
+            paginationHTML += `<a href="#" class="prev" onclick="changePage(${currentPage - 1
+              })"><i class="icon-caret-left"></i></a>`;
+          }
+
+          for (let i = 1; i <= totalPages; i++) {
+            paginationHTML += `<a href="#" class="${i === currentPage ? 'active' : ''
+              }" onclick="changePage(${i})">${i}</a>`;
+          }
+
+          if (currentPage < totalPages) {
+            paginationHTML += `<a href="#" class="next" onclick="changePage(${currentPage + 1
+              })"><i class="icon-caret-right"></i></a>`;
+          }
+
+          paginationUI.innerHTML = paginationHTML;
+        };
+
+        const changePage = (page) => {
+          currentPage = page;
+          renderEventList();
+        };
+
+        const searchEvents = (query) => {
+          filteredEvents = events.filter((event) =>
+            event.name.toLowerCase().includes(query.toLowerCase()),
+          );
+          currentPage = 1;
+          renderEventList();
+        };
+
+        const sortEvents = (order) => {
+          filteredEvents.sort((a, b) => {
+            return order === 'Latest'
+              ? new Date(b.createdAt) - new Date(a.createdAt)
+              : new Date(a.createdAt) - new Date(b.createdAt);
+          });
+          currentPage = 1;
+          renderEventList();
+        };
+
+        document.querySelector('.search-bar').addEventListener('input', (e) => {
+          searchEvents(e.target.value);
+        });
+
+        document
+          .querySelector('.category-filter')
+          .addEventListener('change', (e) => {
+            sortEvents(e.target.value);
+          });
+
+        const deleteEvent = async (eventId) => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/event/${eventId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message);
+              fetchEventData(); // Reload data after deletion
+            } else {
+              alert('Fail to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        };
+
+        const addEvent = async () => {
+          try {
+            // Create a new FormData object from the form
+            const formData = new FormData();
+
+            const name = document.getElementById('product-name').value.trim();
+            const description = document
+              .getElementById('product-description')
+              .value.trim();
+            const eventUrl = document.getElementById('product-image').files[0];
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            // Optionally, manually append or modify FormData if needed
+            formData.append('name', name);
+            formData.append('description', description);
+            formData.append('defac', window.localStorage.getItem('defac'));
+            formData.append('eventUrl', eventUrl);
+            formData.append('startDate', new Date(startDate));
+            formData.append('endDate', new Date(endDate));
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'POST',
+              headers: myHeaders,
+              body: formData,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/event`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message)
+              fetchEventData();
+              $('#myModal-food-item').modal('hide');
+            } else {
+              alert('Fail to add defac: ' + result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        // Listen for click events on the document
+        document.addEventListener('click', function (event) {
+          // Check if the clicked element is the edit button that triggers the modal
+          if (event.target.closest('.btn[data-target="#myModal-edit-box"]')) {
+            // Get the menu ID from the button's data-id attribute
+            const eventId = event.target
+              .closest('button')
+              .getAttribute('data-id');
+            // Assuming you have an array called menuData that stores the menu items
+            // Find the corresponding menu item object from the menuData array
+            const eventItemToEdit = events.find(
+              (eventItem) => eventItem._id === eventId,
+            );
+
+            if (eventItemToEdit) {
+              // Populate the modal form with the menu item details
+              document.getElementById('edit-product-name').value =
+                eventItemToEdit.name;
+              document.getElementById('edit-product-description').value =
+                eventItemToEdit.description;
+              document.getElementById('edit-start-date').value =
+                eventItemToEdit.startDate;
+              document.getElementById('edit-end-date').value =
+                eventItemToEdit.endDate;
+
+              // If you want to show the current image, update the image source
+              const imageElement = document.querySelector(
+                '#myModal-edit-box img',
+              );
+              if (imageElement) {
+                imageElement.src = eventItemToEdit.eventUrl; // Assuming 'menuUrl' contains the image URL
+              }
+              selectedEventUrl = eventItemToEdit.eventUrl;
+
+              // Store the menu ID in a hidden field or attribute for use when saving changes
+              document
+                .getElementById('edit-product-form')
+                .setAttribute('data-id', eventId);
+            }
+          }
+        });
+
+        document
+          .getElementById('edit-product-form')
+          .addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const formData = new FormData();
+
+            // Fetch input values from the form
+            const formElement = document.getElementById('edit-product-form');
+
+            // Retrieve the eventId from the data-id attribute
+            const eventId = formElement.getAttribute('data-id');
+            const name = document.getElementById('edit-product-name').value;
+            const description = document.getElementById(
+              'edit-product-description',
+            ).value;
+            const startDate = document.getElementById('edit-start-date').value;
+            const endDate = document.getElementById('edit-end-date').value;
+            const fileInput = document.getElementById('edit-product-image');
+
+            formData.append('name', name);
+            formData.append('defac', window.localStorage.getItem('defac')); // Replace with appropriate ID
+            if (fileInput.files[0]) {
+              formData.append('eventUrl', fileInput.files[0]); // Only append if a file is selected
+            }
+            formData.append('_id', eventId);
+            formData.append('description', description);
+            formData.append('startDate', startDate);
+            formData.append('endDate', endDate);
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'PATCH',
+              headers: myHeaders,
+              body: formData,
+              redirect: 'follow',
+            };
+
+            fetch(`${serverUrl}/api/event`, requestOptions)
+              .then((response) => response.json())
+              .then((result) => {
+                if (result?.statusCode === '10000') {
+                  alert('Event updated successfully!');
+                  // location.reload();
+                  fetchEventData(); // Refresh the event list
+                  $('#myModal-edit-box').modal('hide'); // Close the modal
+                } else {
+                  alert('Failed to update the event: ' + result.message);
+                }
+              })
+              .catch((error) => console.error('Error:', error));
+          });
+
+        const formatDate = (dateString) => {
+          const date = new Date(dateString);
+          const monthNames = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+          ];
+
+          const year = date.getUTCFullYear();
+          const monthIndex = date.getUTCMonth();
+          const day = date.getUTCDate();
+
+          return `${day} ${monthNames[monthIndex]}, ${year}`;
+        };
+
+        // display selected event image
+        jQuery('input#product-image').on('change', function () {
+          if (this.files && this.files[0]) {
+            let image = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              jQuery('#product-photo').attr('src', e.target.result); //img tag id
+              createCloseButton('#product-photo', 'input#product-image');
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+        // display selected event image
+        jQuery('input#edit-product-image').on('change', function () {
+          if (this.files && this.files[0]) {
+            let image = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              jQuery('#edit-product-photo').attr('src', e.target.result); //img tag id
+              createCloseButton('#edit-product-photo', 'input#edit-product-image');
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+
+        // function to remove selected image
+        function createCloseButton(imageSelector, inputSelector) {
+          // Remove existing close button if any
+
+          jQuery(imageSelector).closest('.uploaded-image');
+          var defaulImage = jQuery(imageSelector).attr('ref');
+          // Create close button
+          var closeButton = jQuery('<button class="close-btn">X</button>');
+
+          // Append close button to container
+          jQuery(imageSelector).closest('.uploaded-image').append(closeButton);
+
+          // Attach click event to close button
+          closeButton.on('click', function () {
+            if (defaulImage) {
+              jQuery(imageSelector).attr('src', defaulImage);
+            }
+            jQuery(inputSelector).val('');
+            jQuery(this).remove();
+            if (imageSelector === '#edit-product-photo') {
+              document.getElementById('edit-product-photo').src = selectedEventUrl
+            }
+          });
+        }
+
+      </script>
+</body>
+
+</html>

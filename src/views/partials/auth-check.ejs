@@ -1,0 +1,8 @@
+<script>
+  (function () {
+    const token = localStorage.getItem('accessToken');
+    if (!token) {
+      window.location.href = '/'; // Redirect to home if no token
+    }
+  })();
+</script>

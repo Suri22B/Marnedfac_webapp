@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Defac Lists Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="./assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="./assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="./assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="./assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="./assets/css/aos.css" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="./assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="./assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="./assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="./assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="./assets/css/icomoon.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/soldier-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+    menu bar or navbar here
+    ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div class="slider-item" style="background-image: url(assets/images/defac-banner.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="defac-detail-view user-profile">
+              <img src="assets/images/cmd-2.jpg" alt="logo" id="soldier-image" />
+              <div class="defac-own">
+                <strong>Soldier Profile Management</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- sub banner of the page here  -->
+
+    <section class="soldier-profile">
+      <div class="container" id="soldier-profile"></div>
+    </section>
+
+    <section class="ftco-section soldier-orders">
+      <div class="container">
+        <h2>My Order Lists</h2>
+        <div class="row">
+          <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+            <div class="orders-list" style="overflow: auto hidden;">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>S.N.</th>
+                    <th class="text-left">Food Name</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="order-table">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section soldier-feedback">
+      <div class="container">
+        <div class="sort-container mb-4">
+          <h2>My Feedback</h2>
+          <div class="sort-ll">
+            <label for="sortType">Sort By:</label>
+            <select id="sortType">
+              <option value="latest">Latest</option>
+              <option value="upcoming">Oldest</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+            <div class="feedback-list" style="overflow: auto hidden;">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>S.N.</th>
+                    <th class="text-left">Defac Name</th>
+                    <!-- Defac Name Column -->
+                    <th>Rating</th>
+                    <!-- New Rating Column -->
+                    <th>Feedback</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="feedback-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="pagination justify-content-end">
+          <a href="#" class="prev"><i class="icon-caret-left"></i> </a>
+          <a href="#" class="next"> <i class="icon-caret-right"></i> </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#587440" />
+        </svg>
+      </div>
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+
+      <!-- javascripts cdn here -->
+      <script src="./assets/js/jquery.min.js"></script>
+      <script src="./assets/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="./assets/js/popper.min.js"></script>
+      <script src="./assets/js/bootstrap.min.js"></script>
+      <script src="./assets/js/jquery.easing.1.3.js"></script>
+      <script src="./assets/js/jquery.waypoints.min.js"></script>
+      <script src="./assets/js/jquery.stellar.min.js"></script>
+      <script src="./assets/js/owl.carousel.min.js"></script>
+      <script src="./assets/js/jquery.magnific-popup.min.js"></script>
+      <script src="./assets/js/aos.js"></script>
+      <script src="./assets/js/jquery.animateNumber.min.js"></script>
+      <script src="./assets/js/bootstrap-datepicker.js"></script>
+      <script src="./assets/js/jquery.timepicker.min.js"></script>
+      <script src="./assets/js/scrollax.min.js"></script>
+      <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="./assets/js/google-map.js"></script>
+      <script src="./assets/js/main.js"></script>
+
+      <script>
+        let soldierProfile = {};
+        let feedbackList = [];
+        let currentPage = 1;
+        const itemsPerPage = 6;
+        let defacList = [];
+        let postList = [];
+        let unitList = [];
+        let orderList = [];
+
+        window.onload = () => {
+          fetchProfile();
+          fetchFeedback();
+          fetchDefac();
+          fetchPost();
+          fetchUnit();
+          fetchOrder();
+        };
+
+        const fetchProfile = async () => {
+          try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/profile/my`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result.statusCode === '10000') {
+              soldierProfile = result.data;
+              renderProfile();
+            } else {
+              console.log('Failed to fetched soldier profile!', result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        const renderProfile = () => {
+          const soldierUI = document.getElementById('soldier-profile');
+          soldierUI.innerHTML = `
+        <div class="row">
+        <div class="col-md-8 mb-md-0 mb-4">
+          <h2 class="text-white">Soldier Information :</h2>
+          <form class="soldier-profile">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="full-name">Full Name:</label>
+                <input type="text" class="form-control" id="full-name" name="fullName" value="${soldierProfile?.name}" />
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email" name="email" value="${soldierProfile?.email}" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="contact">Phone Number:</label>
+                <input type="number" class="form-control" id="contact" name="contact" value="${soldierProfile?.contact}" />
+              </div>
+              <div class="form-group col-md-6" id="unit-list">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6" id="post-list">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="rank">Rank:</label>
+                <input type="text" class="form-control" id="rank" name="rank" value="${soldierProfile?.rank}" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6" id="defac-list"></div>
+            </div>
+            <div class="text-left">
+              <div class="user-btn-box">
+                <button type="button" onclick="updateProfile()" class="btn btn-primary">Update Profile</button>
+
+                <button type="button" onclick="confirmDeleteProfile()" class="btn btn-danger ">Delete Profile</button>
+              </div>
+              <div class="user-btn-box">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-auto">
+            <div class="card-body">
+              <div class="profile text-center">
+                <div class="setting-img mb-4">
+                  <div class="avatar-upload">
+                    <div class="avatar-preview">
+                      <div class="uploaded-image d-inline-block pb-2">
+                        <img id="defac-photo" src="${soldierProfile?.profilePicUrl}" alt="${soldierProfile?.name}"
+                          width="100px" height="100px" style="object-fit: cover;" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h6>${soldierProfile?.name}</h6>
+                  <p>${soldierProfile?.post}</p>
+                </div>
+                <div class="row">
+                  <div class="col-xl-4 col-4 border-right">
+                    <div class="text-center">
+                      <p class="mb-0">${soldierProfile?.rank}</p>
+                    </div>
+                  </div>
+                  <div class="col-xl-8 col-8">
+                    <div class="text-center">
+                      <p class="mb-0">${soldierProfile?.unit}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="">
+                  <div class="mb-3 mt-3">
+                    <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="profile-picture"
+                          accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="userProfile" />
+                  </div>
+                </div>
+                <button type="button" onclick="updateProfilePicture()" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+          document.getElementById('soldier-image').src =
+            soldierProfile?.profilePicUrl;
+
+          renderDefacList();
+          renderPostList();
+          renderUnitList();
+        };
+
+        const confirmDeleteProfile = () => {
+          const confirmation = confirm(
+            'Deleting your profile will remove all your information, orders, and feedback. Do you still want to proceed?',
+          );
+
+          if (confirmation) {
+            deleteProfile();
+          }
+        };
+
+        const deleteProfile = async () => {
+          try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+            const requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/profile`,
+              requestOptions,
+            );
+            const result = await response.json();
+
+            if (result.statusCode === '10000') {
+              logoutUser();
+              alert('Profile deleted successfully!');
+            } else {
+              console.log('Failed to delete profile:', result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        };
+
+        const logoutUser = () => {
+          window.localStorage.removeItem('accessToken');
+          window.location.href = '/'; // Redirect to login page or home page
+        };
+
+        const fetchDefac = async () => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/defac`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result.statusCode === '10000') {
+              defacList = result.data.updatedDefacList;
+            } else {
+              console.log('Failed to fetched Defac list!', result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        const renderDefacList = () => {
+          const defacDropdown = document.getElementById('defac-list');
+          defacDropdown.innerHTML = `
+                      <label for="default-defac">Default Defac:</label>
+                      <select class="form-control" id="default-defac" required style="background-color: black !important;">
+                  ${defacList?.map((defac) => {
+            const isSelected =
+              soldierProfile?.defaultDefac._id === defac._id;
+            return `<option value="${defac._id}" ${isSelected ? 'selected' : ''
+              }>${defac.name}</option>`;
+          })}
+                </select>
+                    `;
+        };
+
+        const fetchPost = async () => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(`${serverUrl}/api/post`, requestOptions);
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              postList = result.data;
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        const renderPostList = () => {
+          const postDropdown = document.getElementById('post-list');
+          postDropdown.innerHTML = `
+          <label for="post">Post:</label>
+         <select class="form-control" id="post" required style="background-color: black !important;">
+                  ${postList.map((post) => {
+            const isSelected =
+              soldierProfile?.post.toLowerCase() ===
+              post.name.toLowerCase();
+            return `<option value="${post.name}" ${isSelected ? 'selected' : ''
+              }>${post.name}</option>`;
+          })}
+                </select>`;
+        };
+
+        const fetchUnit = async () => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(`${serverUrl}/api/unit`, requestOptions);
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              unitList = result.data;
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        const renderUnitList = () => {
+          const unitDropdown = document.getElementById('unit-list');
+          unitDropdown.innerHTML = `
+          <label for="unit">Unit:</label>
+         <select class="form-control" id="unit" required style="background-color: black !important;">
+                  ${unitList.map((unit) => {
+            const isSelected =
+              soldierProfile?.unit.toLowerCase() ===
+              unit.name.toLowerCase();
+            return `<option value="${unit.name}"  ${isSelected ? 'selected' : ''
+              }>${unit.name}</option>`;
+          })}
+                </select>`;
+        };
+
+        const updateProfile = async () => {
+          try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+            myHeaders.append('Content-Type', 'application/json');
+
+            const name = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const contact = document.getElementById('contact').value.trim();
+            const rank = document.getElementById('rank').value.trim();
+            const unit = document.getElementById('unit').value;
+            const post = document.getElementById('post').value;
+            const defaultDefac = document.getElementById('default-defac').value;
+
+            const raw = JSON.stringify({
+              name: name,
+              email: email,
+              contact: contact,
+              rank: rank,
+              unit: unit,
+              post: post,
+              defaultDefac: defaultDefac,
+            });
+
+            const requestOptions = {
+              method: 'PUT',
+              body: raw,
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/profile`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result.statusCode === '10000') {
+              alert(result.message);
+              fetchProfile();
+            } else {
+              console.log('Failed to update soldier profile!', result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        const updateProfilePicture = async () => {
+          try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+            const formData = new FormData();
+
+            const profilePicUrl =
+              document.getElementById('profile-picture').files[0];
+
+            formData.append('profilePicUrl', profilePicUrl);
+
+            const requestOptions = {
+              method: 'PUT',
+              body: formData,
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/profile/picture`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result.statusCode === '10000') {
+              alert(result.message);
+              window.location.reload();
+            } else {
+              console.log('Failed to update profile picture!', result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        const fetchOrder = async () => {
+          try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/order/soldier`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result.statusCode === '10000') {
+              orderList = result.data;
+              renderOrderList();
+            } else {
+              console.log('Failed to fetched order list!', result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        const renderOrderList = () => {
+          const orderTable = document.getElementById('order-table');
+
+          if (orderList.length === 0) {
+            // If no orders found, display a message
+            orderTable.innerHTML = `
+      <tr class="text-center">
+        <td colspan="5">No data found</td>
+      </tr>
+    `;
+          } else {
+            // If orders are found, display them
+            orderTable.innerHTML = orderList
+              .map((order, id) => {
+                return `
+          <tr class="text-center">
+            <td class="sno">${id + 1}</td>
+            <td class="product-name">
+              <h3>${order.orderedMenu.name}</h3>
+              <p>${order.orderedMenu.description}</p>
+            </td>
+            <td class="fd-category">
+              <strong>${order.orderedMenu.category}</strong>
+            </td>
+            <td class="order-time">
+              <p>${moment(order.updatedAt).format('MMM D, YYYY h:mm A')}</p>
+            </td>
+            <td class="product-remove text-center">
+              <button type="button" onclick="deleteOrder('${order._id
+                  }')" class="btn btn-primary btn-lg text-white border-gg">
+                <span class="icon-delete"></span>
+              </button>
+            </td>
+          </tr>
+        `;
+              })
+              .join('');
+          }
+        };
+
+        const deleteOrder = async (orderId) => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/order/${orderId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message);
+              window.location.reload();
+            } else {
+              alert('Fail to delete order: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        };
+
+        const fetchFeedback = async () => {
+          try {
+            const soldierId = window.localStorage.getItem('defac');
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/feedback/${soldierId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result.statusCode === '10000') {
+              feedbackList = result.data.feedbackList;
+            } else {
+              console.log('Failed to fetched feedback!', result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+
+          // Initialize Pagination
+          currentPage = 1;
+          renderPagination();
+          displayFeedbacks();
+        };
+
+        const displayFeedbacks = () => {
+          const feedbackTable = document.getElementById('feedback-table');
+          feedbackTable.innerHTML = '';
+
+          // Calculate the starting and ending index of the feedbacks for the current page
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+
+          // Render the feedbacks for the current page
+          const paginatedFeedbacks = feedbackList?.slice(startIndex, endIndex);
+
+          if (paginatedFeedbacks.length === 0) {
+            // If no feedbacks found, display a message
+            feedbackTable.innerHTML = `
+      <tr class="text-center">
+        <td colspan="6">No feedbacks added</td>
+      </tr>
+    `;
+          } else {
+            // If feedbacks are found, display them
+            feedbackTable.innerHTML = paginatedFeedbacks
+              ?.map((feedback, index) => {
+                return `
+          <tr class="text-center">
+            <td class="sno">${startIndex + index + 1}</td>
+            <td class="canteen-name">${feedback.defac.name}</td>
+            <td class="rating">
+              <ul style="display: flex; list-style: none; gap: 6px; margin: 0px; padding: 0px;">
+                <li><i class="icon-star ${feedback.rating >= 1 ? 'text-warning' : ''
+                  }"></i></li>
+                <li><i class="icon-star ${feedback.rating >= 2 ? 'text-warning' : ''
+                  }"></i></li>
+                <li><i class="icon-star ${feedback.rating >= 3 ? 'text-warning' : ''
+                  }"></i></li>
+                <li><i class="icon-star ${feedback.rating >= 4 ? 'text-warning' : ''
+                  }"></i></li>
+                <li><i class="icon-star ${feedback.rating >= 5 ? 'text-warning' : ''
+                  }"></i></li>
+              </ul>
+            </td>
+            <td class="feedback-content">
+              <p class="text-left">${feedback.feedback}</p>
+            </td>
+            <td class="feedback-date">
+              <p>${moment(feedback.updatedAt).format('MMM D, YYYY h:mm A')}</p>
+            </td>
+            <td class="product-remove text-center">
+              <button type="button" onclick="deleteFeedback('${feedback._id
+                  }')" class="btn btn-primary btn-lg text-white border-gg">
+                <span class="icon-delete"></span>
+              </button>
+            </td>
+          </tr>`;
+              })
+              .join('');
+          }
+        };
+
+        function renderPagination() {
+          const totalPages = Math.ceil(feedbackList?.length / itemsPerPage);
+          const paginationUI = document.querySelector('.pagination');
+
+          // Clear existing pagination
+          paginationUI.innerHTML = '';
+
+          // Previous button
+          paginationUI.innerHTML += `<a class="prev" onclick="goToPage(${currentPage - 1
+            })"><i class="icon-caret-left"></i></a>`;
+
+          // Page numbers
+          for (let i = 1; i <= totalPages; i++) {
+            paginationUI.innerHTML += `<a class="${i === currentPage ? 'active' : ''
+              }" onclick="goToPage(${i})">${i}</a>`;
+          }
+
+          // Next button
+          paginationUI.innerHTML += `<a class="next" onclick="goToPage(${currentPage + 1
+            })"><i class="icon-caret-right"></i></a>`;
+        }
+
+        function goToPage(page) {
+          const totalPages = Math.ceil(feedbackList.length / itemsPerPage);
+          if (page < 1 || page > totalPages) {
+            return;
+          }
+          currentPage = page;
+          displayFeedbacks();
+          renderPagination();
+        }
+
+        const deleteFeedback = async (feedbackId) => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/feedback/${feedbackId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message);
+              window.location.reload();
+            } else {
+              alert('Fail to fetch feedback: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        };
+      </script>
+</body>
+
+</html>

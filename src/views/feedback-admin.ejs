@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Defac Feedback Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="./assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="./assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="./assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="./assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="./assets/css/aos.css" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="./assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="./assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="./assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="./assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="./assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="./assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/admin-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+    menu bar or navbar here
+    ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div class="slider-item" style="background-image: url(./assets/images/army2.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Admin Feedback</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="admin-feedback">
+      <div class="container">
+        <div class="sort-container mb-4">
+          <label for="sortType">Sort By:</label>
+          <select id="sortType">
+            <option value="latest">Latest</option>
+            <option value="upcoming">Oldest</option>
+          </select>
+          <!-- <button onclick="sortEvents()">Sort</button> -->
+        </div>
+
+        <div class="list-header-container">
+          <div class="list-header-main">
+            <div class="checkbox-wrap">
+              <label class="next-checkbox list-header-checkbox">
+                <span class="next-checkbox-inner">
+                  <i class="next-icon next-icon-select next-icon-xs"></i>
+                </span>
+                <input type="checkbox" aria-checked="false" value="on" />
+              </label>
+              Select All
+            </div>
+            <div class="list-header-operations">
+              <div class="btn-wrap automation-btn-delete">
+                <span class="lazada lazada-ic-Delete lazada-icon icon icon-delete"></span>
+                <span class="list-header-operation-text">Delete</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="check-box">
+          <div class="row" id="feedback-list">
+            <!-- <div class="feedback-id">
+              <label class="next-checkbox cart-item-checkbox">
+                <span class="next-checkbox-inner">
+                  <i class="next-icon next-icon-select next-icon-xs"></i>
+                </span>
+                <input type="checkbox" aria-checked="false" value="on"
+                  data-spm-anchor-id="a2a0e.cart.0.i2.6c2b6af7uEr0ej">
+              </label>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="pagination justify-content-end">
+          <a href="#" class="prev"><i class="icon-caret-left"></i></a>
+          <!-- Page numbers will be dynamically inserted here -->
+          <a href="#" class="next"><i class="icon-caret-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#587440" />
+        </svg>
+      </div>
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+
+      <!-- javascripts cdn here -->
+      <script src="./assets/js/jquery.min.js"></script>
+      <script src="./assets/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="./assets/js/popper.min.js"></script>
+      <script src="./assets/js/bootstrap.min.js"></script>
+      <script src="./assets/js/jquery.easing.1.3.js"></script>
+      <script src="./assets/js/jquery.waypoints.min.js"></script>
+      <script src="./assets/js/jquery.stellar.min.js"></script>
+      <script src="./assets/js/owl.carousel.min.js"></script>
+      <script src="./assets/js/jquery.magnific-popup.min.js"></script>
+      <script src="./assets/js/aos.js"></script>
+      <script src="./assets/js/jquery.animateNumber.min.js"></script>
+      <script src="./assets/js/bootstrap-datepicker.js"></script>
+      <script src="./assets/js/jquery.timepicker.min.js"></script>
+      <script src="./assets/js/scrollax.min.js"></script>
+      <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="./assets/js/google-map.js"></script>
+      <script src="./assets/js/star-rating.js"></script>
+      <script src="./assets/js/main.js"></script>
+      <script>
+        let feedbacks = [];
+        let currentPage = 1;
+        const itemsPerPage = 6; // Number of feedbacks per page
+
+        window.onload = async function () {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/feedback`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              feedbacks = result.data.feedbackList;
+            } else {
+              alert('Fail to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+
+          // Initialize Pagination
+          renderPagination();
+          displayFeedbacks(currentPage);
+        };
+
+        // Function to display feedbacks based on the current page
+        function displayFeedbacks(page) {
+          const feedbackUI = document.getElementById('feedback-list');
+          feedbackUI.innerHTML = '';
+
+          // Calculate the starting and ending index of the feedbacks for the current page
+          const startIndex = (page - 1) * itemsPerPage;
+          const endIndex = Math.min(startIndex + itemsPerPage, feedbacks.length);
+
+          // Render the feedbacks for the current page
+          const feedbackPage = feedbacks.slice(startIndex, endIndex);
+          feedbackUI.innerHTML = feedbackPage
+            .map((feedback) => {
+              return `
+        <div class="col-md-4">
+          <div class="feedback-list-box">
+            <div class="fdback-id pb-3">
+              <img src="${feedback?.postedBy?.profilePicUrl}" alt="user">
+              <div class="fdback-user-id">
+                <strong>${feedback?.postedBy?.name}</strong>
+                <span class="delete-btn" style="cursor: pointer;">
+                  <i onclick="deleteFeedback('${feedback._id
+                }')" class="icon-delete" id="feedback-button"></i>
+                </span>
+              </div>
+            </div>
+            <div class="fdback-food">
+              <strong>${feedback?.defac?.name}</strong>
+              <ul style="display: flex; list-style: none; gap: 6px; margin: 0px; padding: 0px;">
+                <li><i class="icon-star ${feedback.rating >= 1 ? 'text-warning' : ''
+                }"></i></li>
+                <li><i class="icon-star ${feedback.rating >= 2 ? 'text-warning' : ''
+                }"></i></li>
+                <li><i class="icon-star ${feedback.rating >= 3 ? 'text-warning' : ''
+                }"></i></li>
+                <li><i class="icon-star ${feedback.rating >= 4 ? 'text-warning' : ''
+                }"></i></li>
+                <li><i class="icon-star ${feedback.rating >= 5 ? 'text-warning' : ''
+                }"></i></li>
+              </ul>
+              <p>${feedback.feedback}</p>
+              <span>${formatDate(feedback.updatedAt)}</span>
+            </div>
+          </div>
+        </div>`;
+            })
+            .join('');
+        }
+
+        // Function to render pagination controls
+        function renderPagination() {
+          const pagination = document.querySelector('.pagination');
+          const totalPages = Math.ceil(feedbacks.length / itemsPerPage);
+
+          // Render pagination controls dynamically
+          pagination.innerHTML = '';
+
+          if (currentPage > 1) {
+            pagination.innerHTML += `<a href="#" class="prev" onclick="goToPage(${currentPage - 1
+              })"><i class="icon-caret-left"></i></a>`;
+          }
+
+          for (let i = 1; i <= totalPages; i++) {
+            pagination.innerHTML += `<a href="#" class="${i === currentPage ? 'active' : ''
+              }" onclick="goToPage(${i})">${i}</a>`;
+          }
+
+          if (currentPage < totalPages) {
+            pagination.innerHTML += `<a href="#" class="next" onclick="goToPage(${currentPage + 1
+              })"><i class="icon-caret-right"></i></a>`;
+          }
+        }
+
+        // Function to handle page switching
+        function goToPage(page) {
+          currentPage = page;
+          displayFeedbacks(currentPage);
+          renderPagination();
+        }
+
+        // Function to delete feedback
+        const deleteFeedback = async (feedbackId) => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/feedback/${feedbackId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message);
+              window.location.reload();
+            } else {
+              alert('Fail to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        };
+
+        // Function to format the date
+        const formatDate = (dateString) => {
+          const date = new Date(dateString);
+          const monthNames = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+          ];
+
+          const year = date.getUTCFullYear();
+          const monthIndex = date.getUTCMonth();
+          const day = date.getUTCDate();
+
+          return `${day} ${monthNames[monthIndex]}, ${year}`;
+        };
+      </script>
+</body>
+
+</html>

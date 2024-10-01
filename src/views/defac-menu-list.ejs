@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Defac Access Home Page</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <!-- owl carasoul css -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+    <!-- aos js css -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- swiper css  -->
+    <link
+      rel="stylesheet"
+      href="https://md-aqil.github.io/images/swiper.min.css"
+    />
+
+    <!-- ionicon css -->
+    <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+    <!-- bootstrapdate picker and time picker -->
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <!-- icomoon icon css -->
+    <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+    <!-- star rating -->
+    <link rel="stylesheet" href="assets/css/star-rating.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      .color-circle {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+    </style>
+
+    <%- include('partials/auth-check') %>
+  </head>
+
+  <body>
+    <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+    <%- include('partials/defac-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div
+        class="slider-item"
+        style="background-image: url(assets/images/defac-kitchen.jpg)"
+        data-stellar-background-ratio="0.5"
+      >
+        <div class="overlay"></div>
+        <div class="container">
+          <div
+            class="row slider-text justify-content-center align-items-center"
+          >
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Lists of Orders Management</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="sort-list">
+        <div class="container">
+          <div class="d-flex flex-md-row flex-column" style="justify-content: space-between">
+            <ul class="function-btn">
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#myModal-food-item"
+                >
+                  <i class="icon-add mr-sm-2 text-white d-sm-inline-block d-none"></i> Add Food Items
+                </button>
+                <!-- <button><i class="icon-add mr-2"></i> Add Food Items</button> -->
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#myModal-monthly-menu"
+                >
+                  <i class="icon-add mr-sm-2 text-white d-sm-inline-block d-none"></i> Add Monthly Menu
+                </button>
+                <!-- <button><i class="icon-add mr-2"></i> Add Monthly Menu</button> -->
+              </li>
+              <!-- <li>
+                <button><i class="icon-print mr-2"></i> Prints</button>
+              </li> -->
+            </ul>
+            <ul class="function-btn">
+              <li>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  class="search-bar"
+                  oninput="applyFilters()"
+                />
+              </li>
+              <li style="align-items: center; display: flex">
+                <select class="category-filter" onchange="applyFilters()">
+                  <option value="Categories">All Categories</option>
+                  <option value="breakfast">Breakfast</option>
+                  <option value="lunch">Lunch</option>
+                  <option value="dinner">Dinner</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div class="cart-list">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>S.N.</th>
+                    <th class="text-left">Food Name</th>
+                    <th>Food Image</th>
+                    <th>Category</th>
+                    <th>Color Code</th>
+                    <th>Today's Food</th>
+                    <th>Created Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="menu-list">
+                  <!-- Dynamic content will be inserted here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="pagination justify-content-end">
+          <a href="#" class="prev" onclick="changePage('prev')"
+            ><i class="icon-caret-left"></i
+          ></a>
+          <span id="pagination-numbers"></span>
+          <a href="#" class="next" onclick="changePage('next')"
+            ><i class="icon-caret-right"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- modal for edit food items -->
+
+      <!-- Edit Modal Structure -->
+      <div
+        class="modal fade"
+        id="myModal-edit-box"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Food Item</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="edit-menu-form" enctype="multipart/form-data">
+                <input type="hidden" id="edit-menu-id" />
+                <div class="form-group">
+                  <label for="edit-product-name">Food Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="edit-product-name"
+                    name="productName"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="edit-product-description"
+                    >Food Description:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="edit-product-description"
+                    name="productDescription"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="edit-product-image">Upload Food Photo:</label>
+                    <span class="wpcf7-form-control-wrap" data-name="menuUrl">
+                      <input
+                        size="40"
+                        class="wpcf7-form-control wpcf7-file form-control-file"
+                        id="edit-product-image"
+                        accept=".jpeg,.jpg,.png"
+                        aria-invalid="false"
+                        type="file"
+                        name="menuUrl"
+                      />
+                    </span>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="uploaded-image d-inline-block pb-2">
+                      <img
+                        id="edit-menu-image"
+                        src="assets/images/user.jpg"
+                        ref="assets/images/user.jpg"
+                        alt=""
+                        height="200px"
+                        style="object-fit: cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="edit-food-category">Food Category:</label>
+                  <select
+                    class="form-control"
+                    id="edit-food-category"
+                    name="food-category"
+                  >
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="edit-color-code">Color Code:</label>
+                  <select
+                    class="form-control color-dropdown"
+                    id="edit-color-code"
+                    name="food-color-code"
+                  >
+                    <option value="Red" data-color="red">🔴 Red</option>
+                    <option value="Green" data-color="green">🟢 Green</option>
+                    <option value="Yellow" data-color="yellow">
+                      🟡 Yellow
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                    Save Change
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- modal for edit food items -->
+
+      <!-- Modal for Add Food Items -->
+      <!-- Add Food Item Modal -->
+      <div
+        class="modal fade"
+        id="myModal-food-item"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Add Food Item</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form
+                action="#"
+                class="contact-form"
+                id="product-form"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="product-name">Food Name :</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Food Name"
+                        id="product-name"
+                        name="productName"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="product-description">Food Description :</label>
+                  <textarea
+                    id="product-description"
+                    class="form-control"
+                    placeholder="Food Description"
+                    name="productDescription"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="product-image-add">Upload Food Photo:</label>
+                    <span
+                      class="wpcf7-form-control-wrap"
+                      data-name="product-image-add"
+                    >
+                      <input
+                        size="40"
+                        class="wpcf7-form-control wpcf7-file form-control-file"
+                        id="product-image-add"
+                        accept=".jpeg,.jpg,.png"
+                        aria-invalid="false"
+                        type="file"
+                        name="product-image-add"
+                      />
+                    </span>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="uploaded-image d-inline-block pb-2">
+                      <img
+                        id="product-image"
+                        src="assets/images/user.jpg"
+                        ref="assets/images/user.jpg"
+                        alt=""
+                        height="200px"
+                        style="object-fit: cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="food-category">Food Category :</label>
+                  <select
+                    class="js-example-basic-single form-control"
+                    name="food-category"
+                    id="food-category"
+                  >
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="food-color-code">Color Code:</label>
+                  <select
+                    class="form-control"
+                    id="food-color-code"
+                    name="food-color-code"
+                  >
+                    <option value="Red" data-color="red">🔴 Red</option>
+                    <option value="Green" data-color="green">🟢 Green</option>
+                    <option value="Yellow" data-color="yellow">
+                      🟡 Yellow
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Modal for Add Food Items -->
+
+      <!-- Modal for Add Monthly Menu -->
+      <div
+        class="modal fade"
+        id="myModal-monthly-menu"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel2"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel2">Add Monthly Menu</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="contact-form" id="monthly-menu-form">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="monthly-menu-photo"
+                      >Upload Photo of Monthly Menu:</label
+                    >
+                    <span
+                      class="wpcf7-form-control-wrap"
+                      data-name="monthlyMenuPhoto"
+                    >
+                      <input
+                        size="40"
+                        class="wpcf7-form-control wpcf7-file form-control-file"
+                        id="monthly-menu-photo"
+                        accept=".jpeg,.jpg,.png"
+                        aria-invalid="false"
+                        type="file"
+                        name="monthlyMenuPhoto"
+                      />
+                    </span>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="uploaded-image d-inline-block pb-2">
+                      <img
+                        id="monthly-menu-image"
+                        src="assets/images/user.jpg"
+                        ref="assets/images/user.jpg"
+                        alt=""
+                        height="200px"
+                        style="object-fit: cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button
+                    type="button"
+                    onclick="addMonthlyMenu()"
+                    class="btn btn-primary"
+                  >
+                    Add
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal for Add Monthly Menu -->
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+    <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle
+          class="path-bg"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke="#eeeeee"
+        />
+        <circle
+          class="path"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke-miterlimit="10"
+          stroke="#587440"
+        />
+      </svg>
+    </div>
+    <!-- ======================================
+	   loader
+	   ========================================== -->
+
+    <!-- javascripts cdn here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/jquery.animateNumber.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.timepicker.min.js"></script>
+    <script src="assets/js/scrollax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="assets/js/google-map.js"></script>
+    <script src="assets/js/star-rating.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      let menuData = []; // This will hold the fetched menu data
+      let filteredData = []; // This will hold the filtered menu data
+      let currentPage = 1;
+      let selectedMenuUrl = '';
+      const itemsPerPage = 3; // Number of items to show per page
+
+      // Call the function on page load
+      window.onload = function () {
+        fetchMenuData();
+      };
+
+      // Function to fetch menu data
+      async function fetchMenuData() {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/menu/defac/${window.localStorage.getItem(
+              'defac',
+            )}`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            menuData = result.data.menuList;
+            filteredData = menuData; // Initially, filteredData is the same as menuData
+            applyFilters();
+          } else {
+            console.error('Failed to fetch menu data: ', result.message);
+          }
+        } catch (error) {
+          console.error('Error fetching menu data: ', error);
+        }
+      }
+
+      // Function to apply filters and display data
+      function applyFilters() {
+        const searchQuery = document
+          .querySelector('.search-bar')
+          .value.toLowerCase();
+        const selectedCategory =
+          document.querySelector('.category-filter').value;
+
+        filteredData = menuData.filter((item) => {
+          const matchesSearch = item.name.toLowerCase().includes(searchQuery);
+          const matchesCategory =
+            selectedCategory === 'Categories' ||
+            item.category.toLowerCase() === selectedCategory.toLowerCase();
+
+          return matchesSearch && matchesCategory;
+        });
+
+        currentPage = 1; // Reset to the first page when filters are applied
+        displayMenuList();
+        displayPagination();
+      }
+
+      // Function to display menu items on the current page
+      function displayMenuList() {
+        const menuListElement = document.getElementById('menu-list');
+        menuListElement.innerHTML = ''; // Clear the table body
+
+        if (filteredData.length === 0) {
+          // If no data found, display a message
+          const noDataRow = `
+            <tr class="text-center">
+              <td colspan="7">No data found</td>
+            </tr>
+          `;
+          menuListElement.innerHTML = noDataRow;
+          return; // Exit the function early
+        }
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const pageData = filteredData.slice(startIndex, endIndex);
+
+        pageData.forEach((menuItem, index) => {
+          const isActiveToday = menuItem.isActiveToday ? 'checked' : '';
+          const createDate = new Date(menuItem.createdAt).toLocaleString();
+
+          const row = `
+            <tr class="text-center">
+              <td class="sno">${startIndex + index + 1}</td>
+              <td class="product-name">
+                <h3>${menuItem.name}</h3>
+                <p>${menuItem.description}</p>
+              </td>
+              <td class="image-prod">
+                <div class="img" style="background-image: url(${
+                  menuItem.menuUrl
+                })"></div>
+              </td>
+              <td class="fd-category">
+                <strong>${menuItem.category}</strong>
+              </td>
+              <td class="fd-color-code">
+  ${
+    menuItem?.colorCode
+      ? `<span class="color-circle" style="background-color: ${menuItem.colorCode.toLowerCase()};"></span> ${
+          menuItem.colorCode
+        }`
+      : '-'
+  }
+</td>
+
+              <td class="today-fd">
+                <div class="toggle-switch">
+                  <input type="checkbox" id="toggle${
+                    startIndex + index + 1
+                  }" class="toggle-input" ${isActiveToday} onchange="updateFoodActivity(event.target.checked, '${
+                    menuItem?._id
+                  }')" />
+                  <label for="toggle${
+                    startIndex + index + 1
+                  }" class="toggle-label"></label>
+                </div>
+              </td>
+              <td class="order-time">
+                <p>${createDate}</p>
+              </td>
+              <td class="product-remove">
+                <button type="button" class="btn btn-primary btn-lg text-white border-gg edit-btn" data-id="${
+                  menuItem._id
+                }" data-toggle="modal" data-target="#myModal-edit-box">
+                  <span class="icon-edit"></span>
+                </button>
+                <button type="button" class="btn btn-primary btn-lg text-white border-gg delete-btn" data-id="${
+                  menuItem._id
+                }">
+                <span class="icon-delete"></span>
+              </button>
+              </td>
+            </tr>
+          `;
+
+          menuListElement.innerHTML += row;
+        });
+      }
+
+      async function updateFoodActivity(value, menuId) {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+          myHeaders.append('Content-Type', 'application/json');
+
+          const data = JSON.stringify({
+            id: menuId,
+            isActiveToday: value,
+          });
+
+          const requestOptions = {
+            method: 'PATCH',
+            body: data,
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/menu/active`,
+            requestOptions,
+          );
+          const result = await response.json();
+
+          if (result?.statusCode === '10000') {
+            alert('Menu status chaged successfully!');
+          } else {
+            alert('Failed to change food status: ' + result.message);
+          }
+        } catch (error) {
+          console.error('Error updating food status:', error);
+        }
+      }
+
+      // Function to delete a menu item
+      async function deleteMenuItem(menuId) {
+        try {
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/menu/${menuId}`,
+            requestOptions,
+          );
+          const result = await response.json();
+
+          if (result?.statusCode === '10000') {
+            alert('Menu item deleted successfully!');
+            // Refresh the menu list after deletion
+            fetchMenuData();
+          } else {
+            alert('Failed to delete menu item: ' + result.message);
+          }
+        } catch (error) {
+          console.error('Error deleting menu item:', error);
+        }
+      }
+
+      // Add event listener for delete buttons
+      document
+        .getElementById('menu-list')
+        .addEventListener('click', function (event) {
+          if (event.target.classList.contains('delete-btn')) {
+            const menuId = event.target.getAttribute('data-id');
+            if (confirm('Are you sure you want to delete this item?')) {
+              deleteMenuItem(menuId);
+            }
+          }
+        });
+      // Function to handle pagination
+      function displayPagination() {
+        const totalItems = filteredData.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+        const paginationNumbersElement =
+          document.getElementById('pagination-numbers');
+        paginationNumbersElement.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+          paginationNumbersElement.innerHTML += `
+            <a href="#" class="${
+              i === currentPage ? 'active' : ''
+            }" onclick="goToPage(${i})">${i}</a>
+          `;
+        }
+
+        // Disable previous and next buttons if on the first or last page
+        document.querySelector('.prev').style.visibility =
+          currentPage === 1 ? 'hidden' : 'visible';
+        document.querySelector('.next').style.visibility =
+          currentPage === totalPages ? 'hidden' : 'visible';
+      }
+
+      // Function to change page
+      function changePage(direction) {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+        if (direction === 'prev' && currentPage > 1) {
+          currentPage--;
+        } else if (direction === 'next' && currentPage < totalPages) {
+          currentPage++;
+        }
+
+        displayMenuList();
+        displayPagination();
+      }
+
+      // Function to go to a specific page
+      function goToPage(pageNumber) {
+        currentPage = pageNumber;
+        displayMenuList();
+        displayPagination();
+      }
+
+      document
+        .getElementById('product-form')
+        .addEventListener('submit', function (e) {
+          e.preventDefault(); // Prevent the default form submission
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const form = document.getElementById('product-form');
+          const formData = new FormData(form);
+
+          // Fetch input values from the form and append to FormData
+          const fileInput = document.getElementById('product-image-add');
+
+          formData.append('name', formData.get('productName'));
+          formData.append('description', formData.get('productDescription'));
+          formData.append('category', formData.get('food-category'));
+          formData.append('colorCode', formData.get('food-color-code'));
+          formData.append('defac', window.localStorage.getItem('defac')); // Replace with appropriate ID
+          formData.append('menuUrl', fileInput.files[0]);
+          formData.delete('productName');
+          formData.delete('productDescription');
+          formData.delete('food-category');
+          formData.delete('product-image-add');
+          formData.delete('food-color-code');
+
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formData,
+            redirect: 'follow',
+          };
+
+          fetch(`${serverUrl}/api/menu`, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+              if (result?.statusCode === '10000') {
+                alert('Food item added successfully!');
+
+                // Refresh the menu list
+                fetchMenuData();
+
+                // Close the modal and reset the form
+                $('#myModal-food-item').modal('hide');
+                form.reset();
+              } else {
+                alert('Failed to add the food item: ' + result.message);
+              }
+            })
+            .catch((error) => console.error('Error:', error));
+        });
+
+      // Listen for click events on the document
+      document.addEventListener('click', function (event) {
+        // Check if the clicked element is the edit button that triggers the modal
+        if (event.target.closest('.btn[data-target="#myModal-edit-box"]')) {
+          // Get the menu ID from the button's data-id attribute
+          const menuId = event.target.closest('button').getAttribute('data-id');
+
+          // Assuming you have an array called menuData that stores the menu items
+          // Find the corresponding menu item object from the menuData array
+          const menuItemToEdit = menuData.find(
+            (menuItem) => menuItem._id === menuId,
+          );
+
+          if (menuItemToEdit) {
+            // Populate the modal form with the menu item details
+            document.getElementById('edit-product-name').value =
+              menuItemToEdit.name;
+            document.getElementById('edit-product-description').value =
+              menuItemToEdit.description;
+            document.getElementById('edit-food-category').value =
+              menuItemToEdit.category;
+            document.getElementById('edit-color-code').value =
+              menuItemToEdit.colorCode;
+
+            // If you want to show the current image, update the image source
+            const imageElement = document.querySelector(
+              '#myModal-edit-box img',
+            );
+            if (imageElement) {
+              imageElement.src = menuItemToEdit.menuUrl; // Assuming 'menuUrl' contains the image URL
+            }
+            selectedMenuUrl = menuItemToEdit.menuUrl;
+
+            // Store the menu ID in a hidden field or attribute for use when saving changes
+            document
+              .getElementById('edit-menu-form')
+              .setAttribute('data-id', menuId);
+          }
+        }
+      });
+
+      // edit menu
+      document
+        .getElementById('edit-menu-form')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const formData = new FormData();
+
+          // Fetch input values from the form
+          const formElement = document.getElementById('edit-menu-form');
+
+          // Retrieve the menuId from the data-id attribute
+          const menuId = formElement.getAttribute('data-id');
+          const name = document.getElementById('edit-product-name').value;
+          const description = document.getElementById(
+            'edit-product-description',
+          ).value;
+          const category = document.getElementById('edit-food-category').value;
+          const colorCode = document.getElementById('edit-color-code').value;
+          const fileInput = document.getElementById('edit-product-image');
+
+          formData.append('name', name);
+          formData.append('colorCode', colorCode);
+          formData.append('id', menuId);
+          formData.append('description', description);
+          formData.append('category', category);
+          formData.append('defac', window.localStorage.getItem('defac')); // Replace with appropriate ID
+          if (fileInput.files[0]) {
+            formData.append('menuUrl', fileInput.files[0]); // Only append if a file is selected
+          }
+
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'PATCH',
+            headers: myHeaders,
+            body: formData,
+            redirect: 'follow',
+          };
+
+          fetch(`${serverUrl}/api/menu`, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+              if (result?.statusCode === '10000') {
+                alert('Food item updated successfully!');
+                fetchMenuData(); // Refresh the menu list
+                $('#myModal-edit-box').modal('hide'); // Close the modal
+              } else {
+                alert('Failed to update the food item: ' + result.message);
+              }
+            })
+            .catch((error) => console.error('Error:', error));
+        });
+
+      // add monthly menu
+      const addMonthlyMenu = async () => {
+        try {
+          const formData = new FormData();
+
+          const monthlyMenuUrl =
+            document.getElementById('monthly-menu-photo').files[0];
+          formData.append('defac', window.localStorage.getItem('defac'));
+          formData.append('menuUrl', monthlyMenuUrl);
+
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+
+          const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formData,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/monthly-menu`,
+            requestOptions,
+          );
+          const result = await response.json();
+          if (result?.statusCode === '10000') {
+            alert(result.message);
+            $('#myModal-monthly-menu').modal('hide');
+          } else {
+            alert('Fail to add monthly event: ' + result.message);
+          }
+        } catch (err) {
+          alert(err);
+        }
+      };
+
+      // display selected menu image
+      jQuery('input#product-image-add').on('change', function () {
+        if (this.files && this.files[0]) {
+          let image = this;
+
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            jQuery('#product-image').attr('src', e.target.result); //img tag id
+            createCloseButton('#product-image', 'input#product-image-add');
+          };
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+
+      // display selected monthly menu image
+      jQuery('input#monthly-menu-photo').on('change', function () {
+        if (this.files && this.files[0]) {
+          let image = this;
+
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            jQuery('#monthly-menu-image').attr('src', e.target.result); //img tag id
+            createCloseButton(
+              '#monthly-menu-image',
+              'input#monthly-menu-photo',
+            );
+          };
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+
+      // display selected edit menu image
+      jQuery('input#edit-product-image').on('change', function () {
+        if (this.files && this.files[0]) {
+          let image = this;
+
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            jQuery('#edit-menu-image').attr('src', e.target.result); //img tag id
+            createCloseButton('#edit-menu-image', 'input#edit-product-image');
+          };
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+
+      // function to remove selected image
+      function createCloseButton(imageSelector, inputSelector) {
+        // Remove existing close button if any
+
+        jQuery(imageSelector).closest('.uploaded-image');
+        var defaulImage = jQuery(imageSelector).attr('ref');
+        // Create close button
+        var closeButton = jQuery('<button class="close-btn">X</button>');
+
+        // Append close button to container
+        jQuery(imageSelector).closest('.uploaded-image').append(closeButton);
+
+        // Attach click event to close button
+        closeButton.on('click', function () {
+          if (defaulImage) {
+            jQuery(imageSelector).attr('src', defaulImage);
+          }
+          jQuery(inputSelector).val('');
+          jQuery(this).remove();
+          if (imageSelector === '#edit-menu-image') {
+            document.getElementById('edit-menu-image').src = selectedMenuUrl;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Defac Access Home Page</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <!-- owl carasoul css -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+    <!-- aos js css -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- swiper css  -->
+    <link
+      rel="stylesheet"
+      href="https://md-aqil.github.io/images/swiper.min.css"
+    />
+
+    <!-- ionicon css -->
+    <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+    <!-- bootstrapdate picker and time picker -->
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <!-- icomoon icon css -->
+    <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+    <!-- star rating -->
+    <link rel="stylesheet" href="assets/css/star-rating.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <%- include('partials/auth-check') %>
+  </head>
+  <body>
+    <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+    <%- include('partials/soldier-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div
+        class="slider-item"
+        style="background-image: url(assets/images/defac-kitchen.jpg)"
+        data-stellar-background-ratio="0.5"
+      >
+        <div class="overlay"></div>
+        <div class="container">
+          <div
+            class="row slider-text justify-content-center align-items-center"
+          >
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">List of Orders</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="sort-list">
+        <div class="container">
+          <div class="d-flex" style="justify-content: space-between">
+            <ul class="function-btn">
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#myModal-food-item"
+                >
+                  <i class="icon-add mr-2 text-white"></i> Add Food Items
+                </button>
+                <!-- <button><i class="icon-add mr-2"></i> Add Food Items</button> -->
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#myModal-monthly-menu"
+                >
+                  <i class="icon-add mr-2 text-white"></i> Add Monthly Menu
+                </button>
+                <!-- <button><i class="icon-add mr-2"></i> Add Monthly Menu</button> -->
+              </li>
+              <li>
+                <button><i class="icon-print mr-2"></i> Prints</button>
+              </li>
+            </ul>
+            <ul class="function-btn">
+              <li>
+                <input type="text" placeholder="Search..." class="search-bar" />
+              </li>
+
+              <li style="align-items: center; display: flex">
+                <select class="category-filter">
+                  <option value="Categories">Categories</option>
+                  <option value="breakfast">Breakfast</option>
+                  <option value="lunch">Lunch</option>
+                  <option value="dinner">Dinner</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div class="cart-list">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>Order ID</th>
+                    <th>Name</th>
+                    <th>DOD ID</th>
+                    <th>Unit</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                    <!-- <th>Quantity</th> -->
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center">
+                    <td class="sno">#5552311</td>
+
+                    <td class="name">
+                      <strong>Binu Tamang</strong>
+                    </td>
+
+                    <td class="dod-id">#123-456</td>
+
+                    <td class="user-rank">
+                      <strong>Unit One</strong>
+                    </td>
+
+                    <td class="order-time">
+                      <p>
+                        26 March 2020 <br />
+                        12:42 AM
+                      </p>
+                    </td>
+
+                    <td class="food-status">
+                      <span class="badge bg-primary">Complete</span>
+                    </td>
+
+                    <!-- <td class="quantity">
+                      <div class="input-group mb-3">
+                        <input
+                          type="text"
+                          name="quantity"
+                          class="quantity form-control input-number"
+                          value="1"
+                          min="1"
+                          max="100"
+                        />
+                      </div>
+                    </td> -->
+
+                    <td class="product-remove">
+                      <!-- Button trigger modal -->
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg text-white border-gg"
+                        data-toggle="modal"
+                        data-target="#myModal"
+                      >
+                        <span class="icon-eye"></span>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg text-white border-gg"
+                      >
+                        <span class="icon-close"></span>
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- END TR-->
+
+                  <tr class="text-center">
+                    <td class="sno">#5552311</td>
+
+                    <td class="name">
+                      <strong>Binu Tamang</strong>
+                    </td>
+
+                    <td class="dod-id">#123-456</td>
+
+                    <td class="user-rank">
+                      <strong>Unit Two</strong>
+                    </td>
+
+                    <td class="order-time">
+                      <p>
+                        26 March 2020 <br />
+                        12:42 AM
+                      </p>
+                    </td>
+
+                    <td class="food-status">
+                      <span class="badge bg-warning">Processing</span>
+                    </td>
+
+                    <!-- <td class="quantity">
+                      <div class="input-group mb-3">
+                        <input
+                          type="text"
+                          name="quantity"
+                          class="quantity form-control input-number"
+                          value="1"
+                          min="1"
+                          max="100"
+                        />
+                      </div>
+                    </td> -->
+
+                    <td class="product-remove">
+                      <!-- Button trigger modal -->
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg text-white border-gg"
+                        data-toggle="modal"
+                        data-target="#myModal"
+                      >
+                        <span class="icon-eye"></span>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg text-white border-gg"
+                      >
+                        <span class="icon-close"></span>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr class="text-center">
+                    <td class="sno">#5552311</td>
+
+                    <td class="name">
+                      <strong>Binu Tamang</strong>
+                    </td>
+
+                    <td class="dod-id">#123-456</td>
+
+                    <td class="user-rank">
+                      <strong>Unit Three</strong>
+                    </td>
+
+                    <td class="order-time">
+                      <p>
+                        26 March 2020 <br />
+                        12:42 AM
+                      </p>
+                    </td>
+
+                    <td class="food-status">
+                      <span class="badge bg-primary">Complete</span>
+                    </td>
+
+                    <!-- <td class="quantity">
+                      <div class="input-group mb-3">
+                        <input
+                          type="text"
+                          name="quantity"
+                          class="quantity form-control input-number"
+                          value="1"
+                          min="1"
+                          max="100"
+                        />
+                      </div>
+                    </td> -->
+
+                    <td class="product-remove">
+                      <!-- Button trigger modal -->
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg text-white border-gg"
+                        data-toggle="modal"
+                        data-target="#myModal"
+                      >
+                        <span class="icon-eye"></span>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg text-white border-gg"
+                      >
+                        <span class="icon-close"></span>
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- END TR-->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Order #1</h4>
+            <span class="status-on ml-5"> Complete</span>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="user-detail-modal">
+              <strong>User Details</strong>
+              <ul class="user-dd-ul">
+                <li>Name: Binu Tamang</li>
+                <li>DOD ID: #1171</li>
+                <li>Rank: Captain</li>
+                <li>Unit: Unit One</li>
+              </ul>
+            </div>
+
+            <div class="order-items-model">
+              <div class="d-box-print">
+                <strong class="p-0">Order Items</strong>
+                <button class="text-white">
+                  <i class="icon-print mr-2"></i> Print KOT
+                </button>
+              </div>
+              <!-- Table for Food Name and Quantity -->
+              <div class="cart-list">
+                <table class="table cart-tbl">
+                  <thead class="thead-primary">
+                    <tr class="text-center">
+                      <th>Food Name</th>
+                      <th>Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="text-center">
+                      <td>Pancakes</td>
+                      <td>10</td>
+                    </tr>
+                    <tr class="text-center">
+                      <td>Salad</td>
+                      <td>5</td>
+                    </tr>
+                    <tr class="text-center">
+                      <td>Chicken Curry</td>
+                      <td>7</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="function-btn-save">
+              <div class="form-group m-0">
+                <label for="status">Select Status:</label>
+                <select id="status" name="status">
+                  <option value="complete">Complete</option>
+                  <option value="processing">Processing</option>
+                </select>
+              </div>
+              <button
+                class="btn btn-primary btn-lg text-white border-gg"
+                type="submit"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Modal for Add Food Items -->
+      <div
+        class="modal fade"
+        id="myModal-food-item"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Add Food Item</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form
+                action="#"
+                class="contact-form"
+                id="product-form"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="product-name">Food Name :</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Food Name"
+                        id="product-name"
+                        name="productName"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="product-description">Food Description :</label>
+                  <textarea
+                    id="product-description"
+                    class="form-control"
+                    placeholder="Food Description"
+                    name="productDescription"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="product-image">Upload Food Photo:</label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="product-image"
+                        name="productImage"
+                        accept="image/*"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="food-category">Food Category :</label>
+                  <select
+                    multiple
+                    class="js-example-basic-single form-control"
+                    name="food-category"
+                    id="food-category"
+                  >
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal for Add Food Items -->
+
+      <!-- Modal for Add Monthly Menu -->
+      <div
+        class="modal fade"
+        id="myModal-monthly-menu"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel2"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel2">Add Monthly Menu</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form
+                action="#"
+                class="contact-form"
+                id="monthly-menu-form"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <div class="form-group">
+                  <label for="monthly-menu-photo"
+                    >Upload Photo of Monthly Menu:</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="monthly-menu-photo"
+                    name="monthlyMenuPhoto"
+                    accept="image/*"
+                  />
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal for Add Monthly Menu -->
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+    <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle
+          class="path-bg"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke="#eeeeee"
+        />
+        <circle
+          class="path"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke-miterlimit="10"
+          stroke="#587440"
+        />
+      </svg>
+    </div>
+    <!-- ======================================
+	   loader
+	   ========================================== -->
+
+    <!-- javascripts cdn here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/jquery.animateNumber.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.timepicker.min.js"></script>
+    <script src="assets/js/scrollax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="assets/js/google-map.js"></script>
+    <script src="assets/js/star-rating.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

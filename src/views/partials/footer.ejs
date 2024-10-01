@@ -1,0 +1,132 @@
+<footer class="ftco-footer ftco-section img">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">About Us</h2>
+          <p>
+            Welcome to our Defac, where we prioritize delicious meals, and
+            friendly service for our military personnel and their families.
+          </p>
+          <ul
+            class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
+          >
+            <li class="ftco-animate">
+              <a href="#"><span class="icon-twitter"></span></a>
+            </li>
+            <li class="ftco-animate">
+              <a href="#"><span class="icon-facebook"></span></a>
+            </li>
+            <li class="ftco-animate">
+              <a href="#"><span class="icon-instagram"></span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Upcoming Events</h2>
+          <div id="events-container">
+            <!-- Events will be loaded here -->
+            <p>Loading events...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6">
+        <div class="ftco-footer-widget mb-4 ml-md-4">
+          <h2 class="ftco-heading-2">Our Menu</h2>
+          <ul class="list-unstyled">
+            <li><a href="#" class="py-2 d-block">Breakfast</a></li>
+            <li><a href="#" class="py-2 d-block">Lunch</a></li>
+            <li><a href="#" class="py-2 d-block">Dinner</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Have a Questions?</h2>
+          <div class="block-23 mb-3">
+            <ul>
+              <li>
+                <span class="icon icon-map-marker"></span
+                ><span class="text">Fort Stewart, GA, USA</span>
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon icon-phone"></span
+                  ><span class="text">+0 123 456 789</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon icon-envelope"></span
+                  ><span class="text">info&#64;defacweb.com</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center"></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Fetch upcoming events from the API
+    const apiKey = '<%= apiKey %>';
+    const serverUrl = '<%= serverUrl %>';
+    const myHeaders = new Headers();
+    myHeaders.append('x-api-key', apiKey); // Use the apiKey here
+
+    const requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+    fetch(`${serverUrl}/api/event/upcoming-events`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        const eventsContainer = document.getElementById('events-container');
+        eventsContainer.innerHTML = ''; // Clear the loading text
+        if (data.statusCode === '10000' && data.data.eventList.length > 0) {
+          data.data.eventList.slice(0, 3).forEach((event) => {
+            const eventHtml = `
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(${
+                  event.eventUrl
+                });background-size: contain; background-position: center; background-repeat: no-repeat;"></a>
+                <div class="text">
+                  <h3 class="heading">
+                    <span>${event.name}</a>
+                  </h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> ${new Date(
+                      event.startDate,
+                    ).toDateString()}</a></div>
+                    <div><a href="#"><span class="icon-person"></span> ${
+                      event.defac.name
+                    }</a></div>
+                  </div>
+                </div>
+              </div>
+            `;
+            eventsContainer.innerHTML += eventHtml;
+          });
+        } else {
+          eventsContainer.innerHTML = '<p>No upcoming events</p>';
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching events:', error);
+        document.getElementById('events-container').innerHTML =
+          '<p>Failed to load events</p>';
+      });
+  });
+</script>

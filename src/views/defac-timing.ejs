@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Defac Access Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="assets/css/aos.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/defac-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div class="slider-item" style="background-image: url(assets/images/defac-kitchen.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Defac Food's Type Management</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="sort-list">
+        <div class="container">
+          <div class="d-flex" style="justify-content: space-between">
+            <ul class="function-btn">
+              <li>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-food-item">
+                  <i class="icon-add mr-2 text-white"></i> Add Food Category
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div class="cart-list">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>S.N.</th>
+                    <th class="text-left">Category</th>
+                    <th>Opening Hour</th>
+                    <th>Closing Hour</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="category-list">
+                  <!-- END TR-->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination justify-content-end"></div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- modal for edit food items -->
+      <div class="modal fade" id="myModal-edit-box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Food Category</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="contact-form" id="edit-category-form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="edit-food-category">Food Category :</label>
+                      <input type="text" class="form-control" placeholder="Food Category" required
+                        id="edit-food-category" style="border: 1px solid white !important; padding-left: 4px;"
+                        disabled />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- Opening Hours -->
+                  <div class="col-sm-6 col-6">
+                    <div class="form-group">
+                      <label for="edit-openingHour"> Opening Hours:</label>
+                      <div class="input-wrap">
+                        <input type="text" class="form-control appointment_time ui-timepicker-input"
+                          placeholder="Opening Time" autocomplete="off" id="edit-openingHour" name="openingHour"
+                          required style="border: 1px solid white !important; padding-left: 4px;" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Closing Hours -->
+                  <div class="col-sm-6 col-6">
+                    <div class="form-group">
+                      <label for="edit-closingHour"> Closing Hours:</label>
+                      <div class="input-wrap">
+                        <input type="text" class="form-control appointment_time ui-timepicker-input"
+                          placeholder="Closing Time" autocomplete="off" id="edit-closingHour" name="closingHour"
+                          required style="border: 1px solid white !important; padding-left: 4px;" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- modal for edit food items -->
+
+      <!-- Modal for Add Event  -->
+      <div class="modal fade" id="myModal-food-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Add Food Category</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="contact-form" id="product-form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="food-category">Food Category :</label>
+                      <select class="form-control" name="food-category" id="food-category"
+                        style="background-color: #334324 !important;">
+                        <option value="" selected disabled>Select Category</option>
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- Opening Hours -->
+                  <div class="col-sm-6 col-6">
+                    <div class="form-group">
+                      <label for="openingHour"> Opening Hours:</label>
+                      <div class="input-wrap">
+                        <input type="text" class="form-control appointment_time ui-timepicker-input"
+                          placeholder="Opening Time" autocomplete="off" id="openingHour" name="openingHour" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Closing Hours -->
+                  <div class="col-sm-6 col-6">
+                    <div class="form-group">
+                      <label for="closingHour"> Closing Hours:</label>
+                      <div class="input-wrap">
+                        <input type="text" class="form-control appointment_time ui-timepicker-input"
+                          placeholder="Closing Time" autocomplete="off" id="closingHour" name="closingHour" required />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button onclick="addFoodType()" type="button" class="btn btn-primary">
+                    Add
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal for Add events -->
+
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#587440" />
+        </svg>
+      </div>
+      <!-- ======================================
+	   loader
+	   ========================================== -->
+
+      <!-- javascripts cdn here -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.easing.1.3.js"></script>
+      <script src="assets/js/jquery.waypoints.min.js"></script>
+      <script src="assets/js/jquery.stellar.min.js"></script>
+      <script src="assets/js/owl.carousel.min.js"></script>
+      <script src="assets/js/jquery.magnific-popup.min.js"></script>
+      <script src="assets/js/aos.js"></script>
+      <script src="assets/js/jquery.animateNumber.min.js"></script>
+      <script src="assets/js/bootstrap-datepicker.js"></script>
+      <script src="assets/js/jquery.timepicker.min.js"></script>
+      <script src="assets/js/scrollax.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+      <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="assets/js/google-map.js"></script>
+      <script src="assets/js/star-rating.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script>
+        let foodCategory = [];
+
+        window.onload = function () {
+          fetchFoodCategory();
+        };
+
+        const fetchFoodCategory = async () => {
+          try {
+            const accessToken = window.localStorage.getItem('accessToken')
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/timing/defac`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              foodCategory = result.data;
+              renderFoodCategory();
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        };
+
+        const renderFoodCategory = () => {
+          const categoryList = document.getElementById('category-list');
+
+          if (foodCategory.length === 0) {
+            categoryList.innerHTML = `
+      <tr>
+        <td colspan="5" class="text-center">No category found. Click Add food category to add.</td>
+      </tr>`;
+          } else {
+            categoryList.innerHTML = foodCategory
+              .map((food, id) => {
+                return `<tr class="text-center">
+                          <td class="sno">${id + 1}</td>
+                          <td class="product-name">
+                              <h3>${food.foodType}</h3>
+                          </td>
+                          </td>
+                          <td class="order-time">
+                              <p>${food.openingHour}</p>
+                          </td>
+                          <td class="order-time">
+                              <p>${food.closingHour}</p>
+                          </td>
+                          <td class="product-remove">
+                              <button type="button" class="btn btn-primary btn-lg text-white border-gg" data-toggle="modal"
+                                  data-target="#myModal-edit-box" data-id="${food._id
+                  }">
+                                  <span class="icon-edit"></span>
+                              </button>
+                              <button onclick="deleteCategory('${food._id
+                  }')" type="button" class="btn btn-primary btn-lg text-white border-gg">
+                                  <span class="icon-delete"></span>
+                              </button>
+                          </td>
+                      </tr>`;
+              })
+              .join('');
+          }
+        };
+
+
+        const deleteCategory = async (categoryId) => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/timing/${categoryId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message);
+              fetchFoodCategory(); // Reload data after deletion
+            } else {
+              alert('Fail to delete category: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        };
+
+        const addFoodType = async () => {
+          try {
+            const foodType = document.getElementById('food-category').value;
+            const openingHour = document.getElementById('openingHour').value;
+            const closingHour = document.getElementById('closingHour').value;
+
+            const accessToken = window.localStorage.getItem('accessToken')
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Content-Type', 'application/json');
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+
+            const requestOptions = {
+              method: 'POST',
+              headers: myHeaders,
+              body: JSON.stringify({
+                foodType: foodType,
+                openingHour: openingHour,
+                closingHour: closingHour
+              }),
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/timing`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message)
+              fetchFoodCategory();
+              $('#myModal-food-item').modal('hide');
+            } else {
+              alert('Fail to add category: ' + result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        // Listen for click events on the document
+        document.addEventListener('click', function (event) {
+          // Check if the clicked element is the edit button that triggers the modal
+          if (event.target.closest('.btn[data-target="#myModal-edit-box"]')) {
+            // Get the menu ID from the button's data-id attribute
+            const categoryId = event.target
+              .closest('button')
+              .getAttribute('data-id');
+            // Assuming you have an array called menuData that stores the menu items
+            // Find the corresponding menu item object from the menuData array
+            const categoryToEdit = foodCategory.find(
+              (categoryItem) => categoryItem._id === categoryId,
+            );
+
+            if (categoryToEdit) {
+              // Populate the modal form with the menu item details
+              document.getElementById('edit-food-category').value =
+                categoryToEdit.foodType;
+              document.getElementById('edit-openingHour').value =
+                categoryToEdit.openingHour;
+              document.getElementById('edit-closingHour').value =
+                categoryToEdit.closingHour;
+
+
+              // Store the menu ID in a hidden field or attribute for use when saving changes
+              document
+                .getElementById('edit-category-form')
+                .setAttribute('data-id', categoryId);
+            }
+          }
+        });
+
+        document
+          .getElementById('edit-category-form')
+          .addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            // Fetch input values from the form
+            const formElement = document.getElementById('edit-category-form');
+
+            // Retrieve the eventId from the data-id attribute
+            const categoryId = formElement.getAttribute('data-id');
+
+            const foodType = document.getElementById('edit-food-category').value;
+            const openingHour = document.getElementById('edit-openingHour').value;
+            const closingHour = document.getElementById('edit-closingHour').value;
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Content-Type', 'application/json');
+
+            const requestOptions = {
+              method: 'PATCH',
+              headers: myHeaders,
+              body: JSON.stringify({
+                id: categoryId,
+                foodType: foodType,
+                openingHour: openingHour,
+                closingHour: closingHour
+              }),
+              redirect: 'follow',
+            };
+
+            fetch(`${serverUrl}/api/timing`, requestOptions)
+              .then((response) => response.json())
+              .then((result) => {
+                if (result?.statusCode === '10000') {
+                  alert('Category updated successfully!');
+                  // location.reload();
+                  fetchFoodCategory(); // Refresh the event list
+                  $('#myModal-edit-box').modal('hide'); // Close the modal
+                } else {
+                  alert('Failed to update the category: ' + result.message);
+                }
+              })
+              .catch((error) => console.error('Error:', error));
+          });
+
+        const formatDate = (dateString) => {
+          const date = new Date(dateString);
+          const monthNames = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+          ];
+
+          const year = date.getUTCFullYear();
+          const monthIndex = date.getUTCMonth();
+          const day = date.getUTCDate();
+
+          return `${day} ${monthNames[monthIndex]}, ${year}`;
+        };
+
+      </script>
+</body>
+
+</html>

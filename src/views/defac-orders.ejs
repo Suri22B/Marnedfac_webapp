@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Defac Access Home Page</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <!-- owl carasoul css -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <!-- magnific-popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+    <!-- aos js css -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- swiper css  -->
+    <link
+      rel="stylesheet"
+      href="https://md-aqil.github.io/images/swiper.min.css"
+    />
+
+    <!-- ionicon css -->
+    <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+    <!-- bootstrapdate picker and time picker -->
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <!-- icomoon icon css -->
+    <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+    <!-- star rating -->
+    <link rel="stylesheet" href="assets/css/star-rating.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <%- include('partials/auth-check') %>
+  </head>
+
+  <body>
+    <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+    <%- include('partials/defac-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div
+        class="slider-item"
+        style="background-image: url(assets/images/defac-kitchen.jpg)"
+        data-stellar-background-ratio="0.5"
+      >
+        <div class="overlay"></div>
+        <div class="container">
+          <div
+            class="row slider-text justify-content-center align-items-center"
+          >
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">List of Orders</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="sort-list">
+        <div class="container">
+          <div class="d-flex" style="justify-content: space-between">
+            <ul class="function-btn">
+              <li></li>
+              <li></li>
+            </ul>
+            <ul class="function-btn">
+              <li>
+                <input type="text" placeholder="Search..." class="search-bar" />
+              </li>
+              <li style="align-items: center; display: flex">
+                <select class="category-filter">
+                  <option value="">Order Status</option>
+                  <option value="PROCESSING">Processing</option>
+                  <option value="COMPLETE">Complete</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div class="cart-list">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>Order ID</th>
+                    <th>Name</th>
+                    <th>Pickup Time</th>
+                    <th>Unit</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-table-body">
+                  <!-- Dynamic content will be injected here -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination controls -->
+            <div id="pagination" class="pagination-controls">
+              <a href="#" class="prev"><i class="icon-caret-left"></i></a>
+              <!-- Page numbers will be dynamically added here -->
+              <a href="#" class="next"><i class="icon-caret-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Order #1</h4>
+            <span class="status-on ml-5"> Complete</span>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="user-detail-modal">
+              <strong>User Details</strong>
+              <ul class="user-dd-ul">
+                <li>Name: Binu Tamang</li>
+                <li>DOD ID: #1171</li>
+                <li>Rank: Captain</li>
+                <li>Unit: Unit One</li>
+              </ul>
+            </div>
+
+            <div class="order-items-model">
+              <div class="d-box-print">
+                <strong class="p-0">Order Items</strong>
+                <button class="text-white print-btn">
+                  <i class="icon-print mr-2"></i> Print KOT
+                </button>
+              </div>
+              <!-- Table for Food Name and Quantity -->
+              <div class="cart-list">
+                <table class="table cart-tbl">
+                  <thead class="thead-primary">
+                    <tr class="text-center">
+                      <th>Food Name</th>
+                      <th>Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="text-center">
+                      <td>Pancakes</td>
+                      <td>10</td>
+                    </tr>
+                    <tr class="text-center">
+                      <td>Salad</td>
+                      <td>5</td>
+                    </tr>
+                    <tr class="text-center">
+                      <td>Chicken Curry</td>
+                      <td>7</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="function-btn-save">
+              <div class="form-group m-0">
+                <label for="status">Select Status:</label>
+                <select id="status" name="status">
+                  <option value="COMPLETE">Complete</option>
+                  <option value="PROCESSING">Processing</option>
+                </select>
+              </div>
+              <button
+                class="btn btn-primary btn-lg text-white border-gg"
+                type="button"
+                id="save-status"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Modal for Add Food Items -->
+      <div
+        class="modal fade"
+        id="myModal-food-item"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Add Food Item</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form
+                action="#"
+                class="contact-form"
+                id="product-form"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="product-name">Food Name :</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Food Name"
+                        id="product-name"
+                        name="productName"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="product-description">Food Description :</label>
+                  <textarea
+                    id="product-description"
+                    class="form-control"
+                    placeholder="Food Description"
+                    name="productDescription"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="product-image">Upload Food Photo:</label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="product-image"
+                        name="productImage"
+                        accept="image/*"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="food-category">Food Category :</label>
+                  <select
+                    multiple
+                    class="js-example-basic-single form-control"
+                    name="food-category"
+                    id="food-category"
+                  >
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal for Add Food Items -->
+      <%- include('utils/loader') %>
+      <!-- Modal for Add Monthly Menu -->
+      <div
+        class="modal fade"
+        id="myModal-monthly-menu"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel2"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel2">Add Monthly Menu</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form
+                action="#"
+                class="contact-form"
+                id="monthly-menu-form"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <div class="form-group">
+                  <label for="monthly-menu-photo"
+                    >Upload Photo of Monthly Menu:</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="monthly-menu-photo"
+                    name="monthlyMenuPhoto"
+                    accept="image/*"
+                  />
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal for Add Monthly Menu -->
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+    <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+    <!-- ======================================
+	 loader
+	 ========================================== -->
+    <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
+        <circle
+          class="path-bg"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke="#eeeeee"
+        />
+        <circle
+          class="path"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke-miterlimit="10"
+          stroke="#587440"
+        />
+      </svg>
+    </div>
+    <!-- ======================================
+	   loader
+	   ========================================== -->
+
+    <!-- javascripts cdn here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/jquery.animateNumber.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.timepicker.min.js"></script>
+    <script src="assets/js/scrollax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="assets/js/google-map.js"></script>
+    <script src="assets/js/star-rating.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <script>
+      let currentPage = 1;
+      const pageSize = 10; // Number of orders per page
+      let allOrders = []; // Store all fetched orders here
+
+      async function fetchOrders(page = 1) {
+        try {
+          const accessToken = window.localStorage.getItem('accessToken');
+
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+          myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+          const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/order/defacs`,
+            requestOptions,
+          );
+          const data = await response.json();
+
+          if (data.statusCode === '10000') {
+            // Group orders by userName
+            allOrders = data.data.map((soldier) => ({
+              userName: soldier.userName,
+              unit: soldier.unit,
+              defac: soldier.orders[0].defac.name, // Use the defac name from the first order
+              orderId: soldier.orders[0].orderId, // Use the orderId from the first order
+              pickupTime: soldier.orders[0].pickupTime, // Use the pickupTime from the first order
+              createdAt: soldier.orders[0].createdAt, // Use the createdAt from the first order
+              status: soldier.orders[0].orderStatus, // Use the status from the first order
+              orders: soldier.orders, // Store all orders for the modal
+            }));
+
+            // Render orders with current filters
+            renderOrders(allOrders, page);
+            updatePagination(Math.ceil(allOrders.length / pageSize), page);
+          } else {
+            console.error('Failed to fetch orders');
+          }
+        } catch (error) {
+          console.error('Error fetching orders:', error);
+        }
+      }
+
+      function renderOrders(orders, page = 1) {
+        const searchQuery = document
+          .querySelector('.search-bar')
+          .value.toLowerCase();
+        const selectedCategory =
+          document.querySelector('.category-filter').value;
+
+        // Filter orders based on search query and selected category
+        const filteredOrders = orders.filter((order) => {
+          const matchesCategory =
+            !selectedCategory || order.status === selectedCategory;
+          const matchesSearch =
+            !searchQuery ||
+            order.userName.toLowerCase().includes(searchQuery) ||
+            order.orders.some((o) =>
+              o.orderedMenu.name.toLowerCase().includes(searchQuery),
+            );
+
+          return matchesCategory && matchesSearch;
+        });
+
+        // Paginate filtered orders
+        const paginatedOrders = filteredOrders.slice(
+          (page - 1) * pageSize,
+          page * pageSize,
+        );
+
+        const tableBody = document.getElementById('orders-table-body');
+        tableBody.innerHTML = '';
+
+        if (paginatedOrders.length === 0) {
+          tableBody.innerHTML =
+            '<tr><td colspan="7" class="text-center">No orders found</td></tr>';
+          return;
+        }
+
+        paginatedOrders.forEach((order) => {
+          const row = `
+            <tr class="text-center">
+              <td class="sno">${order.orderId}</td>
+              <td class="name"><strong>${order.userName}</strong></td>
+              <td class="pickup-time">${order.pickupTime}</td>
+              <td class="user-rank"><strong>${order.unit}</strong></td>
+              <td class="order-time">
+                <p>${new Date(
+                  order.createdAt,
+                ).toLocaleDateString()}<br />${new Date(
+                  order.createdAt,
+                ).toLocaleTimeString()}</p>
+              </td>
+              <td class="food-status"><span class="badge ${
+                order.status === 'COMPLETE' ? 'bg-primary' : 'bg-warning'
+              }">${order.status}</span></td>
+              <td class="product-remove">
+                <button type="button" class="btn btn-primary btn-lg text-white border-gg view-order" data-toggle="modal" data-target="#myModal" data-order-id="${
+                  order.orderId
+                }"><span class="icon-eye"></span></button>
+              </td>
+            </tr>`;
+          tableBody.innerHTML += row;
+        });
+
+        // Add event listeners to all "view-order" buttons
+        document.querySelectorAll('.view-order').forEach((button) => {
+          button.addEventListener('click', function () {
+            const orderId = this.getAttribute('data-order-id');
+            const selectedOrder = orders.find(
+              (order) => order.orderId === orderId,
+            );
+            populateModal(selectedOrder);
+          });
+        });
+      }
+
+      // Event listeners for search and filter
+      document
+        .querySelector('.search-bar')
+        .addEventListener('input', () => renderOrders(allOrders, currentPage));
+      document
+        .querySelector('.category-filter')
+        .addEventListener('change', () => renderOrders(allOrders, currentPage));
+
+      // Function to populate the modal with order details
+      function populateModal(order) {
+        // Set the order title and status
+        document.getElementById('myModalLabel').textContent =
+          `Order ${order.orderId}`;
+        document.querySelector('.status-on').textContent = order.status;
+
+        // Populate user details
+        const userDetails = document.querySelector('.user-dd-ul');
+        userDetails.innerHTML = `
+          <li>Name: ${order.userName}</li>
+          <li>Unit: ${order.unit}</li>
+        `;
+
+        // Populate order items
+        const orderItemsTable = document.querySelector('.cart-tbl tbody');
+        orderItemsTable.innerHTML = order.orders
+          .map(
+            (item) => `
+              <tr class="text-center">
+                  <td>${item.orderedMenu.name}</td>
+                  <td>${item.quantity}</td>
+              </tr>
+          `,
+          )
+          .join('');
+
+        // Set the selected status in the dropdown
+        document.getElementById('status').value = order.status.toUpperCase();
+
+        // Attach order ID to the save button for later use
+        document
+          .getElementById('save-status')
+          .setAttribute('data-order-id', order.orderId);
+      }
+
+      // Function to update order status for all related orders
+      async function updateOrderStatus(orderId, status) {
+        try {
+          const accessToken = window.localStorage.getItem('accessToken');
+          const apiKey = '<%= apiKey %>';
+          const serverUrl = '<%= serverUrl %>';
+
+          const myHeaders = new Headers();
+          myHeaders.append('x-api-key', apiKey);
+          myHeaders.append('Authorization', `Bearer ${accessToken}`);
+          myHeaders.append('Content-Type', 'application/json');
+
+          const requestOptions = {
+            method: 'PATCH',
+            headers: myHeaders,
+            body: JSON.stringify({
+              orderId: orderId,
+              status: status.toUpperCase(),
+            }),
+            redirect: 'follow',
+          };
+
+          const response = await fetch(
+            `${serverUrl}/api/order`,
+            requestOptions,
+          );
+          const result = await response.json();
+
+          if (result.statusCode === '10000') {
+            alert('Order status updated successfully!');
+            fetchOrders(currentPage);
+            $('#myModal').modal('hide');
+          } else {
+            console.error('Failed to update order status:', result.message);
+          }
+        } catch (error) {
+          console.error('Error updating order status:', error);
+        }
+      }
+
+      // Add event listener to the save button
+      document
+        .getElementById('save-status')
+        .addEventListener('click', function () {
+          const orderId = this.getAttribute('data-order-id');
+          const newStatus = document.getElementById('status').value;
+          updateOrderStatus(orderId, newStatus);
+        });
+
+      // Function to generate and open PDF in a new tab with custom design
+      function generatePDF(order) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Set default font and styling for the document
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(20);
+
+        // Title - Centered Order ID
+        doc.text(`Order ${order.orderId}`, 105, 20, null, null, 'center');
+
+        // Add a horizontal line below the title
+        doc.setLineWidth(0.5);
+        doc.line(15, 25, 195, 25);
+
+        // Status Section
+        doc.setFontSize(12);
+        doc.text(`Status: ${order.status}`, 105, 35, null, null, 'center');
+
+        // User Details Section
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text('User Details', 20, 50);
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(12);
+        doc.text(`Name: ${order.userName}`, 20, 60);
+        doc.text(`Unit: ${order.unit}`, 20, 70);
+
+        // Add a box around user details
+        doc.setLineWidth(0.1);
+        doc.rect(15, 45, 180, 35); // x, y, width, height
+
+        // Order Items Section
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.text('Order Items', 20, 90);
+
+        // Add table headers
+        doc.setFont('helvetica', 'bold');
+        doc.text('Food Name', 20, 100);
+        doc.text('Quantity', 150, 100);
+
+        // Draw a line below the headers
+        doc.setLineWidth(0.5);
+        doc.line(15, 105, 195, 105);
+
+        // Loop through items and add them to the table
+        let startY = 115; // Starting y position for the first item
+        doc.setFont('helvetica', 'normal');
+        order.orders.forEach((item) => {
+          doc.text(item.orderedMenu.name, 20, startY); // Item name
+          doc.text(`${item.quantity}`, 150, startY); // Quantity
+          startY += 10; // Move down for the next item
+        });
+
+        // Add a border around the order items section
+        doc.setLineWidth(0.1);
+        doc.rect(15, 85, 180, startY - 85); // Adjust height based on the number of items
+
+        // Footer with date/time and thanks message
+        const currentDate = new Date();
+        doc.setFont('helvetica', 'italic');
+        doc.setFontSize(10);
+        doc.text(
+          `Generated on: ${currentDate.toLocaleDateString()} at ${currentDate.toLocaleTimeString()}`,
+          20,
+          290,
+        );
+        doc.text('Thank you for your order!', 105, 280, null, null, 'center');
+
+        // Open the generated PDF in a new tab
+        doc.output('dataurlnewwindow');
+      }
+
+      // Add event listener to the "Print KOT" button in the modal
+      document
+        .querySelector('.print-btn')
+        .addEventListener('click', function () {
+          const orderId = document
+            .getElementById('save-status')
+            .getAttribute('data-order-id');
+          const selectedOrder = allOrders.find(
+            (order) => order.orderId === orderId,
+          );
+
+          if (selectedOrder) {
+            generatePDF(selectedOrder); // Generate and open the PDF with custom design
+          }
+        });
+
+      fetchOrders();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Defac Access Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="assets/css/aos.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/admin-nav') %>
+
+    <!-- END nav -->
+    <!-- ==============================================
+   menu bar or navbar here
+   ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner">
+      <div class="slider-item" style="background-image: url(assets/images/defac-kitchen.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Gallery Management</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <section class="ftco-section ftco-cart">
+      <div class="sort-list">
+        <div class="container">
+          <div class="d-flex" style="justify-content: space-between">
+            <ul class="function-btn">
+              <li>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-food-item">
+                  <i class="icon-add mr-2 text-white"></i> Add New Image
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div>
+              <div class="row" id="gallery"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal for Add Image  -->
+    <div class="modal fade" id="myModal-food-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Add Image</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#" class="contact-form" id="post-form" method="POST" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="image">Upload Image:</label>
+                  <span class="wpcf7-form-control-wrap" data-name="image">
+                    <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="image"
+                      accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="image" />
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <div class="uploaded-image d-inline-block pb-2">
+                    <img id="gallery-photo" src="assets/images/user.jpg" ref="assets/images/user.jpg" alt=""
+                      height="200px" style="object-fit: cover;" />
+                  </div>
+                </div>
+                <div class="form-group mt-2 ml-3">
+                  <button type="button" onclick="addImage()" class="btn btn-primary">
+                    Add Image
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal for Add events -->
+    </div>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#587440" />
+        </svg>
+      </div>
+      <!-- ======================================
+	   loader
+	   ========================================== -->
+
+      <!-- javascripts cdn here -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.easing.1.3.js"></script>
+      <script src="assets/js/jquery.waypoints.min.js"></script>
+      <script src="assets/js/jquery.stellar.min.js"></script>
+      <script src="assets/js/owl.carousel.min.js"></script>
+      <script src="assets/js/jquery.magnific-popup.min.js"></script>
+      <script src="assets/js/aos.js"></script>
+      <script src="assets/js/jquery.animateNumber.min.js"></script>
+      <script src="assets/js/bootstrap-datepicker.js"></script>
+      <script src="assets/js/jquery.timepicker.min.js"></script>
+      <script src="assets/js/scrollax.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+      <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="assets/js/google-map.js"></script>
+      <script src="assets/js/star-rating.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script>
+        let galleryData = [];
+
+        window.onload = function () {
+          fetchGalleryData();
+        };
+
+        async function fetchGalleryData() {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(`${serverUrl}/api/gallery`, requestOptions);
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              galleryData = result.data;
+              renderGallery()
+            } else {
+              alert('Fail to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        }
+
+        function renderGallery() {
+          const gallery = document.getElementById('gallery');
+          gallery.innerHTML = galleryData.length > 0 ? galleryData.map((image, id) => {
+            return `<div class="col-md-4" style="position: relative;">
+              <img src="${image.galleryUrl}" alt="image" style="width: 100%; height: 300px; object-fit: cover;">
+                      <!-- Delete Button -->
+                      <button
+                        onclick="deleteImage('${image._id}')"
+                        type="button"
+                        class="btn btn-sm text-white border-gg"
+                        title="Delete"
+                        style="position: absolute; top: 4px; right: 4px; background-color: transparent; padding: 0 5px; border: 1px solid white !important; height: 30px !important;"
+                      >
+                        <span class="icon-delete"></span>
+                      </button>
+                  </div>`;
+          })
+            .join('') : `<div style="width: 100%; text-align: center; font-size: 24px; color: white; font-weight: 500;">No images found</div>`;
+        }
+
+        // delete image
+        const deleteImage = async (imageId) => {
+          try {
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/gallery/${imageId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result.message);
+              fetchGalleryData(); // Reload data after deletion
+            } else {
+              alert('Fail to delete data: ' + result.message);
+            }
+          } catch (err) {
+            console.error('Error:', err);
+          }
+        };
+
+
+        const addImage = async () => {
+          try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const galleryUrl = document.getElementById('image').files[0];
+
+            const formData = new FormData()
+            formData.append('galleryUrl', galleryUrl)
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Authorization', `Bearer ${accessToken}`);
+
+            const requestOptions = {
+              method: 'POST',
+              headers: myHeaders,
+              body: formData,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(`${serverUrl}/api/gallery`, requestOptions);
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result?.message);
+              fetchGalleryData();
+              $('#myModal-food-item').modal('hide');
+              document.getElementById('title').value = '';
+            } else {
+              alert('Fail to add image: ' + result.message);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+
+        // display selected banner image
+        jQuery('input#image').on('change', function () {
+          if (this.files && this.files[0]) {
+            let image = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              jQuery('#gallery-photo').attr('src', e.target.result); //img tag id
+              createCloseButton('#gallery-photo', 'input#image');
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+
+        // function to remove selected image
+        function createCloseButton(imageSelector, inputSelector) {
+          // Remove existing close button if any
+
+          jQuery(imageSelector).closest('.uploaded-image');
+          var defaulImage = jQuery(imageSelector).attr('ref');
+          // Create close button
+          var closeButton = jQuery('<button class="close-btn">X</button>');
+
+          // Append close button to container
+          jQuery(imageSelector).closest('.uploaded-image').append(closeButton);
+
+          // Attach click event to close button
+          closeButton.on('click', function () {
+            if (defaulImage) {
+              jQuery(imageSelector).attr('src', defaulImage);
+            }
+            jQuery(inputSelector).val('');
+            jQuery(this).remove();
+          });
+        }
+
+      </script>
+</body>
+
+</html>

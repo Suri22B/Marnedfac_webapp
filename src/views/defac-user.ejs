@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Defac Lists Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css" />
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css" />
+
+  <!-- owl carasoul css -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <!-- magnific-popup css -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+
+  <!-- aos js css -->
+  <link rel="stylesheet" href="assets/css/aos.css" />
+
+  <!-- swiper css  -->
+  <link rel="stylesheet" href="https://md-aqil.github.io/images/swiper.min.css" />
+
+  <!-- ionicon css -->
+  <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+
+  <!-- bootstrapdate picker and time picker -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css" />
+
+  <!-- flaticon css -->
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <!-- icomoon icon css -->
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+
+  <!-- star rating -->
+  <link rel="stylesheet" href="assets/css/star-rating.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <%- include('partials/auth-check') %>
+</head>
+
+<body>
+  <!-- ==============================================
+     menu bar or navbar here
+     ================================================== -->
+  <%- include('partials/defac-nav') %>
+    <!-- END nav -->
+    <!-- ==============================================
+    menu bar or navbar here
+    ================================================== -->
+
+    <!-- sub banner of the page here  -->
+    <section class="menu-banner" id="defac-banner">
+    </section>
+    <!-- sub banner of the page here  -->
+
+    <div class="toggle-container">
+      <button id="toggleButton"></button>
+    </div>
+
+    <section class="defac-user">
+      <div class="container">
+        <div class="form-container">
+          <h2 class="text-dark">Set Defac Time</h2>
+          <form action="/submit-profile" method="post">
+            <div class="row">
+              <div class="col-sm-6 col-6">
+                <div class="form-group">
+                  <label for="opening-hour"><span class="icon-clock-o"></span> Opening Hours:</label>
+                  <div class="input-wrap">
+                    <input type="text" class="form-control appointment_time ui-timepicker-input"
+                      placeholder="Opening Time" id="opening-hour" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-6">
+                <div class="form-group">
+                  <label for="closing-hour"><span class="icon-clock-o"></span> Closing Hours:</label>
+                  <div class="input-wrap">
+                    <input type="text" class="form-control appointment_time ui-timepicker-input"
+                      placeholder="Closing Time" id="closing-hour" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" onclick="updateTime()">Save</button>
+          </form>
+        </div>
+
+        <div class="form-container width-form">
+          <h2 class="text-dark">Edit Defac Profile</h2>
+          <form method="post" id="edit-profile-form">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="username">Username:</label>
+                  <input type="text" id="username" name="name" value="Defac UserName" required>
+                </div>
+              </div>
+              <div class="col-sm-6 col-6">
+                <div class="form-group" style="position: relative;">
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" name="password" required>
+                  <div id="toggle-password"
+                    style="color: black; position: absolute; right: 12px; bottom: 20px; cursor: pointer;"><i
+                      class="fa-solid fa-eye-slash"></i></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-6">
+                <div class="form-group" style="position: relative;">
+                  <label for="confirm_password">Confirm Password:</label>
+                  <input type="password" id="confirm_password" name="confirmPassword" required>
+                  <div id="toggle-confirm-password"
+                    style="color: black; position: absolute; right: 12px; bottom: 20px; cursor: pointer;"><i
+                      class="fa-solid fa-eye-slash"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row photo-btn-cross">
+              <div class="col-sm-5 col-6">
+                <label for="defac-cover">Cover Image:</label>
+                <div class="uploaded-image d-inline-block pb-2">
+                  <img id="defac-cover-photo" src="assets/images/defac-banner.jpg" ref="assets/images/defac-banner.jpg"
+                    alt="" width="100px" height="100px">
+                </div>
+                <span class="wpcf7-form-control-wrap" data-name="defac-cover">
+                  <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="defac-cover"
+                    accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="coverPicUrl" required>
+                </span>
+              </div>
+
+              <div class="col-sm-5 col-6 offset-sm-2">
+                <label for="deface-profile">Profile Image:</label>
+                <div class="uploaded-image d-inline-block pb-2">
+                  <img id="defac-photo" src="assets/images/user.jpg" ref="assets/images/user.jpg" alt="" width="100px"
+                    height="100px">
+                </div>
+                <span class="wpcf7-form-control-wrap" data-name="deface-profile">
+                  <input size="40" class="wpcf7-form-control wpcf7-file form-control-file" id="deface-profile"
+                    accept=".jpeg,.jpg,.png" aria-invalid="false" type="file" name="profilePicUrl" required>
+                </span>
+              </div>
+            </div>
+
+            <button type="button" onclick="updateProfile()">Save</button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+     footer part here
+     ========================================= -->
+    <%- include('partials/footer') %>
+      <!-- =====================================
+	   footer part here
+	   ========================================= -->
+
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+      <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#587440" />
+        </svg>
+      </div>
+      <!-- ======================================
+	 loader
+	 ========================================== -->
+
+      <!-- javascripts cdn here -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.easing.1.3.js"></script>
+      <script src="assets/js/jquery.waypoints.min.js"></script>
+      <script src="assets/js/jquery.stellar.min.js"></script>
+      <script src="assets/js/owl.carousel.min.js"></script>
+      <script src="assets/js/jquery.magnific-popup.min.js"></script>
+      <script src="assets/js/aos.js"></script>
+      <script src="assets/js/jquery.animateNumber.min.js"></script>
+      <script src="assets/js/bootstrap-datepicker.js"></script>
+      <script src="assets/js/jquery.timepicker.min.js"></script>
+      <script src="assets/js/scrollax.min.js"></script>
+      <script src="https://md-aqil.github.io/images/swiper.min.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="assets/js/google-map.js"></script>
+      <script src="assets/js/star-rating.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script src="https://kit.fontawesome.com/27bd3bf8d7.js" crossorigin="anonymous"></script>
+
+      <script>
+
+        let defacDetail = {}
+        window.onload = () => {
+          fetchDefacProfile()
+        }
+
+        // fetch defac detail
+        const fetchDefacProfile = async () => {
+          try {
+            const defacId = window.localStorage.getItem('defac')
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+            const requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/defac/${defacId}`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              defacDetail = result.data
+              renderDefacProfile();
+            } else {
+              alert('Failed to fetch data: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }
+
+        // render the defac detail in ui after the data is fetched
+        const renderDefacProfile = () => {
+          const defacBanner = document.getElementById('defac-banner')
+          defacBanner.innerHTML = `
+        <div class="slider-item" style="background-image: url(${defacDetail?.coverPicUrl})"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="defac-detail-view">
+              <img src="${defacDetail?.profilePicUrl}" alt="logo" style="height: 120px; object-fit: cover;" />
+              <div class="defac-own">
+                <strong>${defacDetail?.name}</strong>
+                <div class="rating-time">
+                  <p><span class="icon-clock-o"></span> ${defacDetail?.openingHour} - ${defacDetail?.closingHour}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        `
+
+          // display if the defac is active or inactive
+          const toggleButton = document.getElementById('toggleButton')
+          toggleButton.innerText = defacDetail?.status ? 'Online' : 'Offline'
+          toggleButton.classList.add(defacDetail?.status ? 'online' : 'offline')
+
+          // display the opening and closing time of the defac
+          document.getElementById('opening-hour').value = defacDetail?.openingHour
+          document.getElementById('closing-hour').value = defacDetail?.closingHour
+
+          // display name in form field
+          document.getElementById('username').value = defacDetail?.name
+          document.getElementById('defac-photo').src = defacDetail?.profilePicUrl
+          document.getElementById('defac-cover-photo').src = defacDetail?.coverPicUrl
+        }
+
+        // function to update status
+        document.getElementById('toggleButton').addEventListener('click', async () => {
+          try {
+            const defacId = window.localStorage.getItem('defac')
+            const status = document.getElementById('toggleButton').innerText === 'Online' ? true : false
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Content-Type', 'application/json');
+
+            const requestOptions = {
+              method: 'PATCH',
+              body: JSON.stringify({ id: defacId, status }),
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/defac/status`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result?.message)
+            } else {
+              alert('Failed to update status: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        })
+
+        // function to update opening and closing time
+        const updateTime = async () => {
+          try {
+            const defacId = window.localStorage.getItem('defac')
+            const openingHour = document.getElementById('opening-hour').value
+            const closingHour = document.getElementById('closing-hour').value
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+            myHeaders.append('Content-Type', 'application/json');
+
+            const data = JSON.stringify({
+              id: defacId,
+              openingHour,
+              closingHour
+            })
+
+            const requestOptions = {
+              method: 'PATCH',
+              body: data,
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/defac/update-time`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result?.message)
+            } else {
+              alert('Failed to update status: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }
+
+        const updateProfile = async () => {
+          try {
+            // Create a new FormData object from the form
+            const defacId = window.localStorage.getItem('defac')
+
+            const profile = document.getElementById('edit-profile-form')
+            const formData = new FormData(profile)
+
+            const password = formData.get('password')
+            const confirmPassword = formData.get('confirmPassword')
+
+            // Check if the passwords match
+            if (password !== confirmPassword) {
+              alert('Passwords do not match. Please try again.');
+              return;
+            }
+
+            formData.delete('confirmPassword')
+
+            if (!(password?.trim()?.length > 0)) {
+              formData.delete('password')
+            }
+
+            formData.append('id', defacId)
+
+            const apiKey = '<%= apiKey %>';
+            const serverUrl = '<%= serverUrl %>';
+            const myHeaders = new Headers();
+            myHeaders.append('x-api-key', apiKey);
+
+
+            const requestOptions = {
+              method: 'PATCH',
+              body: formData,
+              headers: myHeaders,
+              redirect: 'follow',
+            };
+
+            const response = await fetch(
+              `${serverUrl}/api/defac`,
+              requestOptions,
+            );
+            const result = await response.json();
+            if (result?.statusCode === '10000') {
+              alert(result?.message)
+              window.location.reload()
+            } else {
+              alert('Failed to update status: ' + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }
+
+
+        // to display profile image after selected
+        jQuery('input#deface-profile').on('change', function () {
+          if (this.files && this.files[0]) {
+            let image = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              jQuery('#defac-photo').attr('src', e.target.result); //img tag id
+              createCloseButton('#defac-photo', 'input#deface-profile');
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+        // to display cover image after selected
+        jQuery('input#defac-cover').on('change', function () {
+          let image = this;
+          if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              jQuery('#defac-cover-photo').attr('src', e.target.result);
+              createCloseButton('#defac-cover-photo', 'input#defac-cover');
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+        // display the close button and remove image after clicking on it
+        function createCloseButton(imageSelector, inputSelector) {
+          // Remove existing close button if any
+
+          jQuery(imageSelector).closest('.uploaded-image');
+          var defaulImage = jQuery(imageSelector).attr('ref');
+          // Create close button
+          var closeButton = jQuery('<button class="close-btn">X</button>');
+
+          // Append close button to container
+          jQuery(imageSelector).closest('.uploaded-image').append(closeButton);
+
+          // Attach click event to close button
+          closeButton.on('click', function () {
+            if (defaulImage) {
+              jQuery(imageSelector).attr('src', defaulImage);
+            }
+            jQuery(inputSelector).val('');
+            jQuery(this).remove();
+            if (imageSelector === '#defac-photo') {
+              document.getElementById('defac-photo').src = defacDetail?.profilePicUrl
+            } else {
+              document.getElementById('defac-cover-photo').src = defacDetail?.coverPicUrl
+            }
+          });
+        }
+
+
+        // toggle password visible for register (new password)
+        const togglePassword = document.getElementById('toggle-password')
+        togglePassword.addEventListener('click', () => {
+          const password = document.getElementById('password')
+          if (password.type === 'password') {
+            password.type = 'text'
+            togglePassword.innerHTML = `<i class="fa-solid fa-eye"></i>`
+          } else {
+            password.type = 'password'
+            togglePassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`
+          }
+        })
+
+        // toggle password visible for register (confirm password)
+        const toggleConfirmPassword = document.getElementById('toggle-confirm-password')
+        toggleConfirmPassword.addEventListener('click', () => {
+          const password = document.getElementById('confirm_password')
+          if (password.type === 'password') {
+            password.type = 'text'
+            toggleConfirmPassword.innerHTML = `<i class="fa-solid fa-eye"></i>`
+          } else {
+            password.type = 'password'
+            toggleConfirmPassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`
+          }
+        })
+      </script>
+</body>
+
+</html>
